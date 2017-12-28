@@ -1,0 +1,22 @@
+{
+  "name": "pta-planner",
+  "version": "1.0.0",
+  "description": "event planner and organizer",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamesmart77/PTA-Planner.git"
+  },
+  "author": "Lauren Wilson, Louise Fitzpatrick Hayes, Ben Baumann, James Martineau",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jamesmart77/PTA-Planner/issues"
+  },
+  "homepage": "https://github.com/jamesmart77/PTA-Planner#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
