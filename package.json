@@ -1,5 +1,5 @@
 {
-  "name": "pta-planner",
+  "name": "event-monster",
   "version": "1.0.0",
   "description": "event planner and organizer",
   "main": "server.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jamesmart77/PTA-Planner.git"
+    "url": "git+https://github.com/jamesmart77/Event-Monster.git"
   },
   "author": "Lauren Wilson, Louise Fitzpatrick Hayes, Ben Baumann, James Martineau",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jamesmart77/PTA-Planner/issues"
+    "url": "https://github.com/jamesmart77/Event-Monster/issues"
   },
-  "homepage": "https://github.com/jamesmart77/PTA-Planner#readme",
+  "homepage": "https://github.com/jamesmart77/Event-Monster#readme",
   "dependencies": {
     "express": "^4.16.2"
   }
