@@ -56,7 +56,6 @@ api.post("/api/volunteer/login", (req, res)=>{
 // add a volunteer to an event
 api.post("/api/staging", (req, res)=>{
     
-
 });
 
 module.exports = api;
