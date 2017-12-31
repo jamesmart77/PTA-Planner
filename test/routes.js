@@ -1,6 +1,6 @@
 var assert = require('assert');
 // var utils = require('../app/utilities/utils.js');
-// var friends = require('../app/data/friends.js');
+// var apiRoutes = require('../app/routes/apiRoutes.js');
 
 describe('/api/route test', function () {
     beforeEach(function () {
