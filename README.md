@@ -52,7 +52,7 @@ user_id: integer
 `sequelize model:generate --name Staging --attributes event_id:integer,user_id:integer`
   
 ## Development database setup
-First you need to update your local .env file to have your db username & db password
+First you need to update your local .env file to have your db username & db password  
 `npm install -g sequelize-cli` - install sequalize command line interface globally  
 `sequelize db:create` - this will create your local/dev db from the command line  
 `sequelize db:migrate` = this will create your db tables from the models  
