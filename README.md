@@ -21,3 +21,33 @@ Using NVM allows you to swtich back and forth between node versions.
 `nvm use 8.9.1`  
 You can check which version of node you are using by running  
 `node -v`  
+  
+# Routes
+/events  
+/volunteers  
+/admin/login  
+/volunteer/login  
+
+# Tables in sql database
+users:  
+first_name: string,  
+last_name: string,  
+email: string,  
+password:string,  
+roleID: int  
+`sequelize model:generate --name User --attributes first_name:string,last_name:string,email:string,password:string,roleID:integer`  
+  
+events:   
+event_name: string,  
+start_date: Date,  
+end_date: Date,  
+start_time: Time,  
+end_time: Time  
+`sequelize model:generate --name Events --attributes event_name:string,start_date:Date,end_date:Date,start_time:Time,end_time:Time`    
+  
+staging:   
+event_id: integer,  
+user_id: integer  
+`sequelize model:generate --name Staging --attributes event_id:integer,user_id:integer`
+  
+

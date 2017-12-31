@@ -14,6 +14,11 @@ api.post("/api/users", (req, res)=>{
 
 });
 
+api.post("/api/staging", (req, res)=>{
+    // this is where we'll post users volunteering for certain events
+
+});
+
 module.exports = api;
 
 
