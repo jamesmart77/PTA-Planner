@@ -5,7 +5,6 @@ const bodyParser = require("body-parser");
 const router = require('./routes/route');
 const api = require('./routes/api');
 
-
 const app = express();
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
