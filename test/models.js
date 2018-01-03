@@ -1,9 +1,10 @@
+//This file tests the DB config defined in /models/- acceptance testing
 var assert = require('assert');
 const db = require('../models/')
-// var utils = require('../app/utilities/utils.js');
-// var apiRoutes = require('../app/routes/apiRoutes.js');
 
-describe('events model test', function () {
+
+//test to check events model 
+describe('events modal test', function () {
     beforeEach(function () {
 
 
@@ -12,15 +13,17 @@ describe('events model test', function () {
     it('should ', function () {
         
         var event = {
-            event_name: 'test event',
-            start_date: '01/01/2018',
+            blah: 'test event',
+            start_date: 'dfdf',
             end_date: '01/01/2018',
             start_time: '14:00',
             end_time: '16:00'
         }
         console.log(db['Events']);
-        db.Events.create(event);
-        assertequal(1,1);
+        db.Events.create(event)
+        .catch(function(err){
+            console.log(err);
+        })
     });
 
 });

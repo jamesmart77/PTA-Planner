@@ -59,11 +59,14 @@ First you need to update your local .env file to have your db username & db pass
 
 # To Launch Unit Testing
 1. pull latest repo from master in github
-2. `npm install` will install mocha from package.json
+2. `npm install` will install mocha and proxyrequire from package.json
 3. `npm test` will run all unit tests automatically
 The unit test files are stored (and must be stored) in project root/test (i.e. EVENT-MONSTER/test)
-Each file is named exactly the same as the file it tests for transparency
-e.g. test/routes.js ---> tests the routes as per routes/route.js 
+
+Each file is named exactly the same as the file it tests for transparency as per standard practice
+e.g. test/api.js ---> tests the routes in file routes/api.js 
+test/events.js ---> tests the 'creation of an event' in the DB table events - more acceptance test than unit test
+test/sample-test.js ---> A sample test file with boilerplate code  
 All files in test directory are run each time `npm test` is run from command line, as per standard practice.
-A sample test file is test/sample-test.js
+All lines are explained as Unit Testing s complicated enough but testing express is another layer of complicated!
 
