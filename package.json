@@ -6,7 +6,7 @@
   "scripts": {
     "start": "NODE_ENV=production node server.js",
     "dev": "./node_modules/nodemon/bin/nodemon.js server.js",
-    "test": "./node_modules/.bin/mocha --ui bdd --inital unit test"
+    "test": "./node_modules/.bin/mocha --ui bdd --reporter spec test"
   },
   "repository": {
     "type": "git",
@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "mocha": "^4.1.0",
-    "nodemon": "^1.14.6"
+    "nodemon": "^1.14.6",
+    "proxyquire": "^1.8.0"
   }
 }
