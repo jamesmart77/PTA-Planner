@@ -1,4 +1,6 @@
 const express = require("express");
+const jwt = require("jsonwebtoken");
+
 const api = express.Router();
 // const db = require('../models/index');
 
@@ -45,7 +47,11 @@ api.delete("/api/users/:id", (req, res)=>{
 
 // try to login an admin
 api.post("/api/admin/login", (req, res)=>{
-
+    const user = { id: 3 }
+    const token = jwt.sign({ user }, 'secret_token_key');
+    res.json({
+        token: token
+    });
 });
 
 // try to login a user
