@@ -47,8 +47,18 @@ api.delete("/api/users/:id", (req, res)=>{
 
 // try to login an admin
 api.post("/api/admin/login", (req, res)=>{
-    const user = { id: 3 }
+    //console.log(req.body.email);
+
+    const user = { 
+        email: req.body.email,
+        password: req.body.password 
+    }
+
     const token = jwt.sign({ user }, 'secret_token_key');
+    
+    //store the JWT in the client's browser
+    res.cookie('jwttoken', token);
+
     res.json({
         token: token
     });
