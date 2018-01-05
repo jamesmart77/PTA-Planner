@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 var secret = require('../config/secrets.js');
 
 const api = express.Router();
+const db = require('../models/')
 // const db = require('../models/index');
 
 
@@ -13,7 +14,16 @@ api.get("/api/events", (req, res)=>{
 
 // create an event
 api.post("/api/events", (req, res)=>{
-
+    //adding in sequelize code here LH
+    console.log("/api/events");
+    db.Events.create(req.body)
+    .then(function(event){
+        res.json(event);
+    })
+    //catch block to ensure if invalid data input the app does not crash
+    .catch(function(err){
+        res.json(err);
+    })
 });
 
 // udpate an event

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "NODE_ENV=production node server.js",
     "dev": "./node_modules/nodemon/bin/nodemon.js server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/mocha --ui bdd --reporter spec test"
   },
   "repository": {
     "type": "git",
@@ -27,11 +27,14 @@
     "express-handlebars": "^3.0.0",
     "express-jwt": "^5.3.0",
     "jsonwebtoken": "^8.1.0",
+    "mysql": "^2.15.0",
     "mysql2": "^1.5.1",
     "sequelize": "^4.28.6",
     "sequelize-cli": "^3.2.0"
   },
   "devDependencies": {
-    "nodemon": "^1.14.6"
+    "mocha": "^4.1.0",
+    "nodemon": "^1.14.6",
+    "proxyquire": "^1.8.0"
   }
 }
