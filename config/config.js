@@ -3,6 +3,7 @@ module.exports = {
   "development": {
     "username": `${process.env.DB_USER}`,
     "password": `${process.env.DB_PASS}`,
+    "port": `${process.env.DB_PORT}`,
     "database": "event_monster_db",
     "host": `${process.env.DB_HOST}`,
     "dialect": "mysql"

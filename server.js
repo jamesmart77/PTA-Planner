@@ -1,13 +1,22 @@
 const express = require("express");
-var exphbs  = require('express-handlebars');
+var exphbs = require('express-handlebars');
 const bodyParser = require("body-parser");
+var path = require("path");
+var expressJWT = require('express-jwt');
+var cookieParser = require('cookie-parser');
 
 const router = require('./routes/route');
 const api = require('./routes/api');
+var secret = require('./config/secrets.js');
 
 const app = express();
 
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+//make all files available in Public folder
+app.use(express.static(path.join(__dirname, 'public')))
+
+app.engine('handlebars', exphbs({
+    defaultLayout: 'main'
+}));
 app.set('view engine', 'handlebars');
 
 const PORT = process.env.PORT || 3000;
@@ -19,10 +28,28 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
+//needed for JWT
+app.use(cookieParser());
+
+// dont require token for /login page
+//will not allow client to access pages without token
+app.use('/', expressJWT({
+    secret: secret.tokenSecret,
+    getToken: req => {
+        return req.cookies['jwttoken'];
+    }
+}).unless({
+    path: ['/admin/login',
+            '/volunteer/login',
+            '/api/admin/login',
+            '/api/volunteer/login'
+        ]
+}));
+
 app.use('/', router);
 app.use('/', api);
 
-app.listen(PORT, function() {
+app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
 });
 
