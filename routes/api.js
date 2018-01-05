@@ -1,5 +1,6 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
+var secret = require('../config/secrets.js');
 
 const api = express.Router();
 // const db = require('../models/index');
@@ -49,12 +50,14 @@ api.delete("/api/users/:id", (req, res)=>{
 api.post("/api/admin/login", (req, res)=>{
     //console.log(req.body.email);
 
+    //TODO -- VALIDATE EMAIL & PASSWORD AGAINST DB
+    //TODO -- IF VALID ADMIN, ASSIGN ADMIN: TRUE (KEY:VALUE PAIR) TO TOKEN
     const user = { 
         email: req.body.email,
         password: req.body.password 
     }
 
-    const token = jwt.sign({ user }, 'secret_token_key');
+    const token = jwt.sign({ user }, secret.tokenSecret);
     
     //store the JWT in the client's browser
     res.cookie('jwttoken', token);

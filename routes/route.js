@@ -1,8 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const jwt = require("jsonwebtoken");
+// const jwt = require("jsonwebtoken");
 // const db = require('../models/index');
 
+//middleware to authenticate jwt token
 var jwtauth = require('../models/jwtAuth.js');
 
 
@@ -39,4 +40,9 @@ router.get("/volunteers", (req, res) => {
     res.render('volunteers', {});
 });
 
+router.get("/logout", (req, res) => {
+    //clear token cookie to force login next time
+    //Path for the cookie. Defaults to “/”.
+    res.clearCookie('jwttoken', { path: '/volunteer/login' });
+});
 module.exports = router;

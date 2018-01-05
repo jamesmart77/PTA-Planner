@@ -19,8 +19,7 @@ $(function () {
             //return with token
             console.log(response);
 
-            //localstorage so it will persist after browser tab is closed
-            //localStorage.token = response.token;
+            //redirect to /events page
             window.location = currentURL + "/events";
         });
     });
