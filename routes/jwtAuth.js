@@ -4,7 +4,7 @@ var secret = require('../config/secrets.js');
 
 // console.log("anything...")
 //middleware to validate token
-module.exports = function (req, res, next) {
+module.exports = function (req, res, next) { 
     //console.log("Headers: " + req.headers);
 
     var obj = req.cookies;
@@ -17,7 +17,7 @@ module.exports = function (req, res, next) {
 
             if(key === 'jwttoken'){
                 //capture JWT token for verification
-                var cookieToken = obj[key];
+                cookieToken = obj[key];
             }
         }
     }
@@ -29,6 +29,7 @@ module.exports = function (req, res, next) {
     } else {
         //authenticate token
         console.log("secret: " + secret.tokenSecret)
+        debugger
         jwt.verify(cookieToken, secret.tokenSecret, function (err, data) {
             if (err) {
                 //this is never hit due to controls in the jsonwebtoken package
