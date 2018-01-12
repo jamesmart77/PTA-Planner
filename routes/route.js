@@ -38,6 +38,6 @@ router.get("/volunteers", (req, res) => {
 router.get("/logout", (req, res) => {
     //clear token cookie to force login next time
     //Path for the cookie. Defaults to “/”.
-    res.clearCookie('jwttoken', { path: '/volunteer/login' });
+    res.clearCookie('jwttoken', { path: '/login' });
 });
 module.exports = router;
