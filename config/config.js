@@ -18,7 +18,7 @@ module.exports = {
   "production": {
     "username": "mj4qs4jysx8qit0r",
     "password": "s5iqa3mek0isb9w2",
-    "database": "database_production",
+    "database": "a453vjh3p85g18u1",
     "port": 3306,
     "host": "ol5tz0yvwp930510.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
