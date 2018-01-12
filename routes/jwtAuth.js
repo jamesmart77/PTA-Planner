@@ -21,6 +21,7 @@ module.exports = function (req, res, next) {
             }
         }
     }
+    console.log("HITTING IT")
 
     if (!cookieToken) {
         res.status(403).send({
