@@ -24,9 +24,7 @@ module.exports = function (req, res, next) {
     console.log("HITTING IT")
 
     if (!cookieToken) {
-        res.status(403).send({
-            error: "Missing token...access denied"
-        });
+        res.redirect('/admin/login')
     } else {
         //authenticate token
         console.log("secret: " + secret.tokenSecret)
@@ -34,9 +32,7 @@ module.exports = function (req, res, next) {
         jwt.verify(cookieToken, secret.tokenSecret, function (err, data) {
             if (err) {
                 //this is never hit due to controls in the jsonwebtoken package
-                res.status(403).send({
-                    error: "Invalid token...access denied"
-                });
+                res.redirect('/admin/login')
             } else {
                 //successful authentication
                 console.log("Successful authenication");

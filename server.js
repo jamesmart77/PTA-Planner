@@ -31,21 +31,6 @@ app.use(bodyParser.json());
 //needed for JWT
 app.use(cookieParser());
 
-// dont require token for /login page
-//will not allow client to access pages without token
-app.use('/', expressJWT({
-    secret: secret.tokenSecret,
-    getToken: req => {
-        return req.cookies['jwttoken'];
-    }
-}).unless({
-    path: ['/admin/login',
-            '/volunteer/login',
-            '/api/admin/login',
-            '/api/volunteer/login'
-        ]
-}));
-
 app.use('/', router);
 app.use('/', api);
 

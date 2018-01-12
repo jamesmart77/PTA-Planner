@@ -10,7 +10,7 @@ var jwtauth = require('./jwtauth.js');
 // these are the html/handlebars views
 
 // homepage
-router.get("/", (req, res) => {
+router.get("/", jwtauth, (req, res) => {
     res.render('index', {});
 });
 
