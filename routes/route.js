@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const db = require('../models/')
 // const jwt = require("jsonwebtoken");
 // const db = require('../models/index');
 
@@ -33,7 +34,19 @@ router.get("/events/volunteers", (req, res) => {
 
 // list all volunteers view
 router.get("/volunteers", (req, res) => {
-    res.render('users', {});
+    db.User.findAll()
+    .then(function (data) {
+        var results = {
+            users: data
+        }
+        console.log(data.User);
+        res.render('users', results);
+    })
+    //catch block to ensure if invalid data input the app does not crash
+    .catch(function (err) {
+        res.json(err);
+    })
+    
 });
 
 router.get("/logout", (req, res) => {
