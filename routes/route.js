@@ -11,7 +11,8 @@ var jwtauth = require('./jwtAuth.js');
 
 // homepage
 router.get("/", jwtauth, (req, res) => {
-    res.render('index', {});
+ res.render('index', {});
+   // res.render(path.join(__dirname, "users.handlebars"));
 });
 
 // login view
@@ -32,7 +33,7 @@ router.get("/events/volunteers", (req, res) => {
 
 // list all volunteers view
 router.get("/volunteers", (req, res) => {
-    res.render('volunteers', {});
+    res.render('users', {});
 });
 
 router.get("/logout", (req, res) => {

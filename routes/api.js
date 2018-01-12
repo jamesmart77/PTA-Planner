@@ -8,51 +8,75 @@ const db = require('../models/')
 
 
 // get all events
-api.get("/api/events", (req, res)=>{
+api.get("/api/events", (req, res) => {
 
 });
 
 // create an event
-api.post("/api/events", (req, res)=>{
+api.post("/api/events", (req, res) => {
     //adding in sequelize code here LH
     console.log("/api/events");
     db.Events.create(req.body)
-    .then(function(event){
-        res.json(event);
-    })
-    //catch block to ensure if invalid data input the app does not crash
-    .catch(function(err){
-        res.json(err);
-    })
+        .then(function (event) {
+            res.json(event);
+        })
+        //catch block to ensure if invalid data input the app does not crash
+        .catch(function (err) {
+            res.json(err);
+        })
 });
 
 // udpate an event
-api.put("/api/events/:id", (req, res)=>{
+api.put("/api/events/:id", (req, res) => {
 
 });
 
 // delete an event
-api.delete("/api/events/:id", (req, res)=>{
+api.delete("/api/events/:id", (req, res) => {
 
 });
 
 // get all users
-api.get("/api/users", (req, res)=>{
-  
+api.get("/api/users", (req, res) => {
+    console.log("/api/users in api.js");
+    db.User.findAll()
+        .then(function (data) {
+            res.json(data);
+        })
+        //catch block to ensure if invalid data input the app does not crash
+        .catch(function (err) {
+            res.json(err);
+        })
 });
 
 // create a user
-api.post("/api/users", (req, res)=>{
+api.post("/api/users", (req, res) => {
+
+    // "first_name": "Louise",
+    // "last_name": "Fitzpatrick",
+    // "email": "louise@deewhy.ie",
+    // "password": "lou123",
+    // "roleID": "1"
+
+    db.User.create(req.body)
+        .then(result => {
+            console.log(result);
+            res.json(result);
+        })
+        .catch(function (err) {
+            console.log(err);
+            res.json(err);
+        })
 
 });
 
 // edit a user
-api.put("/api/users/:id", (req, res)=>{
+api.put("/api/users/:id", (req, res) => {
 
 });
 
 // delete a user
-api.delete("/api/users/:id", (req, res)=>{
+api.delete("/api/users/:id", (req, res) => {
 
 });
 
@@ -62,13 +86,15 @@ api.post("/api/login", (req, res)=>{
 
     //TODO -- VALIDATE EMAIL & PASSWORD AGAINST DB
     //TODO -- IF VALID ADMIN, ASSIGN ADMIN: TRUE (KEY:VALUE PAIR) TO TOKEN
-    const user = { 
+    const user = {
         email: req.body.email,
-        password: req.body.password 
+        password: req.body.password
     }
 
-    const token = jwt.sign({ user }, secret.tokenSecret);
-    
+    const token = jwt.sign({
+        user
+    }, secret.tokenSecret);
+
     //store the JWT in the client's browser
     res.cookie('jwttoken', token);
 
@@ -78,10 +104,8 @@ api.post("/api/login", (req, res)=>{
 });
 
 // add a volunteer to an event
-api.post("/api/staging", (req, res)=>{
-    
+api.post("/api/staging", (req, res) => {
+
 });
 
 module.exports = api;
-
-
