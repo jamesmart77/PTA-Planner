@@ -4,7 +4,7 @@ const router = express.Router();
 // const db = require('../models/index');
 
 //middleware to authenticate jwt token
-var jwtauth = require('./jwtauth.js');
+var jwtauth = require('./jwtAuth.js');
 
 
 // these are the html/handlebars views
