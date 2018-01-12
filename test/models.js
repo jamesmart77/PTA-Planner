@@ -14,7 +14,7 @@ describe('events modal test', function () {
 
         var event = {
             event_name: 'test event',
-            start_date: 'dfdf',
+            start_date: '01/01/2018',
             end_date: '01/01/2018',
             start_time: '14:00',
             end_time: '16:00'

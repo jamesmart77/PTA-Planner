@@ -4,7 +4,7 @@ const router = express.Router();
 // const db = require('../models/index');
 
 //middleware to authenticate jwt token
-var jwtauth = require('./jwtauth.js');
+var jwtauth = require('./jwtAuth.js');
 
 
 // these are the html/handlebars views
@@ -15,13 +15,8 @@ router.get("/", jwtauth, (req, res) => {
    // res.render(path.join(__dirname, "users.handlebars"));
 });
 
-// admin login view
-router.get("/admin/login", (req, res) => {
-    res.render('login', {});
-});
-
-// volunteer login view
-router.get(" /volunteer/login", (req, res) => {
+// login view
+router.get("/login", (req, res) => {
     res.render('login', {});
 });
 
@@ -44,6 +39,6 @@ router.get("/volunteers", (req, res) => {
 router.get("/logout", (req, res) => {
     //clear token cookie to force login next time
     //Path for the cookie. Defaults to “/”.
-    res.clearCookie('jwttoken', { path: '/volunteer/login' });
+    res.clearCookie('jwttoken', { path: '/login' });
 });
 module.exports = router;

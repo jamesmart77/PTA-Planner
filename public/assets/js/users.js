@@ -9,11 +9,12 @@ $("#create-user").on("click", function (event) {
         console.log(data);
 
         var results = data[0];
-        $("#response").text(results.first_name);
-        $("#response").append("hi");
+
+        $("#response").text(JSON.stringify(results));
         $("#response").show();
-        var template = Handlebars.compile(results);
-        $('#response').html(template);
+
+        // var template = Handlebars.compile(results);
+        // $('#response').html(template);
 
     });
 
