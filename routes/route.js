@@ -14,13 +14,8 @@ router.get("/", jwtauth, (req, res) => {
     res.render('index', {});
 });
 
-// admin login view
-router.get("/admin/login", (req, res) => {
-    res.render('login', {});
-});
-
-// volunteer login view
-router.get(" /volunteer/login", (req, res) => {
+// login view
+router.get("/login", (req, res) => {
     res.render('login', {});
 });
 

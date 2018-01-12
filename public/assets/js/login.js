@@ -15,7 +15,7 @@ $(function () {
         var currentURL = window.location.origin;
 
         // post request for user entries
-        $.post(currentURL + "/api/admin/login", credentials, function (response) {
+        $.post(currentURL + "/api/login", credentials, function (response) {
             //return with token
             console.log(response);
 

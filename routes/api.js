@@ -56,8 +56,8 @@ api.delete("/api/users/:id", (req, res)=>{
 
 });
 
-// try to login an admin
-api.post("/api/admin/login", (req, res)=>{
+// try to login 
+api.post("/api/login", (req, res)=>{
     //console.log(req.body.email);
 
     //TODO -- VALIDATE EMAIL & PASSWORD AGAINST DB
@@ -75,11 +75,6 @@ api.post("/api/admin/login", (req, res)=>{
     res.json({
         token: token
     });
-});
-
-// try to login a user
-api.post("/api/volunteer/login", (req, res)=>{
-
 });
 
 // add a volunteer to an event
