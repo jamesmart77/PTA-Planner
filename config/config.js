@@ -20,7 +20,7 @@ module.exports = {
     "password": "s5iqa3mek0isb9w2",
     "database": "database_production",
     "port": 3306,
-    "host": "ol5tz0yvwp930510.cbetxkdyhwsb.us-east-1.rds.amazonaws.com	",
+    "host": "ol5tz0yvwp930510.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   }
 }
