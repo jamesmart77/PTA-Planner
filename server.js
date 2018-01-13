@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 var path = require("path");
 var expressJWT = require('express-jwt');
 var cookieParser = require('cookie-parser');
+const db = require('./models')
 
 const router = require('./routes/route');
 const api = require('./routes/api');
@@ -34,8 +35,10 @@ app.use(cookieParser());
 app.use('/', router);
 app.use('/', api);
 
-app.listen(PORT, function () {
-    console.log("App listening on PORT " + PORT);
-});
+db.sequelize.sync({force: true}).then(function() {
+    app.listen(PORT, function() {
+      console.log("App listening on PORT " + PORT);
+    });
+  });
 
 console.log(app.settings.env);
