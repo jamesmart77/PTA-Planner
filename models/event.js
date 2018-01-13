@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var Events = sequelize.define('Events', {
+  var Event = sequelize.define('Event', {
     event_name: DataTypes.STRING,
     start_date: DataTypes.DATE,
     end_date: DataTypes.DATE,
@@ -13,5 +13,5 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
-  return Events;
+  return Event;
 };
