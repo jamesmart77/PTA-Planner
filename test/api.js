@@ -17,7 +17,7 @@ describe('checking route /api/events', function () {
     it('should return a value of event ID if api/events route sucessfull ', function (finish) {
         //define sequelize db object format(db.Events.create)
         var db = {
-            Events: {
+            Event: {
                 create: function (event) { //checking that db.Events.create(req.body) in api.js is being called
 
                     return new Promise(function (resolve, reject) { //boilerplate javascrupt for returning a promise which the db.Events/create expects

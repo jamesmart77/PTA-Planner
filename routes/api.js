@@ -16,7 +16,7 @@ api.get("/api/events", (req, res) => {
 api.post("/api/events", (req, res) => {
     //adding in sequelize code here LH
     console.log("/api/events");
-    db.Events.create(req.body)
+    db.Event.create(req.body)
         .then(function (event) {
             res.json(event);
         })

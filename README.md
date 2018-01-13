@@ -44,7 +44,7 @@ start_date: Date,
 end_date: Date,  
 start_time: Time,  
 end_time: Time  
-`sequelize model:generate --name Events --attributes event_name:string,start_date:Date,end_date:Date,start_time:Time,end_time:Time`    
+`sequelize model:generate --name Event --attributes event_name:string,start_date:Date,end_date:Date,start_time:Time,end_time:Time`    
   
 staging:   
 event_id: integer,  
