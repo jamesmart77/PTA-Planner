@@ -20,6 +20,8 @@ app.engine('handlebars', exphbs({
 }));
 app.set('view engine', 'handlebars');
 
+// Handlebars.registerPartial('events.create', '{{events.create}}')
+
 const PORT = process.env.PORT || 3000;
 
 // Sets up the Express app to handle data parsing

@@ -36,7 +36,8 @@ first_name: string,
 last_name: string,  
 email: string,  
 password:string,  
-roleID: int  
+roleID: int,
+active: boolean  
 `sequelize model:generate --name User --attributes first_name:string,last_name:string,email:string,password:string,roleID:integer`  
   
 events:   
