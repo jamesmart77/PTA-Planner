@@ -23,10 +23,11 @@ You can check which version of node you are using by running
 `node -v`  
   
 # Routes
-/events  
-/volunteers  
-/admin/login  
-/volunteer/login  
+/events
+/events/:id
+/users
+/users/:id  
+/login
 
 # Tables in sql database
 ## You don't need to run the sequal commands, I just kept them there in case we needed to change our models
@@ -55,7 +56,14 @@ user_id: integer
 First you need to update your local .env file to have your db username & db password  
 `npm install -g sequelize-cli` - install sequalize command line interface globally  
 `sequelize db:create` - this will create your local/dev db from the command line  
-`sequelize db:migrate` = this will create your db tables from the models  
+`sequelize db:migrate` = this will create your db tables from the models
+
+## Development database setup
+`sequelize db:seed:all` - this will seed all the db's with some mock data for testing  
+Data comes form /seeders files and can be referenced in /sample_data  
+This was all randomly generated, so logically there could be some issues, like start and end times that don't make sense  
+or end dates that are before start dates for events. If that becomes important as we are working on the project then  
+update the sampe data JSON files and message me and I'll update the seeders files.  
 
 # To Launch Unit Testing
 1. pull latest repo from master in github

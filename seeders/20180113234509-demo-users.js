@@ -1,0 +1,91 @@
+'use strict';
+
+module.exports = {
+  up: (queryInterface, Sequelize) => {
+      return queryInterface.bulkInsert('Users', [{
+        "first_name": "Bambi",
+        "last_name": "Bickle",
+        "email": "bbickle0@rambler.ru",
+        "password": "TwFmXrD",
+        "roleID": 2,
+        "createdAt": "2017-07-05 21:00:23",
+        "updatedAt": "2017-06-22 20:32:56"
+      }, {
+        "first_name": "Carine",
+        "last_name": "Beades",
+        "email": "cbeades1@netscape.com",
+        "password": "Qz5eoeMvwkEM",
+        "roleID": 1,
+        "createdAt": "2017-08-19 20:55:43",
+        "updatedAt": "2017-04-14 06:35:10"
+      }, {
+        "first_name": "Ramonda",
+        "last_name": "Costen",
+        "email": "rcosten2@newsvine.com",
+        "password": "IQY4wCe",
+        "roleID": 1,
+        "createdAt": "2017-03-25 10:42:58",
+        "updatedAt": "2017-10-08 11:46:47"
+      }, {
+        "first_name": "Eddy",
+        "last_name": "Wichard",
+        "email": "ewichard3@hatena.ne.jp",
+        "password": "40ci4P",
+        "roleID": 1,
+        "createdAt": "2017-10-08 06:06:14",
+        "updatedAt": "2017-06-21 06:59:48"
+      }, {
+        "first_name": "Corine",
+        "last_name": "Tasseler",
+        "email": "ctasseler4@irs.gov",
+        "password": "xLetyC",
+        "roleID": 1,
+        "createdAt": "2017-09-05 12:50:57",
+        "updatedAt": "2017-06-17 01:08:54"
+      }, {
+        "first_name": "Katrine",
+        "last_name": "Thursby",
+        "email": "kthursby5@hao123.com",
+        "password": "HEXGJlyHa26",
+        "roleID": 1,
+        "createdAt": "2017-05-24 18:27:08",
+        "updatedAt": "2017-07-28 10:02:37"
+      }, {
+        "first_name": "Ashlan",
+        "last_name": "Grzegorek",
+        "email": "agrzegorek6@list-manage.com",
+        "password": "zIi19OYBSDQH",
+        "roleID": 1,
+        "createdAt": "2017-05-25 17:21:11",
+        "updatedAt": "2017-04-22 18:15:22"
+      }, {
+        "first_name": "Amara",
+        "last_name": "Gillease",
+        "email": "agillease7@springer.com",
+        "password": "Kj24U9U",
+        "roleID": 1,
+        "createdAt": "2017-06-24 17:49:11",
+        "updatedAt": "2017-12-14 13:52:51"
+      }, {
+        "first_name": "Martin",
+        "last_name": "Ceillier",
+        "email": "mceillier8@about.com",
+        "password": "HfsAheEEuI",
+        "roleID": 1,
+        "createdAt": "2017-08-12 21:09:18",
+        "updatedAt": "2017-11-22 02:34:11"
+      }, {
+        "first_name": "Cherry",
+        "last_name": "Delos",
+        "email": "cdelos9@booking.com",
+        "password": "S7h9Um",
+        "roleID": 1,
+        "createdAt": "2017-07-26 12:15:55",
+        "updatedAt": "2017-01-20 11:11:40"
+      }], {});
+  },
+
+  down: (queryInterface, Sequelize) => {
+      return queryInterface.bulkDelete('Users', null, {});
+  }
+};
