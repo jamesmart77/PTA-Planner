@@ -6,14 +6,14 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     password: DataTypes.STRING,
     roleID: DataTypes.INTEGER
-  }, {
-    classMethods: {
-      associate: function(models) {
-        User.belongsToMany(models.Events, {
-          through: models.Staging
-        });
-      }
-    }
   });
+
+  
+  User.associate = function(models) {
+    User.belongsToMany(models.Event, {
+      through: models.Staging
+    });
+  };
+
   return User;
 };

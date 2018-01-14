@@ -6,14 +6,13 @@ module.exports = (sequelize, DataTypes) => {
     end_date: DataTypes.DATE,
     start_time: DataTypes.TIME,
     end_time: DataTypes.TIME
-  }, {
-    classMethods: {
-      associate: function(models) {
-        Event.belongsToMany(models.Users, {
-          through: models.Staging
-        });
-      }
-    }
   });
+
+  Event.associate = function(models) {
+    Event.belongsToMany(models.User, {
+      through: models.Staging
+    });
+  };
+
   return Event;
 };
