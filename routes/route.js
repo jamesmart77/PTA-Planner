@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const db = require('../models/')
+const db = require('../models');
 // const jwt = require("jsonwebtoken");
 // const db = require('../models/index');
 
@@ -23,17 +23,27 @@ router.get("/login", (req, res) => {
 
 // events view
 router.get("/events", jwtauth, (req, res) => {
-
+    console.log("/api/events in api.js");
+    console.log(db);
+    console.log(db.Event);
+    db.Event.findAll({})
+        .then(function (data) {
+            res.json(data);
+        })
+        //catch block to ensure if invalid data input the app does not crash
+        .catch(function (err) {
+            res.json(err);
+        })
     res.render('events', {});
 });
 
-// a view of the volunteers associated with an event (not part of MVP as I understand it)
-router.get("/events/volunteers", (req, res) => {
+// a view of the users associated with an event (not part of MVP as I understand it)
+router.get("/events/users", (req, res) => {
     res.render('events', {});
 });
 
 // list all volunteers view
-router.get("/volunteers", (req, res) => {
+router.get("/users", (req, res) => {
     db.User.findAll()
     .then(function (data) {
         var results = {

@@ -19,8 +19,8 @@ describe('events modal test', function () {
             start_time: '14:00',
             end_time: '16:00'
         }
-        console.log(db['Events']);
-        db.Events.create(event)
+        console.log(db['Event']);
+        db.Event.create(event)
             .catch(function (err) {
                 console.log(err);
             })
@@ -32,7 +32,8 @@ describe('events modal test', function () {
             first_name: "Adam",
             last_name: "Fitzpatrick",
             email: "louise@deewhy.ie",
-            password: "lou123"
+            password: "lou123",
+            roleID: 1
         }
         console.log(db['User']);
         db.User.create(user)
