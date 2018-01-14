@@ -1,9 +1,7 @@
 $("#create-user").on("submit", function (event) {
     event.preventDefault();
     console.log("clicked");
-    // mock up user as no form submitt in place in handlebars file
-    
-    var user = {
+    var data = {
 
         first_name: "Test",
         last_name: "Fitzpatrick",
@@ -19,7 +17,7 @@ $("#create-user").on("submit", function (event) {
         method: 'POST',
         url: "/api/users",
         contentType: "application/json",
-        data: user
+        data: data
     }).done(function (data) {
         console.log(data);
         res.json(data);
