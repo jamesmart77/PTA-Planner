@@ -1,26 +1,15 @@
 'use strict';
+const {readFileSync} = require('fs');
+const path = require('path');
+const STAGING_SEED_DATA = readFileSync(path.join(__dirname, '../sample_data/staging.json'), 'utf8');
+const STAGING_SEED_DATA_JSON = JSON.parse(STAGING_SEED_DATA);
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    /*
-      Add altering commands here.
-      Return a promise to correctly handle asynchronicity.
+    return queryInterface.bulkInsert('Stagings', STAGING_SEED_DATA_JSON, {});
+},
 
-      Example:
-      return queryInterface.bulkInsert('Person', [{
-        name: 'John Doe',
-        isBetaMember: false
-      }], {});
-    */
-  },
-
-  down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.bulkDelete('Person', null, {});
-    */
-  }
+down: (queryInterface, Sequelize) => {
+    return queryInterface.bulkDelete('Stagings', null, {});
+}
 };
