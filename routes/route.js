@@ -37,13 +37,13 @@ router.get("/events", jwtauth, (req, res) => {
     res.render('events', {});
 });
 
-// a view of the volunteers associated with an event (not part of MVP as I understand it)
-router.get("/events/volunteers", (req, res) => {
+// a view of the users associated with an event (not part of MVP as I understand it)
+router.get("/events/users", (req, res) => {
     res.render('events', {});
 });
 
 // list all volunteers view
-router.get("/volunteers", (req, res) => {
+router.get("/users", (req, res) => {
     db.User.findAll()
     .then(function (data) {
         var results = {
