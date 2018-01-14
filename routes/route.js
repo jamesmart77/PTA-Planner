@@ -28,13 +28,14 @@ router.get("/events", jwtauth, (req, res) => {
     console.log(db.Event);
     db.Event.findAll({})
         .then(function (data) {
-            res.json(data);
+            // res.json(data);
+            res.render('events', {});
         })
         //catch block to ensure if invalid data input the app does not crash
         .catch(function (err) {
             res.json(err);
         })
-    res.render('events', {});
+    // res.render('events', {});
 });
 
 // a view of the users associated with an event (not part of MVP as I understand it)
