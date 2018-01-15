@@ -3,42 +3,38 @@
 <script id="date-template" type="text/x-handlebars-template"></script>
 <div id="response"> --}}
 
-    <div id="searchPanel" class="col-md-12">
-        <h1>Welcome to the Events Page</h1>
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">Event Name</th>
-                            <th scope="col">Start Date</th>
-                            <th scope="col">End Date</th>
-                            <th scope="col">Start Time</th>
-                            <th scope="col">End Time</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {{#each events}}
-                        <tr>
-                            <td>{{event_name}}</td>
-                            <td>{{start_date}}</td>
-                            <td>{{end_date}}</td>
-                            <td>{{start_time}}</td>
-                            <td>{{end_time}}</td>
-                        </tr>
-                        {{/each}}
-                    </tbody>
-                </table>
 
-
-                <table>
-
-                </table>
-
-                <!-- </div> -->
-            </div>
+    <h1>Welcome to the Events Page</h1>
+    <div class="row">
+        <div class="col s10 offset-s1">
+            <table class="table" id="events-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Event Name</th>
+                        <th scope="col">Start Date</th>
+                        <th scope="col">End Date</th>
+                        <th scope="col">Start Time</th>
+                        <th scope="col">End Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each events}}
+                    <tr>
+                        <td>{{event_name}}</td>
+                        <td>{{start_date}}</td>
+                        <td>{{end_date}}</td>
+                        <td>{{start_time}}</td>
+                        <td>{{end_time}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
         </div>
-        <!-- This is for the create event modal -->
-        {{> events.create }}
+        
     </div>
-</div>
+    <!-- </div> -->
+    {{!-- </div> --}}
+<!-- This is for the create event modal -->
+
+
+{{> events.create }}
