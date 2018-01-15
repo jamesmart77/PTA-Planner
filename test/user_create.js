@@ -9,15 +9,14 @@ const db = require('../models/');
 // var utils = require('../app/utilities/utils.js');
 // var apiRoutes = require('../app/routes/apiRoutes.js');
 
-describe('test text', function () {
+describe('Should create a user', function () {
     beforeEach(function () {
 
     });
 
     it('should ', function () {
-        $("#create-user").on("submit", function (event) {
-            event.preventDefault();
-            console.log("clicked");
+        
+            console.log("creating a user Tom");
             var data = {
 
                 first_name: "Test",
@@ -51,6 +50,6 @@ describe('test text', function () {
                 // $('#response').html(template);
 
             });
-        });
+
     });
 });

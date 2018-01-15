@@ -4,13 +4,13 @@ const db = require('../models/')
 
 
 //test to check events model 
-describe('events modal test', function () {
+describe('events and users models test', function () {
     beforeEach(function () {
 
 
     });
 
-    it('should ', function () {
+    it('should create an event in events table', function () {
 
         var event = {
             event_name: 'test event',
@@ -26,7 +26,7 @@ describe('events modal test', function () {
             })
     });
 
-    it('should create a users', function () {
+    it('should create a user in users table', function () {
 
         var user = {
             first_name: "Adam",
