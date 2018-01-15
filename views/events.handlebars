@@ -1,9 +1,44 @@
-<h1>Welcome to the Events Page!</h1>
+{{!--
+<button id="create-user">See All Volunteers</button>
+<script id="date-template" type="text/x-handlebars-template"></script>
+<div id="response"> --}}
 
-{{#each event}} 
-    {{event_name}} 
-{{/each}}
+    <div id="searchPanel" class="col-md-12">
+        <h1>Welcome to the Events Page</h1>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Event Name</th>
+                            <th scope="col">Start Date</th>
+                            <th scope="col">End Date</th>
+                            <th scope="col">Start Time</th>
+                            <th scope="col">End Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each events}}
+                        <tr>
+                            <td>{{event_name}}</td>
+                            <td>{{start_date}}</td>
+                            <td>{{end_date}}</td>
+                            <td>{{start_time}}</td>
+                            <td>{{end_time}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
 
 
-<!-- This is for the create event modal -->
-{{> events.create }}
+                <table>
+
+                </table>
+
+                <!-- </div> -->
+            </div>
+        </div>
+        <!-- This is for the create event modal -->
+        {{> events.create }}
+    </div>
+</div>

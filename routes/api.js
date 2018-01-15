@@ -9,7 +9,15 @@ const db = require('../models/')
 
 // get all events
 api.get("/api/events", (req, res) => {
-
+    console.log("/api/events in api.js");
+    db.Event.findAll()
+        .then(function (data) {
+            res.json(data);
+        })
+        //catch block to ensure if invalid data input the app does not crash
+        .catch(function (err) {
+            res.json(err);
+        })
 });
 
 // create an event
