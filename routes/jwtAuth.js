@@ -28,7 +28,7 @@ module.exports = function (req, res, next) {
     } else {
         //authenticate token
         console.log("secret: " + secret.tokenSecret)
-        debugger
+       
         jwt.verify(cookieToken, secret.tokenSecret, function (err, data) {
             if (err) {
                 //this is never hit due to controls in the jsonwebtoken package
