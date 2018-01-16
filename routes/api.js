@@ -62,12 +62,6 @@ api.get("/api/users", (req, res) => {
 // create a user
 api.post("/api/users", (req, res) => {
 
-    // "first_name": "Louise",
-    // "last_name": "Fitzpatrick",
-    // "email": "louise@deewhy.ie",
-    // "password": "lou123",
-    // "roleID": "1"
-
     db.User.create(req.body)
         .then(result => {
             console.log(result);
