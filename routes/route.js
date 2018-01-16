@@ -24,8 +24,8 @@ router.get("/login", (req, res) => {
 // events view
 router.get("/events", jwtauth, (req, res) => {
     console.log("/api/events in api.js");
-    console.log(db);
-    console.log(db.Event);
+    // console.log(db);
+    // console.log(db.Event);
     db.Event.findAll()
         .then(function (data) {
             // res.json(data);
