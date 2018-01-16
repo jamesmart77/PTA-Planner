@@ -50,7 +50,7 @@ router.get("/users", (req, res) => {
         var results = {
             users: data
         }
-        console.log(data.User);
+        console.log(results.User);
         res.render('users', results);
     })
     //catch block to ensure if invalid data input the app does not crash
