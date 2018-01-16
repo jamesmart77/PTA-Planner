@@ -32,9 +32,15 @@ $(function () {
 
     });
 
-    $(".edit-event").on('click', (event) => {
+    $(".edit-event").on('click', function () {
         var id = $(this).data("id");
-    
-        console.log("id: " + id);
+
+        $.ajax({
+                method: "GET",
+                url: "/api/events/" + id
+            })
+            .done(function (event) {
+                console.log("EVENT INFO\n\n" + JSON.stringify(event))
+            });
     });
 })
