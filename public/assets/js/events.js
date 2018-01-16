@@ -1,6 +1,4 @@
-/*
-The code in this block is related to creating events
-*/
+
 $(document).ready(()=>{
     $('#newEvent').modal({
         complete : createEvent
@@ -53,6 +51,7 @@ function createEvent(){
         event.start_time = $('#start_time').val("");
         event.end_date = $('#end_date').val("");
         event.end_time = $('#end_time').val("");
+
     });
     $("#events-table tbody").append(
         `<tr>
@@ -69,7 +68,14 @@ function createEvent(){
 
 };
 
+$(".edit-event").on('click', function () {
+    var id = $(this).data("id");
 
-/*
-This is the end of the create Event code block
-*/
+    $.ajax({
+            method: "GET",
+            url: "/api/events/" + id
+        })
+        .done(function (event) {
+            console.log("EVENT INFO\n\n" + JSON.stringify(event))
+        });
+});

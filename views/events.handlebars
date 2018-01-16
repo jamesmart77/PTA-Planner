@@ -15,6 +15,7 @@
                         <th scope="col">End Date</th>
                         <th scope="col">Start Time</th>
                         <th scope="col">End Time</th>
+                        <th scope="col" colspan="2"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,12 +26,18 @@
                         <td>{{end_date}}</td>
                         <td>{{start_time}}</td>
                         <td>{{end_time}}</td>
+                        <td>
+                            <a class="edit-event" data-id="{{id}}">
+                                <i class="large material-icons" style="font-size:36px;color:#268ac9">edit</i>
+                            </a>
+                            <i class="large material-icons" id="delete-event" data-id={{id}} style="font-size:36px;color:#c9282d">delete</i>
+                        </td>
                     </tr>
                     {{/each}}
                 </tbody>
             </table>
         </div>
-        
+
     </div>
     <!-- </div> -->
     {{!-- </div> --}}

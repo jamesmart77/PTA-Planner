@@ -21,6 +21,24 @@ api.get("/api/events", (req, res) => {
         })
 });
 
+// get one event
+api.get("/api/events/:id", (req, res) => {
+
+    db.Event.findOne({
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(function (data) {
+            console.log(data);
+            res.json(data);
+        })
+        //catch block to ensure if invalid data input the app does not crash
+        .catch(function (err) {
+            res.json(err);
+        })
+});
+
 // create an event
 api.post("/api/events", (req, res) => {
     //adding in sequelize code here LH
@@ -38,6 +56,18 @@ api.post("/api/events", (req, res) => {
 // udpate an event
 api.put("/api/events/:id", (req, res) => {
 
+    var eventID = req.params.id;
+
+    console.log("eventID: " + eventID);
+
+    // db.Event.update(
+    //     req.body, {
+    //         where: {
+    //             id: req.body.id
+    //         }
+    //     }).then(function (dbPost) {
+    //     res.json(dbPost);
+    // });
 });
 
 // delete an event
@@ -85,7 +115,7 @@ api.delete("/api/users/:id", (req, res) => {
 });
 
 // try to login 
-api.post("/api/login", (req, res)=>{
+api.post("/api/login", (req, res) => {
     //console.log(req.body.email);
 
     //TODO -- VALIDATE EMAIL & PASSWORD AGAINST DB
