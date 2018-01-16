@@ -12,6 +12,7 @@ api.get("/api/events", (req, res) => {
     console.log("/api/events in api.js");
     db.Event.findAll()
         .then(function (data) {
+            console.log(data);
             res.json(data);
         })
         //catch block to ensure if invalid data input the app does not crash
@@ -49,6 +50,7 @@ api.get("/api/users", (req, res) => {
     console.log("/api/users in api.js");
     db.User.findAll()
         .then(function (data) {
+            console.log(data);
             res.json(data);
         })
         //catch block to ensure if invalid data input the app does not crash

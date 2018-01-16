@@ -26,10 +26,14 @@ router.get("/events", jwtauth, (req, res) => {
     console.log("/api/events in api.js");
     console.log(db);
     console.log(db.Event);
-    db.Event.findAll({})
+    db.Event.findAll()
         .then(function (data) {
             // res.json(data);
-            res.render('events', {});
+            console.log(data);
+            var results = {
+                events: data
+            }
+            res.render('events', results);
         })
         //catch block to ensure if invalid data input the app does not crash
         .catch(function (err) {
