@@ -1,6 +1,7 @@
 .brand-logo {
     padding-left: 20px !important;
     font-size: 2.5em !important;
+    height: 100px !important;
 }
 
 h1 {
@@ -11,4 +12,9 @@ h1 {
 #nav-icon {
     padding-right: 10px !important;
     font-size: 40px !important;
+}
+
+#navigation-bar {
+    height: 100px !important;
+
 }
