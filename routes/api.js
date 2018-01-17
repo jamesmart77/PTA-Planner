@@ -12,7 +12,7 @@ api.get("/api/events", (req, res) => {
     console.log("/api/events in api.js");
     db.Event.findAll()
         .then(function (data) {
-            console.log(data);
+            // console.log(data);
             res.json(data);
         })
         //catch block to ensure if invalid data input the app does not crash
@@ -54,20 +54,18 @@ api.post("/api/events", (req, res) => {
 });
 
 // udpate an event
-api.put("/api/events/:id", (req, res) => {
+api.put("/api/events", (req, res) => {
 
-    var eventID = req.params.id;
+    // console.log("eventID: " + eventID);
 
-    console.log("eventID: " + eventID);
-
-    // db.Event.update(
-    //     req.body, {
-    //         where: {
-    //             id: req.body.id
-    //         }
-    //     }).then(function (dbPost) {
-    //     res.json(dbPost);
-    // });
+    db.Event.update(
+        req.body, {
+            where: {
+                id: req.body.id
+            }
+        }).then(function (dbEvent) {
+        res.json(dbEvent);
+    });
 });
 
 // delete an event
