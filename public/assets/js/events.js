@@ -1,7 +1,6 @@
-
-$(document).ready(()=>{
+$(document).ready(() => {
     $('#newEvent').modal({
-        complete : createEvent
+        complete: createEvent
     });
 
     $('.datepicker').pickadate({
@@ -12,21 +11,21 @@ $(document).ready(()=>{
         close: 'Ok',
         closeOnSelect: false // Close upon selecting a date,
     });
-    
+
     $('.timepicker').pickatime({
         default: 'now', // Set default time: 'now', '1:30AM', '16:30'
-        fromnow: 0,       // set default time to * milliseconds from now (using with default = 'now')
+        fromnow: 0, // set default time to * milliseconds from now (using with default = 'now')
         twelvehour: false, // Use AM/PM or 24-hour format
         donetext: 'OK', // text for done-button
         cleartext: 'Clear', // text for clear-button
         canceltext: 'Cancel', // Text for cancel-button
         autoclose: false, // automatic close timepicker
         ampmclickable: true, // make AM PM clickable
-        aftershow: function () { } //Function for after opening timepicker
+        aftershow: function () {} //Function for after opening timepicker
     });
 });
 
-function createEvent(){
+function createEvent() {
 
     var datetimerange = $("#datetime").val();
 
@@ -41,18 +40,18 @@ function createEvent(){
 
 
     $.ajax({
-        method: "POST",
-        url: "/api/events",
-        data: event
-    })
-    .done(function (msg) {
-        event.event_name = $('#event_name').val("");
-        event.start_date = $('#start_date').val("");
-        event.start_time = $('#start_time').val("");
-        event.end_date = $('#end_date').val("");
-        event.end_time = $('#end_time').val("");
+            method: "POST",
+            url: "/api/events",
+            data: event
+        })
+        .done(function (msg) {
+            event.event_name = $('#event_name').val("");
+            event.start_date = $('#start_date').val("");
+            event.start_time = $('#start_time').val("");
+            event.end_date = $('#end_date').val("");
+            event.end_time = $('#end_time').val("");
 
-    });
+        });
     $("#events-table tbody").append(
         `<tr>
         <td>${event.event_name}</td>
@@ -68,6 +67,7 @@ function createEvent(){
 
 };
 
+//EDIT EVENT
 $(".edit-event").on('click', function () {
     var id = $(this).data("id");
 
@@ -76,6 +76,21 @@ $(".edit-event").on('click', function () {
             url: "/api/events/" + id
         })
         .done(function (event) {
-            console.log("EVENT INFO\n\n" + JSON.stringify(event))
+            console.log("EVENT INFO\n\n" + JSON.stringify(event));
         });
+});
+
+//DELETE EVENT
+$(".delete-event").on('click', function () {
+    var id = $(this).data("id");
+
+    $.ajax({
+            method: "DELETE",
+            url: "/api/events/" + id
+        })
+        .done(function (event) {
+            window.location.reload();
+            console.log("EVENT INFO\n\n" + JSON.stringify(event));
+        });
+
 });

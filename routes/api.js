@@ -72,7 +72,13 @@ api.put("/api/events/:id", (req, res) => {
 
 // delete an event
 api.delete("/api/events/:id", (req, res) => {
-
+    db.Event.destroy({
+        where: {
+            id: req.params.id
+        }
+    }).then(function (event) {
+        res.json(event);
+    });
 });
 
 // get all users
