@@ -1,8 +1,8 @@
 [{
     "first_name": "Bambi",
     "last_name": "Bickle",
-    "email": "bbickle0@rambler.ru",
-    "password": "TwFmXrD",
+    "email": "admin@admin.com",
+    "password": "admin",
     "roleID": 2,
     "active": 1,
     "createdAt": "2017-07-05 21:00:23",
