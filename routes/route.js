@@ -5,10 +5,9 @@ const db = require('../models');
 // const db = require('../models/index');
 
 //middleware to authenticate jwt token
+//jwtauth will attach user propertiy to req upon authentication to all handlebars customization
 var jwtauth = require('./jwtAuth.js');
 
-
-// these are the html/handlebars views
 
 // homepage
 router.get("/", jwtauth, (req, res) => {
@@ -23,15 +22,16 @@ router.get("/login", (req, res) => {
 
 // events view
 router.get("/events", jwtauth, (req, res) => {
-    console.log("/api/events in api.js");
-    // console.log(db);
-    // console.log(db.Event);
+    
+    console.log("isAdmin - eventRoute: " + req.admin);
+    //find all events and render object in handlebars
     db.Event.findAll()
         .then(function (data) {
-            // res.json(data);
-            console.log(data);
+
+            // console.log("DATA: " + JSON.stringify(data));
             var results = {
-                events: data
+                events: data,
+                admin: req.admin
             }
             res.render('events', results);
         })

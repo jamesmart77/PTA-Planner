@@ -15,28 +15,45 @@
                         <th scope="col">End Date</th>
                         <th scope="col">Start Time</th>
                         <th scope="col">End Time</th>
-                        <th scope="col" colspan="2"></th>
+                        {{!-- if user is admin, add column --}} 
+                        {{#if admin}}
+                            <th scope="col" colspan="2">Header</th>
+                        {{/if}}
                     </tr>
                 </thead>
                 <tbody>
-                    {{#each events}}
-                    <tr>
-                        <td>{{event_name}}</td>
-                        <td>{{start_date}}</td>
-                        <td>{{end_date}}</td>
-                        <td>{{start_time}}</td>
-                        <td>{{end_time}}</td>
-                        <td>
-                            <a class="edit-event" data-id="{{id}}">
-                                <i class="large material-icons" style="font-size:36px;color:#268ac9">edit</i>
-                            </a>
+                    {{#if admin}} 
+                    {{!-- if admin, include edit/delete buttons --}}
+                        {{#each events}}
+                            <tr>
+                                <td>{{event_name}}</td>
+                                <td>{{start_date}}</td>
+                                <td>{{end_date}}</td>
+                                <td>{{start_time}}</td>
+                                <td>{{end_time}}</td>
+                                <td>
+                                    <a class="edit-event" data-id="{{id}}">
+                                        <i class="large material-icons" style="font-size:36px;color:#268ac9">edit</i>
+                                    </a>
 
-                            <a class="delete-event" data-id="{{id}}">
-                                <i class="large material-icons" style="font-size:36px;color:#c9282d">delete</i>
-                            </a>
-                        </td>
-                    </tr>
-                    {{/each}}
+                                    <a class="delete-event" data-id="{{id}}">
+                                        <i class="large material-icons" style="font-size:36px;color:#c9282d">delete</i>
+                                    </a>
+                                </td>
+                            </tr>
+                        {{/each}} 
+                    {{else}}
+                    {{!-- if not admin, no edit/delete buttons --}}
+                        {{#each events}}
+                            <tr>
+                                <td>{{event_name}}</td>
+                                <td>{{start_date}}</td>
+                                <td>{{end_date}}</td>
+                                <td>{{start_time}}</td>
+                                <td>{{end_time}}</td>
+                            </tr>
+                        {{/each}} 
+                    {{/if}}
                 </tbody>
             </table>
         </div>
