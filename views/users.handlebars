@@ -1,12 +1,7 @@
-{{!--
-<button id="create-user">See All Volunteers</button>
-<script id="date-template" type="text/x-handlebars-template"></script>
-<div id="response"> --}}
-
 
     <h1>Welcome to the Users Page</h1>
     <br>
-    <a class="btn-floating btn-large waves-effect waves-light red" id="create-user"><i class="material-icons">add</i></a>
+    {{!-- <button type="submit" id="create-user">New User</button> --}}
     <br>
     <br>
     <div class="row">
@@ -31,3 +26,9 @@
             </table>
         </div>
     </div>
+    <!-- This is for the create User modal -->
+
+
+{{> users.create }}
+   
+    <script src="/assets/js/users.js"></script>
