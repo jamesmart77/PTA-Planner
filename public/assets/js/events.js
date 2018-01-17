@@ -1,8 +1,6 @@
 
 $(document).ready(()=>{
-    $('#newEvent').modal({
-        complete : createEvent
-    });
+    $('#newEvent').modal();
 
     $('.datepicker').pickadate({
         selectMonths: true, // Creates a dropdown to control month
@@ -26,8 +24,7 @@ $(document).ready(()=>{
     });
 });
 
-function createEvent(){
-
+$('#createEvent').on('click', function(){
     var datetimerange = $("#datetime").val();
 
     const event = {};
@@ -66,7 +63,11 @@ function createEvent(){
     Materialize.toast('Event Saved!', 4000)
     console.log(msg);
 
-};
+});
+
+
+  
+
 
 $(".edit-event").on('click', function () {
     var id = $(this).data("id");

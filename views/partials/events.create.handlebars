@@ -2,7 +2,7 @@
 <a class="waves-effect waves-light btn modal-trigger" href="#newEvent">New Event</a>
 
 <!-- Modal Structure -->
-<div id="newEvent" class="modal">
+<div id="newEvent" class="modal modal-fixed-footer">
   <div class="modal-content">
     <h4>Event Name</h4>
 
@@ -37,6 +37,7 @@
 
   </div>
   <div class="modal-footer">
-    <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Save Event</a>
+    {{!-- <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat cancel">cancel</a> --}}
+    <a href="#!" id="createEvent" class="modal-action modal-close waves-effect waves-green btn-flat save">Save Event</a>
   </div>
 </div>
