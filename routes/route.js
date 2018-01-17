@@ -64,9 +64,29 @@ router.get("/users", (req, res) => {
     
 });
 
+// list one volunteer view
+router.get("/users/:id", (req, res) => {
+    db.User.findOne()
+    .then(function () {
+        var results = {
+            users: req.params.id
+        }
+        console.log(results.User);
+        res.render('users', results);
+    })
+    //catch block to ensure if invalid data input the app does not crash
+    .catch(function (err) {
+        res.json(err);
+    })
+    
+});
+
 router.get("/logout", (req, res) => {
     //clear token cookie to force login next time
     //Path for the cookie. Defaults to “/”.
-    res.clearCookie('jwttoken', { path: '/login' });
+    console.log("hitting the logout");
+    res.clearCookie('jwttoken');
+
+    res.redirect("/login");
 });
 module.exports = router;

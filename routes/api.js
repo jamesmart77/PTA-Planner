@@ -124,21 +124,46 @@ api.post("/api/login", (req, res) => {
 
     //TODO -- VALIDATE EMAIL & PASSWORD AGAINST DB
     //TODO -- IF VALID ADMIN, ASSIGN ADMIN: TRUE (KEY:VALUE PAIR) TO TOKEN
-    const user = {
-        email: req.body.email,
-        password: req.body.password
-    }
+    // const user = {
+    //     email: req.body.email,
+    //     password: req.body.password
+    // }
+    console.log("IN API LOGIN ROUTE");
 
-    const token = jwt.sign({
-        user
-    }, secret.tokenSecret);
+    db.User.findOne({
+            where: {
+                email: req.body.email,
+                password: req.body.password,
+                active: true
+            }
+        })
+        .then(function (data) {
+            console.log(data);
 
-    //store the JWT in the client's browser
-    res.cookie('jwttoken', token);
+            const user = {
+                email: data.dataValues.email,
+                password: data.dataValues.password,
+                admin: data.dataValues.roleID === 2 ? true : false,
+                userID: data.dataValues.id
+            }
 
-    res.json({
-        token: token
-    });
+            const token = jwt.sign(
+                user, secret.tokenSecret);
+
+            console.log("TOKEN: " + JSON.stringify(token));
+
+            //store the JWT in the client's browser
+            res.cookie('jwttoken', token);
+
+            res.json({
+                token: token
+            });
+        })
+        //catch block to ensure if invalid data input the app does not crash
+        .catch(function (err) {
+            console.log("ERROR: " + JSON.stringify(err));
+            res.json(err);
+        })
 });
 
 // add a volunteer to an event
