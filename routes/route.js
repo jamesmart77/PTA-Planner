@@ -48,7 +48,8 @@ router.get("/users", jwtauth, (req, res) => {
     db.User.findAll()
         .then(function (data) {
             var results = {
-                users: data
+                users: data,
+                admin: req.admin
             }
             console.log(results.User);
             res.render('users', results);

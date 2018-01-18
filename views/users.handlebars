@@ -28,7 +28,7 @@
     </div>
     <!-- This is for the create User modal -->
 
-
-{{> users.create }}
-   
+{{#if admin}} 
+    {{> users.create }}
+{{/if}}   
     <script src="/assets/js/users.js"></script>
