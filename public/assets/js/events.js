@@ -149,7 +149,8 @@ $(document).ready(() => {
                 data: JSON.stringify(user)
             })
             .done(function (event) {
-                window.location.reload();
+                // window.location.reload();
+                 Materialize.toast('Thanks for Volunteering!', 4000)
                 console.log("EVENT INFO\n\n" + JSON.stringify(event));
             });
 
