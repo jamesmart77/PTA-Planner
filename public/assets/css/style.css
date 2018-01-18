@@ -18,3 +18,8 @@ h1 {
     height: 100px !important;
 
 }
+
+#signup-event {
+border:1px solid black;
+background-color: red;
+}
