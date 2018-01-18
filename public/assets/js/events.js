@@ -129,4 +129,32 @@ $(document).ready(() => {
             });
 
     });
+
+    //add userid-eventid data to staging table
+    //this occurs only if a user sign-up to a specific event
+
+
+    $(".signup-event").on('click', function () {
+        console.log("signup clicked");
+        var eventid = $(this).data("id");
+        var user = {
+            "event_id": eventid,
+            "EventId": eventid,
+        };
+
+        $.ajax({
+                method: 'POST',
+                url: "/api/staging",
+                contentType: "application/json",
+                data: JSON.stringify(user)
+            })
+            .done(function (event) {
+                // window.location.reload();
+                 Materialize.toast('Thanks for Volunteering!', 4000)
+                console.log("EVENT INFO\n\n" + JSON.stringify(event));
+            });
+
+    });
+
+
 });

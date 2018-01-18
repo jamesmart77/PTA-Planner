@@ -37,10 +37,21 @@ app.use(cookieParser());
 app.use('/', router);
 app.use('/', api);
 
-db.sequelize.sync({force: true}).then(function() {
-    app.listen(PORT, function() {
-      console.log("App listening on PORT " + PORT);
-    });
-  });
+if (app.settings.env === "production") {
+    db.sequelize.sync().then(function() {
+        app.listen(PORT, function() {
+          console.log("App listening on PORT " + PORT);
+        });
+      });
+}
+else{
+    db.sequelize.sync({force: true}).then(function() {
+        app.listen(PORT, function() {
+          console.log("App listening on PORT " + PORT);
+        });
+      });
+}
+
+
 
 console.log(app.settings.env);

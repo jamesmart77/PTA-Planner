@@ -1,6 +1,7 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
 var secret = require('../config/secrets.js');
+var jwtauth = require('./jwtAuth.js');
 
 const api = express.Router();
 const db = require('../models/')
@@ -171,8 +172,26 @@ api.post("/api/login", (req, res) => {
         })
 });
 
-// add a volunteer to an event
+// add a user to an event
 api.post("/api/staging", jwtauth, (req, res) => {
+
+    console.log(req.userID);
+    var data = {
+        event_id:req.body.event_id,
+        user_id:req.userID,
+        EventId:req.body.event_id,
+        UserId:req.userID
+    }
+
+    db.Staging.create(data)
+        .then(result => {
+            console.log(result);
+            res.json(result);
+        })
+        .catch(function (err) {
+            console.log(err);
+            res.json(err);
+        })
 
 });
 
