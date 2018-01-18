@@ -166,8 +166,17 @@ api.post("/api/login", (req, res) => {
         })
 });
 
-// add a volunteer to an event
+// add a user to an event
 api.post("/api/staging", (req, res) => {
+    db.Staging.create(req.body)
+    .then(result => {
+        console.log(result);
+        res.json(result);
+    })
+    .catch(function (err) {
+        console.log(err);
+        res.json(err);
+    })
 
 });
 
