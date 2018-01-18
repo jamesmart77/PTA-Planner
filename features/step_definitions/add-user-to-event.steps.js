@@ -1,10 +1,10 @@
 //Behaviour Driven Development
 //Writing the Code to pass these tests
-//This is a Cucumber
 'use strict';
 
 
 var assert = require("assert");
+//Require Cucumber package and all below is boiler plate cucumber code
 var defineSupportCode = require('cucumber').defineSupportCode;
 
 defineSupportCode(function (context) {
@@ -32,7 +32,7 @@ defineSupportCode(function (context) {
     });
     When('I add a User to an Event', function (callback) {
         // Write code here that turns the phrase above into concrete actions
-
+        
         callback(null, 'pending');
       });
 
