@@ -7,9 +7,12 @@ const api = express.Router();
 const db = require('../models/')
 // const db = require('../models/index');
 
+//middleware to authenticate jwt token
+//jwtauth will attach user propertiy to req upon authentication to all handlebars customization
+var jwtauth = require('./jwtAuth.js');
 
 // get all events
-api.get("/api/events", (req, res) => {
+api.get("/api/events", jwtauth, (req, res) => {
     console.log("/api/events in api.js");
     db.Event.findAll()
         .then(function (data) {
@@ -23,7 +26,7 @@ api.get("/api/events", (req, res) => {
 });
 
 // get one event
-api.get("/api/events/:id", (req, res) => {
+api.get("/api/events/:id", jwtauth, (req, res) => {
 
     db.Event.findOne({
             where: {
@@ -41,7 +44,7 @@ api.get("/api/events/:id", (req, res) => {
 });
 
 // create an event
-api.post("/api/events", (req, res) => {
+api.post("/api/events", jwtauth, (req, res) => {
     //adding in sequelize code here LH
     console.log("/api/events");
     db.Event.create(req.body)
@@ -55,7 +58,7 @@ api.post("/api/events", (req, res) => {
 });
 
 // udpate an event
-api.put("/api/events", (req, res) => {
+api.put("/api/events", jwtauth, (req, res) => {
 
     // console.log("eventID: " + eventID);
 
@@ -70,7 +73,7 @@ api.put("/api/events", (req, res) => {
 });
 
 // delete an event
-api.delete("/api/events/:id", (req, res) => {
+api.delete("/api/events/:id", jwtauth, (req, res) => {
     db.Event.destroy({
         where: {
             id: req.params.id
@@ -81,7 +84,7 @@ api.delete("/api/events/:id", (req, res) => {
 });
 
 // get all users
-api.get("/api/users", (req, res) => {
+api.get("/api/users", jwtauth, (req, res) => {
     console.log("/api/users in api.js");
     db.User.findAll()
         .then(function (data) {
@@ -95,7 +98,7 @@ api.get("/api/users", (req, res) => {
 });
 
 // create a user
-api.post("/api/users", (req, res) => {
+api.post("/api/users", jwtauth, (req, res) => {
 
     db.User.create(req.body)
         .then(result => {
@@ -110,16 +113,18 @@ api.post("/api/users", (req, res) => {
 });
 
 // edit a user
-api.put("/api/users/:id", (req, res) => {
+api.put("/api/users/:id", jwtauth, (req, res) => {
 
 });
 
 // delete a user
-api.delete("/api/users/:id", (req, res) => {
+api.delete("/api/users/:id", jwtauth, (req, res) => {
 
 });
 
 // try to login 
+//NO auth here because this route needs to query if user exists
+//and will then sign a token
 api.post("/api/login", (req, res) => {
     //console.log(req.body.email);
 
