@@ -39,6 +39,9 @@
                                     <a class="delete-event" data-id="{{id}}">
                                         <i class="large material-icons" style="font-size:36px;color:#c9282d">delete</i>
                                     </a>
+                                    <a class="signup-event" data-id="{{id}}" data-user-id"{{uid}}">
+                                        <i class="large material-icons" style="font-size:36px;color:#268ac9">face</i>
+                                    </a>
                                 </td>
                             </tr>
                         {{/each}} 
@@ -51,6 +54,11 @@
                                 <td>{{end_date}}</td>
                                 <td>{{start_time}}</td>
                                 <td>{{end_time}}</td>
+                                <td>
+                                    <a class="signup-event" data-id="{{id}}">
+                                        <i class="large material-icons" style="font-size:36px;color:#268ac9">face</i>
+                                    </a>
+                                </td>
                             </tr>
                         {{/each}} 
                     {{/if}}
