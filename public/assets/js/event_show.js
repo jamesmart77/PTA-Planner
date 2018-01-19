@@ -1,6 +1,7 @@
 var eventID;
 
 $(document).ready(() => {
+    $('.waves-effect').hide();//hiding 'New Event' button
     $('#newEvent').modal();
 
     var $startDatePicker = $('#start_date').pickadate({
