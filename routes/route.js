@@ -43,17 +43,17 @@ router.get("/events/:id", jwtauth, (req, res) => {
 
     //find all events and render object in handlebars
     db.Event.findOne({
-        where: {
-            id: req.params.id
-        }
-    })
+            where: {
+                id: req.params.id
+            }
+        })
         .then(function (data) {
             console.log("DATA\n" + JSON.stringify(data));
             // var results = {
             //     events: data,
             //     admin: req.admin
             // }
-            res.render('event', data);
+            res.render('event', {event: data});
         })
         //catch block to ensure if invalid data input the app does not crash
         .catch(function (err) {
@@ -88,7 +88,7 @@ router.get("/users", jwtauth, (req, res) => {
 router.get("/users/:id", jwtauth, (req, res) => {
 
     //TODO -- does req.userID === req.params.id? If not, user cannot access page
-    
+
     db.User.findOne()
         .then(function () {
             var results = {
