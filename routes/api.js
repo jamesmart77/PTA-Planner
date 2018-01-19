@@ -99,8 +99,18 @@ api.get("/api/users", jwtauth, (req, res) => {
 
 // create a user
 api.post("/api/users", jwtauth, (req, res) => {
+    //create an object to store user data
+    var user = {};
+    user.first_name = req.body.first_name;
+    user.last_name = req.body.last_name;
+    //obtain this from jwtauth cookies in the req.email  
+    user.email = req.email;
+    //obtain this from jwtauth cookies in the req as  req.password
+    user.password = req.password;
+    user.roleID = 1;//default to volunteer role
+    user.active = req.body.active;
 
-    db.User.create(req.body)
+    db.User.create(user)
         .then(result => {
             console.log(result);
             res.json(result);
@@ -173,7 +183,7 @@ api.post("/api/login", (req, res) => {
 });
 
 // add a user to an event
-//passing in JWT object to extract userID from cookie data in the form of req.userID
+//passing in JWT object to extract userID from cookie data in the form of req.userID 
 api.post("/api/staging", jwtauth, (req, res) => {
 
     console.log(req.userID);
