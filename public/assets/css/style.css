@@ -16,6 +16,7 @@ h1 {
 #nav-icon {
     padding-right: 10px !important;
     font-size: 40px !important;
+    line-height: 100px !important;
 }
 
 #navigation-bar {
@@ -44,8 +45,41 @@ background-color: red;
 .signup-event{
     color:green
 }
+/* ============================================ */
+/* SINGLE EVENT PAGE */
+.divider{
+    margin: 20px !important;
+}
+.event-detail-title{
+    font-size: 40px !important;
+    margin-bottom: 20px !important;
+    font-weight: 400 !important;
+}
 
-.delete-event:hover{
+.field-row{
+    line-height: 19px !important;
+    margin-bottom: 35px !important;
+}
+.event-field-label{
+    font-size: 22px !important;
+}
+
+/* volunteer table */
+.volunteer-table{
+    padding: 10px !important;
+}
+.event-field{
+    font-size: 21px !important;
+}
+.see-user{
+    color:#268ac9
+}
+
+.see-user:hover{
+    color: coral;
+}
+
+.remove-user:hover{
     color: darkred;
     -ms-transform: rotate(25deg);
     /* IE 9 */
@@ -57,7 +91,7 @@ background-color: red;
     transition-duration: .3s;
 }
 
-.delete-event{
+.remove-user{
     color:grey;
     -webkit-transition-duration: .6s;
     /* Safari 4.0 - 8.0 */
