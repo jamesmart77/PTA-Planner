@@ -173,13 +173,12 @@ api.post("/api/login", (req, res) => {
 });
 
 // add a user to an event
+//passing in JWT object to extract userID from cookie data in the form of req.userID
 api.post("/api/staging", jwtauth, (req, res) => {
 
     console.log(req.userID);
     var data = {
-        event_id:req.body.event_id,
-        user_id:req.userID,
-        EventId:req.body.event_id,
+        EventId:req.body.EventId,
         UserId:req.userID
     }
 

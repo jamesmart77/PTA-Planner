@@ -138,7 +138,7 @@ $(document).ready(() => {
         console.log("signup clicked");
         var eventid = $(this).data("id");
         var user = {
-            "event_id": eventid,
+            // "event_id": eventid,
             "EventId": eventid,
         };
 
