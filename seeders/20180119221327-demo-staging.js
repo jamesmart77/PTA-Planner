@@ -6,10 +6,10 @@ const STAGING_SEED_DATA_JSON = JSON.parse(STAGING_SEED_DATA);
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Stagings', STAGING_SEED_DATA_JSON, {});
-},
+      return queryInterface.bulkInsert('Stagings', STAGING_SEED_DATA_JSON, {});
+  },
 
-down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('Stagings', null, {});
-}
+  down: (queryInterface, Sequelize) => {
+      return queryInterface.bulkDelete('Stagings', null, {});
+  }
 };

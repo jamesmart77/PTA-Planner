@@ -13,6 +13,6 @@ module.exports = (sequelize, DataTypes) => {
       through: models.Staging
     });
   };
-
+  
   return Event;
 };

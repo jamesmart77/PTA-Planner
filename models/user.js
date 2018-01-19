@@ -9,7 +9,6 @@ module.exports = (sequelize, DataTypes) => {
     active: DataTypes.BOOLEAN
   });
 
-  
   User.associate = function(models) {
     User.belongsToMany(models.Event, {
       through: models.Staging
