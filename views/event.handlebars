@@ -8,21 +8,21 @@
                         <p>
                             <strong>Event Name</strong>
                             <br>
-                            {{event.event_name}}
+                            <div id="event-name"> {{event.event_name}}</div>
                         </p>
                     </div>
                     <div class="row">
                         <p>
                             <strong>Start Date</strong>
                             <br>
-                            {{event.start_date}}
+                            <div id="event-start-date"> {{startDate}}</div>
                         </p>
                     </div>
                     <div class="row">
                         <p>
                             <strong>End Date</strong>
                             <br>
-                            {{event.end_date}}
+                            <div id="event-end-date"> {{endDate}}</div>
                         </p>
                     </div>
                 </div>
@@ -32,20 +32,42 @@
                         <p>
                             <strong>Start Time</strong>
                             <br>
-                            {{event.start_time}}
+                            <div id="event-start-time"> {{event.start_time}}</div>
                         </p>
                     </div>
                     <div class="row">
                         <p>
                             <strong>End Time</strong>
                             <br>
-                            {{event.end_time}}
+                            <div id="event-end-time"> {{event.end_time}}</div>
                         </p>
                     </div>
                 </div>
 
             </div>
-            <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">edit</i></a>
+            {{#if admin}}
+            {{!-- <a class="btn-floating halfway-fab waves-effect waves-light teal edit-event" data-id={{event.id}}>
+                <i class="material-icons">edit</i>
+            </a> --}}
+
+            <div class="fixed-action-btn">
+                <a class="btn-floating btn-large orange">
+                    <i class="large material-icons">list</i>
+                </a>
+                <ul>
+                    <li>
+                        <a class="btn-floating red delete-event" data-id={{event.id}}>
+                            <i class="material-icons">delete</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="btn-floating blue edit-event" data-id={{event.id}}>
+                            <i class="material-icons">edit</i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            {{/if}}
         </div>
     </div>
 </div>
@@ -70,3 +92,8 @@
     </div>
 
 </div>
+
+<!-- This is for the edit event modal -->
+{{#if admin}} {{> events.create }} {{/if}}
+
+<script src="/assets/js/event_show.js"></script>

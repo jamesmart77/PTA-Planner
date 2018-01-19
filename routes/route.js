@@ -48,12 +48,19 @@ router.get("/events/:id", jwtauth, (req, res) => {
             }
         })
         .then(function (data) {
-            console.log("DATA\n" + JSON.stringify(data));
-            // var results = {
-            //     events: data,
-            //     admin: req.admin
-            // }
-            res.render('event', {event: data});
+            console.log("DATA\n" + JSON.stringify(data.start_date));
+
+            //cleaning up dates for proper formatting
+            var startDate = JSON.stringify(data.start_date).split("T")[0].replace(/["']/g, "")
+            var endDate = JSON.stringify(data.end_date).split("T")[0].replace(/["']/g, "")
+
+            var results = {
+                event: data,
+                admin: req.admin,
+                startDate: startDate,
+                endDate: endDate
+            }
+            res.render('event', results);
         })
         //catch block to ensure if invalid data input the app does not crash
         .catch(function (err) {
