@@ -38,6 +38,36 @@ router.get("/events", jwtauth, (req, res) => {
         })
 });
 
+// single event view
+router.get("/events/:id", jwtauth, (req, res) => {
+
+    //find all events and render object in handlebars
+    db.Event.findOne({
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(function (data) {
+            console.log("DATA\n" + JSON.stringify(data.start_date));
+
+            //cleaning up dates for proper formatting
+            var startDate = JSON.stringify(data.start_date).split("T")[0].replace(/["']/g, "")
+            var endDate = JSON.stringify(data.end_date).split("T")[0].replace(/["']/g, "")
+
+            var results = {
+                event: data,
+                admin: req.admin,
+                startDate: startDate,
+                endDate: endDate
+            }
+            res.render('event', results);
+        })
+        //catch block to ensure if invalid data input the app does not crash
+        .catch(function (err) {
+            res.json(err);
+        })
+});
+
 // a view of the users associated with an event (not part of MVP as I understand it)
 router.get("/events/users", jwtauth, (req, res) => {
     res.render('events', {});
@@ -65,7 +95,7 @@ router.get("/users", jwtauth, (req, res) => {
 router.get("/users/:id", jwtauth, (req, res) => {
 
     //TODO -- does req.userID === req.params.id? If not, user cannot access page
-    
+
     db.User.findOne()
         .then(function () {
             var results = {

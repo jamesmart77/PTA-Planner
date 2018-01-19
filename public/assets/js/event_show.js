@@ -1,7 +1,7 @@
-var saveType;
 var eventID;
 
 $(document).ready(() => {
+    $('.waves-effect').hide();//hiding 'New Event' button
     $('#newEvent').modal();
 
     var $startDatePicker = $('#start_date').pickadate({
@@ -34,9 +34,6 @@ $(document).ready(() => {
         aftershow: function () {} //Function for after opening timepicker
     });
 
-    saveType = "POST";
-
-
 
     $('#saveEvent').on('click', function () {
 
@@ -57,54 +54,80 @@ $(document).ready(() => {
 
 
         $.ajax({
-                method: saveType, //POST or PUT
+                method: "PUT", //POST or PUT
                 url: "/api/events",
                 data: event
             })
-            .done(function (msg) {
-                event.event_name = $('#event_name').val("");
-                event.start_date = $('#start_date').val("");
-                event.start_time = $('#start_time').val("");
-                event.end_date = $('#end_date').val("");
-                event.end_time = $('#end_time').val("");
+            .done(function () {
+                //update elements without reloading page
+                $('#event-name').text(event.event_name);
+                $('#event-start-date').text(event.start_date);
+                $('#event-start-time').text(event.start_time);
+                $('#event-end-date').text(event.end_date);
+                $('#event-end-time').text(event.end_time);
 
-                // Materialize.toast('Event Saved!', 4000)
-
-                window.location.reload();
+                Materialize.toast('Event Saved!', 4000)
 
             });
-
-
-
     });
 
 
-    //View EVENT
-    $(".event-see").on('click', function () {
-        var id = $(this).data("id");
-
-        // current base url address
-        var currentURL = window.location.origin;
-
-        // alert(currentURL)
-        //redirect to /events page
-        window.location = currentURL + "/events/" + id;
-       
-    });
-
-    //DELETE EVENT
-    $(".event-delete").on('click', function () {
+    //EDIT EVENT
+    $(".edit-event").on('click', function () {
         var id = $(this).data("id");
 
         $.ajax({
-                method: "DELETE",
+                method: "GET",
                 url: "/api/events/" + id
             })
             .done(function (event) {
-                window.location.reload();
                 console.log("EVENT INFO\n\n" + JSON.stringify(event));
-            });
 
+                var startPicker = $startDatePicker.pickadate('picker');
+                var endPicker = $endDatePicker.pickadate('picker');
+
+                // Using a string along with the parsing format (defaults to `format` option).
+                startPicker.set('select', event.start_date.split("T")[0], {
+                    format: 'yyyy-mm-dd'
+                });
+
+                endPicker.set('select', event.end_date.split("T")[0], {
+                    format: 'yyyy-mm-dd'
+                });
+
+                $('#event_name').val(event.event_name);
+                $('#start_time').val(event.start_time);
+                $('#end_time').val(event.end_time);
+
+                //set global to allow for PUT save event
+                eventID = event.id;
+
+                $('#newEvent').modal('open');
+            });
+    });
+
+    //DELETE EVENT
+    $(".delete-event").on('click', function () {
+
+        var answer = confirm("Are you sure?");
+
+        //if yes
+        if (answer) {
+            var id = $(this).data("id");
+
+            // current base url address
+            var currentURL = window.location.origin;
+
+            $.ajax({
+                    method: "DELETE",
+                    url: "/api/events/" + id
+                })
+                .done(function (event) {
+                    //redirect to events pages
+                    window.location = currentURL + "/events";
+                    console.log("EVENT INFO\n\n" + JSON.stringify(event));
+                });
+        }
     });
 
     //add userid-eventid data to staging table
@@ -115,7 +138,7 @@ $(document).ready(() => {
         console.log("signup clicked");
         var eventid = $(this).data("id");
         var user = {
-            // "event_id": eventid,
+            "event_id": eventid,
             "EventId": eventid,
         };
 
@@ -127,7 +150,7 @@ $(document).ready(() => {
             })
             .done(function (event) {
                 // window.location.reload();
-                 Materialize.toast('Thanks for Volunteering!', 4000)
+                Materialize.toast('Thanks for Volunteering!', 4000)
                 console.log("EVENT INFO\n\n" + JSON.stringify(event));
             });
 
