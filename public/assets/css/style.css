@@ -29,11 +29,11 @@ background-color: red;
 }
 
 /* event page edit, delete, signup buttons */
-.edit-event:hover{
+.see-event:hover{
     color: coral;
 }
 
-.edit-event{
+.see-event{
     color:#268ac9
 }
 

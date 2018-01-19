@@ -79,40 +79,17 @@ $(document).ready(() => {
     });
 
 
-    //EDIT EVENT
-    $(".event-edit").on('click', function () {
+    //View EVENT
+    $(".event-see").on('click', function () {
         var id = $(this).data("id");
 
-        $.ajax({
-                method: "GET",
-                url: "/api/events/" + id
-            })
-            .done(function (event) {
-                console.log("EVENT INFO\n\n" + JSON.stringify(event));
+        // current base url address
+        var currentURL = window.location.origin;
 
-                var startPicker = $startDatePicker.pickadate('picker');
-                var endPicker = $endDatePicker.pickadate('picker');
-
-                // Using a string along with the parsing format (defaults to `format` option).
-                startPicker.set('select', event.start_date.split("T")[0], {
-                    format: 'yyyy-mm-dd'
-                });
-
-                endPicker.set('select', event.end_date.split("T")[0], {
-                    format: 'yyyy-mm-dd'
-                });
-
-                $('#event_name').val(event.event_name);
-                $('#start_time').val(event.start_time);
-                $('#end_time').val(event.end_time);
-
-                saveType = "PUT";
-
-                //set global to allow for PUT save event
-                eventID = event.id;
-
-                $('#newEvent').modal('open');
-            });
+        // alert(currentURL)
+        //redirect to /events page
+        window.location = currentURL + "/events/" + id;
+       
     });
 
     //DELETE EVENT

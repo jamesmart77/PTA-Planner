@@ -38,6 +38,29 @@ router.get("/events", jwtauth, (req, res) => {
         })
 });
 
+// single event view
+router.get("/events/:id", jwtauth, (req, res) => {
+
+    //find all events and render object in handlebars
+    db.Event.findOne({
+        where: {
+            id: req.params.id
+        }
+    })
+        .then(function (data) {
+            console.log("DATA\n" + JSON.stringify(data));
+            // var results = {
+            //     events: data,
+            //     admin: req.admin
+            // }
+            res.render('event', data);
+        })
+        //catch block to ensure if invalid data input the app does not crash
+        .catch(function (err) {
+            res.json(err);
+        })
+});
+
 // a view of the users associated with an event (not part of MVP as I understand it)
 router.get("/events/users", jwtauth, (req, res) => {
     res.render('events', {});
