@@ -80,7 +80,7 @@ $(document).ready(() => {
 
 
     //EDIT EVENT
-    $(".edit-event").on('click', function () {
+    $(".event-edit").on('click', function () {
         var id = $(this).data("id");
 
         $.ajax({
@@ -116,7 +116,7 @@ $(document).ready(() => {
     });
 
     //DELETE EVENT
-    $(".delete-event").on('click', function () {
+    $(".event-delete").on('click', function () {
         var id = $(this).data("id");
 
         $.ajax({
@@ -134,7 +134,7 @@ $(document).ready(() => {
     //this occurs only if a user sign-up to a specific event
 
 
-    $(".signup-event").on('click', function () {
+    $(".event-signup").on('click', function () {
         console.log("signup clicked");
         var eventid = $(this).data("id");
         var user = {
