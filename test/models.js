@@ -10,7 +10,7 @@ describe('events and users models test', function () {
 
     });
 
-    it('should create an event in events table', function () {
+    it(' should create an event in events table', function () {
 
         var event = {
             event_name: 'test event',
@@ -19,10 +19,14 @@ describe('events and users models test', function () {
             start_time: '14:00',
             end_time: '16:00'
         }
-        console.log(db['Event']);
-        db.Event.create(event)
+        //console.log(db['Event']);
+        db.Event.create(event).then({
+            function(data) {
+                assert.equal(data.event_name, "test event")
+            }
+        })
             .catch(function (err) {
-                console.log(err);
+                // console.log(err);
             })
     });
 
@@ -35,13 +39,13 @@ describe('events and users models test', function () {
             password: "lou123",
             roleID: 1
         }
-        console.log(db['User']);
+        //console.log(db['User']);
         db.User.create(user)
             .then( result => {
-                console.log(result);
+               // console.log(result);
             })
             .catch(function (err) {
-                console.log(err);
+                // console.log(err);
             })
     });
 
