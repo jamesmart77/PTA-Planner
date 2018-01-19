@@ -45,10 +45,16 @@ router.get("/events/:id", jwtauth, (req, res) => {
     db.Event.findOne({
             where: {
                 id: req.params.id
-            }
+            },
+            include: [
+               { model: db.User, 
+                where: {active: true},
+                attributes: ['first_name', 'last_name', 'email', 'id']//don't include password
+             }
+            ]
         })
         .then(function (data) {
-            console.log("DATA\n" + JSON.stringify(data.start_date));
+            console.log("DATA\n" + JSON.stringify(data.Users));
 
             //cleaning up dates for proper formatting
             var startDate = JSON.stringify(data.start_date).split("T")[0].replace(/["']/g, "")
@@ -58,7 +64,8 @@ router.get("/events/:id", jwtauth, (req, res) => {
                 event: data,
                 admin: req.admin,
                 startDate: startDate,
-                endDate: endDate
+                endDate: endDate,
+                users: data.Users
             }
             res.render('event', results);
         })

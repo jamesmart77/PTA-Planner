@@ -1,93 +1,109 @@
 <div class="row">
     <div class="col s10 offset-s1">
-        <div class="card grey lighten-4 card small">
+        <div class="card grey lighten-4 card medium">
             <div class="card-content grey-text text-darken-4">
-                <span class="card-title">Event Details</span>
+                <span class="card-title event-detail-title">Event Details</span>
+                <div class="divider"></div>
                 <div class="col s6">
-                    <div class="row">
-                        <p>
+                    <div class="row field-row">
+                        <div class="event-field-label">
                             <strong>Event Name</strong>
-                            <br>
-                            <div id="event-name"> {{event.event_name}}</div>
-                        </p>
+                        </div>
+                        <br>
+                        <div class="event-field" id="event-name"> {{event.event_name}}</div>
                     </div>
-                    <div class="row">
-                        <p>
+                    <div class="row field-row">
+                        <div class="event-field-label">
                             <strong>Start Date</strong>
-                            <br>
-                            <div id="event-start-date"> {{startDate}}</div>
-                        </p>
+                        </div>
+                        <br>
+                        <div class="event-field" id="event-start-date"> {{startDate}}</div>
                     </div>
-                    <div class="row">
-                        <p>
+                    <div class="row field-row">
+                        <div class="event-field-label">
                             <strong>End Date</strong>
-                            <br>
-                            <div id="event-end-date"> {{endDate}}</div>
-                        </p>
+                        </div>
+                        <br>
+                        <div class="event-field" id="event-end-date"> {{endDate}}</div>
                     </div>
                 </div>
 
                 <div class="col s6">
-                    <div class="row">
-                        <p>
+                    <div class="row field-row">
+                        <div class="event-field-label">
                             <strong>Start Time</strong>
-                            <br>
-                            <div id="event-start-time"> {{event.start_time}}</div>
-                        </p>
+                        </div>
+                        <br>
+                        <div class="event-field" id="event-start-time"> {{event.start_time}}</div>
                     </div>
-                    <div class="row">
-                        <p>
+                    <div class="row field-row">
+                        <div class="event-field-label">
                             <strong>End Time</strong>
-                            <br>
-                            <div id="event-end-time"> {{event.end_time}}</div>
-                        </p>
+                        </div>
+                        <br>
+                        <div class="event-field" id="event-end-time"> {{event.end_time}}</div>
                     </div>
                 </div>
 
-            </div>
-            {{#if admin}}
-            {{!-- <a class="btn-floating halfway-fab waves-effect waves-light teal edit-event" data-id={{event.id}}>
-                <i class="material-icons">edit</i>
-            </a> --}}
+                {{#if admin}} {{!--
+                <a class="btn-floating halfway-fab waves-effect waves-light teal edit-event" data-id={{event.id}}>
+                    <i class="material-icons">edit</i>
+                </a> --}}
 
-            <div class="fixed-action-btn">
-                <a class="btn-floating btn-large orange">
-                    <i class="large material-icons">list</i>
-                </a>
-                <ul>
-                    <li>
-                        <a class="btn-floating red delete-event" data-id={{event.id}}>
-                            <i class="material-icons">delete</i>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="btn-floating blue edit-event" data-id={{event.id}}>
-                            <i class="material-icons">edit</i>
-                        </a>
-                    </li>
-                </ul>
+                <div class="fixed-action-btn">
+                    <a class="btn-floating btn-large orange">
+                        <i class="large material-icons">list</i>
+                    </a>
+                    <ul>
+                        <li>
+                            <a class="btn-floating red delete-event" data-id={{event.id}}>
+                                <i class="material-icons">delete</i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="btn-floating blue edit-event" data-id={{event.id}}>
+                                <i class="material-icons">edit</i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                {{/if}}
             </div>
-            {{/if}}
+
         </div>
     </div>
 </div>
 
 
 <div class="row">
-    <div class="col s10 offset-s1">
-        <h2>Signed Up Volunteers</h2>
-        <table class="table" id="events-table">
+    <div class="col s10 offset-s1 volunteer-table">
+        <h3 class="volunteer-header">Volunteers</h3>
+        <table class="table highlight responsive-table" id="events-table">
             <thead>
                 <tr>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Last Date</th>
+                    <th class="event-th" scope="col">First Name</th>
+                    <th class="event-th" scope="col">Last Name</th>
                     {{#if admin}}
-                    <th scope="col" colspan="2"></th>
+                    <th scope="col"></th>
                     {{/if}}
                 </tr>
             </thead>
             <tbody>
+                {{#each users}}
+                <tr>
+                    <td class="event-td">{{first_name}}</td>
+                    <td class="event-td">{{last_name}}</td>
+                    <td>
+                        <a class="event-see" data-userID="{{id}}">
+                            <i class="large material-icons see-user" style="font-size:36px">visibility</i>
+                        </a>
 
+                        <a class="event-signup" data-userID="{{id}}">
+                            <i class="large material-icons remove-user" style="font-size:36px">delete</i>
+                        </a>
+                    </td>
+                </tr>
+                {{/each}}
             </tbody>
         </table>
     </div>
