@@ -46,8 +46,10 @@ module.exports = function (req, res, next) {
                     req.admin = false;
                 };
 
-                //attach userID to req
+                //attach userID, password and email to req
                 req.userID = decoded.userID;
+                req.password = decoded.password;
+                req.email = decoded.email;
 
                 //successful authentication
                 console.log("Successful authenication");
