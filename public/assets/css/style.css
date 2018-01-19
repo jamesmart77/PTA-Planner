@@ -2,6 +2,10 @@
     padding-left: 20px !important;
     font-size: 2.5em !important;
     height: 100px !important;
+    width: 300px !important;
+    background-image: url('../images/logo.png');
+    background-repeat: no-repeat;
+    margin: 5px 15px;
 }
 
 h1 {
