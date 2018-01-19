@@ -63,13 +63,27 @@ background-color: red;
 .event-field-label{
     font-size: 22px !important;
 }
+.event-field{
+    font-size: 21px !important;
+}
+.fixed-action-btn{
+    position: absolute;
+    right: -15px;
+    bottom: -15px;
+}
 
 /* volunteer table */
 .volunteer-table{
     padding: 10px !important;
 }
-.event-field{
+.event-th{
+    font-size: 22px !important;
+    text-align: center !important;
+}
+
+.event-td{
     font-size: 21px !important;
+    text-align: center !important;
 }
 .see-user{
     color:#268ac9

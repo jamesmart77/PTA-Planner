@@ -10,21 +10,21 @@
                             <strong>Event Name</strong>
                         </div>
                         <br>
-                        <div class="event-field"id="event-name"> {{event.event_name}}</div>
+                        <div class="event-field" id="event-name"> {{event.event_name}}</div>
                     </div>
                     <div class="row field-row">
                         <div class="event-field-label">
                             <strong>Start Date</strong>
                         </div>
                         <br>
-                        <div class="event-field"id="event-start-date"> {{startDate}}</div>
+                        <div class="event-field" id="event-start-date"> {{startDate}}</div>
                     </div>
                     <div class="row field-row">
                         <div class="event-field-label">
                             <strong>End Date</strong>
                         </div>
                         <br>
-                        <div class="event-field"id="event-end-date"> {{endDate}}</div>
+                        <div class="event-field" id="event-end-date"> {{endDate}}</div>
                     </div>
                 </div>
 
@@ -34,41 +34,42 @@
                             <strong>Start Time</strong>
                         </div>
                         <br>
-                        <div class="event-field"id="event-start-time"> {{event.start_time}}</div>
+                        <div class="event-field" id="event-start-time"> {{event.start_time}}</div>
                     </div>
                     <div class="row field-row">
                         <div class="event-field-label">
                             <strong>End Time</strong>
                         </div>
                         <br>
-                        <div class="event-field"id="event-end-time"> {{event.end_time}}</div>
+                        <div class="event-field" id="event-end-time"> {{event.end_time}}</div>
                     </div>
                 </div>
 
-            </div>
-            {{#if admin}} {{!--
-            <a class="btn-floating halfway-fab waves-effect waves-light teal edit-event" data-id={{event.id}}>
-                <i class="material-icons">edit</i>
-            </a> --}}
+                {{#if admin}} {{!--
+                <a class="btn-floating halfway-fab waves-effect waves-light teal edit-event" data-id={{event.id}}>
+                    <i class="material-icons">edit</i>
+                </a> --}}
 
-            <div class="fixed-action-btn">
-                <a class="btn-floating btn-large orange">
-                    <i class="large material-icons">list</i>
-                </a>
-                <ul>
-                    <li>
-                        <a class="btn-floating red delete-event" data-id={{event.id}}>
-                            <i class="material-icons">delete</i>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="btn-floating blue edit-event" data-id={{event.id}}>
-                            <i class="material-icons">edit</i>
-                        </a>
-                    </li>
-                </ul>
+                <div class="fixed-action-btn">
+                    <a class="btn-floating btn-large orange">
+                        <i class="large material-icons">list</i>
+                    </a>
+                    <ul>
+                        <li>
+                            <a class="btn-floating red delete-event" data-id={{event.id}}>
+                                <i class="material-icons">delete</i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="btn-floating blue edit-event" data-id={{event.id}}>
+                                <i class="material-icons">edit</i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                {{/if}}
             </div>
-            {{/if}}
+
         </div>
     </div>
 </div>
@@ -80,18 +81,18 @@
         <table class="table highlight responsive-table" id="events-table">
             <thead>
                 <tr>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Last Name</th>
+                    <th class="event-th" scope="col">First Name</th>
+                    <th class="event-th" scope="col">Last Name</th>
                     {{#if admin}}
-                    <th></th>
+                    <th scope="col"></th>
                     {{/if}}
                 </tr>
             </thead>
             <tbody>
                 {{#each users}}
                 <tr>
-                    <td>{{first_name}}</td>
-                    <td>{{last_name}}</td>
+                    <td class="event-td">{{first_name}}</td>
+                    <td class="event-td">{{last_name}}</td>
                     <td>
                         <a class="event-see" data-userID="{{id}}">
                             <i class="large material-icons see-user" style="font-size:36px">visibility</i>
