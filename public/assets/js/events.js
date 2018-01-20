@@ -62,16 +62,23 @@ $(document).ready(() => {
                 data: event
             })
             .done(function (msg) {
-                event.event_name = $('#event_name').val("");
-                event.start_date = $('#start_date').val("");
-                event.start_time = $('#start_time').val("");
-                event.end_date = $('#end_date').val("");
-                event.end_time = $('#end_time').val("");
-
-                // Materialize.toast('Event Saved!', 4000)
-
-                console.log(msg);
-                // window.location.reload();
+                // test for an error
+                if(msg.errors){
+                    Materialize.toast(msg.errors[0].message, 4000);
+                }
+                else{
+                    event.event_name = $('#event_name').val("");
+                    event.start_date = $('#start_date').val("");
+                    event.start_time = $('#start_time').val("");
+                    event.end_date = $('#end_date').val("");
+                    event.end_time = $('#end_time').val("");
+    
+                    // Materialize.toast('Event Saved!', 4000)
+    
+                    console.log(msg);
+                    window.location.reload();
+                }
+               
 
             });
 
@@ -128,7 +135,7 @@ $(document).ready(() => {
             })
             .done(function (event) {
                 // window.location.reload();
-                 Materialize.toast('Thanks for Volunteering!', 4000)
+                 Materialize.toast('Thanks for Volunteering!', 4000);
                 console.log("EVENT INFO\n\n" + JSON.stringify(event));
             });
 
