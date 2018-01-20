@@ -13,7 +13,7 @@
     "email": "user@user.com",
     "password": "user",
     "roleID": 1,
-    "active": 1,
+    "active": 0,
     "createdAt": "2017-08-19 20:55:43",
     "updatedAt": "2017-04-14 06:35:10"
   }, {
