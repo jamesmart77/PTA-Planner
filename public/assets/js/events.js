@@ -45,9 +45,9 @@ $(document).ready(() => {
         const event = {};
         event.event_name = $('#event_name').val().trim();
         event.start_date = $('#start_date').val();
-        event.start_time = $('#start_time').val();
+        event.start_time = convertTime12to24($('#start_time').val());
         event.end_date = $('#end_date').val();
-        event.end_time = $('#end_time').val();
+        event.end_time = convertTime12to24($('#end_time').val());
         //this will only set if it's a PUT event
         if (eventID) {
             event.id = eventID;
@@ -70,7 +70,8 @@ $(document).ready(() => {
 
                 // Materialize.toast('Event Saved!', 4000)
 
-                window.location.reload();
+                console.log(msg);
+                // window.location.reload();
 
             });
 
@@ -135,3 +136,26 @@ $(document).ready(() => {
 
 
 });
+
+
+
+function convertTime12to24(time12h) {
+    const [time, modifier] = time12h.includes("AM") ? 
+       time12h.split('AM')
+        .map((res => res ? res : "AM")) 
+        :
+        time12h.split('PM')
+        .map((res => res ? res : "PM"));
+    
+      let [hours, minutes] = time.split(':');
+    
+      if (hours === '12') {
+        hours = '00';
+      }
+    
+      if (modifier === 'PM') {
+        hours = parseInt(hours, 10) + 12;
+      }
+    
+      return `${hours}:${minutes}:00`;
+    }
