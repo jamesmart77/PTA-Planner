@@ -67,14 +67,6 @@ $(document).ready(() => {
                     Materialize.toast(msg.errors[0].message, 4000);
                 }
                 else{
-                    event.event_name = $('#event_name').val("");
-                    event.start_date = $('#start_date').val("");
-                    event.start_time = $('#start_time').val("");
-                    event.end_date = $('#end_date').val("");
-                    event.end_time = $('#end_time').val("");
-    
-                    // Materialize.toast('Event Saved!', 4000)
-    
                     console.log(msg);
                     window.location.reload();
                 }

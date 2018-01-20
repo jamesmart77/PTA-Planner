@@ -26,7 +26,13 @@ $("#create-user").on("click", function (user) {
         data: JSON.stringify(user)
     }).done(function (data) {
         console.log(data);
-        location.reload(); //show user
+        if(!data.errors){
+            location.reload(); //show user
+        }
+        else{
+            // handle db validation errors
+            Materialize.toast(data.errors[0].message, 4000);
+        }
         //catch block to ensure if invalid data input the app does not crash
     }).catch(function (err) {
         console.log(err);
