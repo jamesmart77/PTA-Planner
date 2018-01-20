@@ -139,8 +139,8 @@ $(document).ready(() => {
         if (answer) {
 
             var eventPath = window.location.pathname.split("/");
-            
-            var eventID = eventPath[eventPath.length-1];
+
+            var eventID = eventPath[eventPath.length - 1];
 
             var event_user = {
                 eventId: eventID,
@@ -160,6 +160,16 @@ $(document).ready(() => {
                     window.location.reload();
                 });
         }
+    });
+
+    //View USER
+    $(".user-see").on('click', function () {
+
+        var id = $(this).data("userid");
+
+        // current base url address
+        window.location.href = window.location.origin + "/users/" + id
+
     });
 
 
