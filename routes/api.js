@@ -219,12 +219,14 @@ api.delete("/api/staging", jwtauth, (req, res) => {
 
     db.Staging.destroy({
         where: {
-            event_id: req.body.eventId,
-            user_id: req.body.userId
+            EventId: req.body.eventId,
+            UserId: req.body.userId
         }
     }).then(function (data) {
         res.json(data);
-    });
+    }).catch(function(err){
+        res.json(err);
+    })
 
 });
 

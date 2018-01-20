@@ -157,7 +157,9 @@ $(document).ready(() => {
                 })
                 .done(function (event) {
                     //refresh page
-                    window.location.reload();
+                    console.log("API MSG\n")
+                    console.log(event)
+                    // window.location.reload();
                 });
         }
     });
