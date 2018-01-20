@@ -86,6 +86,7 @@ api.delete("/api/events/:id", jwtauth, (req, res) => {
 // get all users
 api.get("/api/users", jwtauth, (req, res) => {
     console.log("/api/users in api.js");
+    if (req.admin) {
     db.User.findAll()
         .then(function (data) {
             console.log(data);
@@ -95,6 +96,10 @@ api.get("/api/users", jwtauth, (req, res) => {
         .catch(function (err) {
             res.json(err);
         })
+    }
+    else {
+        res.redirect("/events")
+    };
 });
 
 // create a user
