@@ -107,8 +107,13 @@ api.post("/api/users", jwtauth, (req, res) => {
     user.email = req.email;
     //obtain this from jwtauth cookies in the req as  req.password
     user.password = req.password;
-    user.roleID = 1;//default to volunteer role
+    user.roleID = req.body.roleID;
     user.active = req.body.active;
+    // if (req.body.active === "active") {
+    //     user.active = true;
+    // } else {
+    //     user.active = false;
+    // }
 
     db.User.create(user)
         .then(result => {
@@ -188,8 +193,8 @@ api.post("/api/staging", jwtauth, (req, res) => {
 
     console.log(req.userID);
     var data = {
-        EventId:req.body.EventId,
-        UserId:req.userID
+        EventId: req.body.EventId,
+        UserId: req.userID
     }
 
     db.Staging.create(data)
