@@ -102,6 +102,24 @@ api.get("/api/users", jwtauth, (req, res) => {
     };
 });
 
+// get one user
+api.get("/api/users/:id", jwtauth, (req, res) => {
+
+    db.User.findOne({
+            where: {
+                id: req.params.id
+            }
+        })
+        .then(function (data) {
+            console.log(data);
+            res.json(data);
+        })
+        //catch block to ensure if invalid data input the app does not crash
+        .catch(function (err) {
+            res.json(err);
+        })
+});
+
 // create a user
 api.post("/api/users", jwtauth, (req, res) => {
     //create an object to store user data
@@ -134,7 +152,14 @@ api.post("/api/users", jwtauth, (req, res) => {
 
 // edit a user
 api.put("/api/users/:id", jwtauth, (req, res) => {
-
+    db.User.update(
+        req.params, {
+            where: {
+                id: req.params.id
+            }
+        }).then(function (dbUser) {
+        res.json(dbUser);
+    });
 });
 
 // delete a user
