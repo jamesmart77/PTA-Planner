@@ -17,6 +17,11 @@ router.get("/", jwtauth, (req, res) => {
 
 // login view
 router.get("/login", (req, res) => {
+    
+    //clean slate -- remove token
+    res.clearCookie('jwttoken');
+
+
     res.render('login', {});
 });
 
