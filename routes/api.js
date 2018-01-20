@@ -86,7 +86,30 @@ api.delete("/api/events/:id", jwtauth, (req, res) => {
 // get all users
 api.get("/api/users", jwtauth, (req, res) => {
     console.log("/api/users in api.js");
+    if (req.admin) {
     db.User.findAll()
+        .then(function (data) {
+            console.log(data);
+            res.json(data);
+        })
+        //catch block to ensure if invalid data input the app does not crash
+        .catch(function (err) {
+            res.json(err);
+        })
+    }
+    else {
+        res.redirect("/events")
+    };
+});
+
+// get one user
+api.get("/api/users/:id", jwtauth, (req, res) => {
+
+    db.User.findOne({
+            where: {
+                id: req.params.id
+            }
+        })
         .then(function (data) {
             console.log(data);
             res.json(data);
@@ -129,7 +152,14 @@ api.post("/api/users", jwtauth, (req, res) => {
 
 // edit a user
 api.put("/api/users/:id", jwtauth, (req, res) => {
-
+    db.User.update(
+        req.params, {
+            where: {
+                id: req.params.id
+            }
+        }).then(function (dbUser) {
+        res.json(dbUser);
+    });
 });
 
 // delete a user

@@ -1,0 +1,81 @@
+<div class="row">
+    <div class="col s10 offset-s1">
+        <div class="card grey lighten-4 card medium">
+            <div class="card-content grey-text text-darken-4">
+                <span class="card-title user-detail-title">User Details</span>
+                <div class="divider"></div>
+                <div class="col s6">
+                    <div class="row field-row">
+                        <div class="user-field-label">
+                            <strong>First Name</strong>
+                        </div>
+                        <br>
+                        <div class="user-field" id="first-name"> {{user.first_name}}</div>
+                    </div>
+                    <div class="row field-row">
+                        <div class="user-field-label">
+                            <strong>Last Name</strong>
+                        </div>
+                        <br>
+                        <div class="user-field" id="last-name"> {{user.last_name}}</div>
+                    </div>
+                    <div class="row field-row">
+                        <div class="user-field-label">
+                            <strong>Email Address</strong>
+                        </div>
+                        <br>
+                        <div class="user-field" id="email address"> {{user.email}}</div>
+                    </div>
+                </div>
+                {{#if admin}}
+
+                <div class="input-field col s12">
+                    <select>
+                        <option value="" disabled selected>Choose Role</option>
+                        <option value="1">Volunteer</option>
+                        <option value="2">Admin</option>
+                    </select>
+                    <label>Role ID</label>
+                </div>
+                <div class="switch">
+                    <label>
+                        Inactive
+                        <input id="switch" type="checkbox">
+                        <span class="lever"></span>
+                        Active
+                    </label>
+                </div>
+
+
+                {{/if}} {{!--
+                <a class="btn-floating halfway-fab waves-effect waves-light teal edit-event" data-id={{event.id}}>
+                    <i class="material-icons">edit</i>
+                </a> --}}
+
+                <div class="fixed-action-btn">
+                    <a class="btn-floating btn-large orange">
+                        <i class="large material-icons">list</i>
+                    </a>
+                    <ul>
+                        <li>
+                            <a class="btn-floating red delete-user" data-id={{user.id}}>
+                                <i class="material-icons">delete</i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="btn-floating blue edit-user" data-id={{user.id}}>
+                                <i class="material-icons">edit</i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- This is for the edit event modal -->
+{{#if admin}} {{> users.create }} {{/if}}
+
+<script src="/assets/js/user_show.js"></script>

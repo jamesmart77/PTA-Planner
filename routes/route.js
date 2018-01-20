@@ -104,22 +104,39 @@ router.get("/users", jwtauth, (req, res) => {
 
 // list one volunteer view
 router.get("/users/:id", jwtauth, (req, res) => {
-
+console.log("hitting user route")
     //TODO -- does req.userID === req.params.id? If not, user cannot access page
 
-    db.User.findOne()
-        .then(function () {
-            var results = {
-                users: req.params.id
-            }
-            console.log(results.User);
-            res.render('users', results);
-        })
-        //catch block to ensure if invalid data input the app does not crash
-        .catch(function (err) {
-            res.json(err);
-        })
+    db.User.findOne({
+        where: {
+            id: req.params.id
+        },
+        include: [
+           { model: db.Event, 
+            attributes: ['event_name', 'start_date', 'end_date', 'id']
+         }
+        ]
+    })
+    .then(function (data) {
+        console.log("DATA\n" + JSON.stringify(data));
 
+        //cleaning up dates for proper formatting
+        // var startDate = JSON.stringify(data.start_date).split("T")[0].replace(/["']/g, "")
+        // var endDate = JSON.stringify(data.end_date).split("T")[0].replace(/["']/g, "")
+
+        var results = {
+            user: data,
+            admin: req.admin
+            // startDate: startDate,
+            // endDate: endDate,
+            // users: data.Users
+        }
+        res.render('user', results);
+    })
+    //catch block to ensure if invalid data input the app does not crash
+    .catch(function (err) {
+        res.json(err);
+    })
 });
 
 router.get("/logout", (req, res) => {
