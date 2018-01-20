@@ -6,15 +6,39 @@
     <div class="modal-content">
         <h4>Create New User</h4>
         <div class="form-group">
-            <label for="first_name">First Name</label>
-            <input id="first_name" name="first_name" type="text" class="form-control" placeholder="Enter Name">
-            <label for="last_name">Last Name</label>
-            <input id="last_name" name="last_name" type="text" class="form-control" placeholder="Enter Name">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="text" class="form-control" placeholder="Enter Email">
-            
+            <div class="input-field col s6">
+                <label for="first_name">First Name</label>
+                <input class="left-alert validate" id="first_name" name="first_name" type="text" class="form-control" placeholder="Enter Name">
+            </div>
+            <div class="input-field col s6">
+                <label for="last_name">Last Name</label>
+                <input class="left-alert validate" id="last_name" name="last_name" type="text" class="form-control" placeholder="Enter Name">
+            </div>
+            {{!--Should this come from JWTAUTH
+            <label class="left-alert" for="email">Email</label>
+            <input class="left-alert" id="email" name="email" type="text" class="form-control" placeholder="Enter Email">
+            <label class="left-alert" for="password">Email</label>
+            <input class="left-alert" id="password" name="password" type="text" class="form-control" placeholder="Enter Password"> --}}
+            <div class="input-field col s12">
+                <select>
+                    <option value="" disabled selected>Choose Role</option>
+                    <option value="1">Volunteer</option>
+                    <option value="2">Admin</option>
+                </select>
+                <label>Role ID</label>
+            </div>
+           
+            <div class="switch">
+                <label>
+                    Inactive
+                    <input id="switch" type="checkbox">
+                    <span class="lever"></span>
+                    Active
+                </label>
+            </div>
         </div>
     </div>
+
     <div class="modal-footer" id="create-user">
         <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
     </div>

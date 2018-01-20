@@ -104,8 +104,23 @@ api.get("/api/users", jwtauth, (req, res) => {
 
 // create a user
 api.post("/api/users", jwtauth, (req, res) => {
+    //create an object to store user data
+    var user = {};
+    user.first_name = req.body.first_name;
+    user.last_name = req.body.last_name;
+    //obtain this from jwtauth cookies in the req.email  
+    user.email = req.email;
+    //obtain this from jwtauth cookies in the req as  req.password
+    user.password = req.password;
+    user.roleID = req.body.roleID;
+    user.active = req.body.active;
+    // if (req.body.active === "active") {
+    //     user.active = true;
+    // } else {
+    //     user.active = false;
+    // }
 
-    db.User.create(req.body)
+    db.User.create(user)
         .then(result => {
             console.log(result);
             res.json(result);
@@ -178,14 +193,13 @@ api.post("/api/login", (req, res) => {
 });
 
 // add a user to an event
+//passing in JWT object to extract userID from cookie data in the form of req.userID 
 api.post("/api/staging", jwtauth, (req, res) => {
 
     console.log(req.userID);
     var data = {
-        event_id:req.body.event_id,
-        user_id:req.userID,
-        EventId:req.body.event_id,
-        UserId:req.userID
+        EventId: req.body.EventId,
+        UserId: req.userID
     }
 
     db.Staging.create(data)
@@ -197,6 +211,25 @@ api.post("/api/staging", jwtauth, (req, res) => {
             console.log(err);
             res.json(err);
         })
+
+});
+
+api.delete("/api/staging", jwtauth, (req, res) => {
+
+    console.log("REQUEST BODY\N" + JSON.stringify(req.body));
+    // var data = {
+    //     EventId: req.body.EventId,
+    //     UserId: req.userID
+    // }
+
+    db.Staging.destroy({
+        where: {
+            event_id: req.body.eventId,
+            user_id: req.body.userId
+        }
+    }).then(function (data) {
+        res.json(data);
+    });
 
 });
 

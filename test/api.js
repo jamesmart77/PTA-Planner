@@ -134,7 +134,7 @@ describe('checking route /api/events', function () {
             json: function (data) {
                 //assert.equal checks what is returned and if the event-name is "test event 2" the test will pass
                 // assert.(data.length);
-                console.log(data);
+                // console.log(data);
                 // to add in assertion later
                 finish();
             },

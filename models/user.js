@@ -1,15 +1,57 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var User = sequelize.define('User', {
-    first_name: DataTypes.STRING,
-    last_name: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
-    roleID: DataTypes.INTEGER,
+    'first_name': {
+      type: DataTypes.STRING,
+      allowNull: { args: false, msg: 'Event Name is required.' },
+      validate: {
+        notEmpty: {
+          msg: "First Name can not be empty"
+        }
+      }
+    },
+    'last_name': {
+      type: DataTypes.STRING,
+      allowNull: { args: false, msg: 'Last Name is required.' },
+      validate: {
+        notEmpty: {
+          msg: "Last Name can not be empty"
+        }
+      }
+    },
+    'email': {
+      type: DataTypes.STRING,
+      allowNull: { args: false, msg: 'Email Name is required.' },
+      unique: {
+        msg: 'Email address is already in use.'
+      },
+      validate: {
+        notEmpty: {
+          msg: "Email is required"
+        }
+      }
+    },
+    'password': {
+      type: DataTypes.STRING,
+      allowNull: { args: false, msg: 'Password is required.' },
+      validate: {
+        notEmpty: {
+          msg: "Password is required"
+        }
+      }
+    },
+    'roleID': {
+      type: DataTypes.INTEGER,
+      allowNull: { args: false, msg: 'Role is required.' },
+      validate: {
+        notEmpty: {
+          msg: "A user role must be selected at this time"
+        }
+      }
+    },
     active: DataTypes.BOOLEAN
   });
 
-  
   User.associate = function(models) {
     User.belongsToMany(models.Event, {
       through: models.Staging

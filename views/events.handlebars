@@ -1,8 +1,9 @@
 
-    <h1>Welcome to the Events Page</h1>
+    <!-- Modal Trigger -->
+    <h1>Welcome to the Events Page <a style='margin-left: 40px;' href="#newEvent" class="btn-floating btn-large waves-effect waves-light modal-trigger"><i class="material-icons">add</i></a></h1>
     <div class="row">
         <div class="col s10 offset-s1">
-            <table class="table" id="events-table">
+            <table class="table highlight responsive-table" id="events-table">
                 <thead>
                     <tr>
                         <th scope="col">Event Name</th>
@@ -10,53 +11,28 @@
                         <th scope="col">End Date</th>
                         <th scope="col">Start Time</th>
                         <th scope="col">End Time</th>
-                        {{!-- if user is admin, add column --}} 
-                        {{#if admin}}
-                            <th scope="col" colspan="2"></th>
-                        {{/if}}
+                        <th scope="col" colspan="2"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    {{#if admin}} 
-                    {{!-- if admin, include edit/delete buttons --}}
-                        {{#each events}}
-                            <tr>
-                                <td>{{event_name}}</td>
-                                <td>{{start_date}}</td>
-                                <td>{{end_date}}</td>
-                                <td>{{start_time}}</td>
-                                <td>{{end_time}}</td>
-                                <td>
-                                    <a data-id="{{id}}">
-                                        <i class="large material-icons edit-event" style="font-size:36px">edit</i>
-                                    </a>
+                    {{#each events}}
+                        <tr>
+                            <td>{{event_name}}</td>
+                            <td>{{start_date}}</td>
+                            <td>{{end_date}}</td>
+                            <td>{{start_time}}</td>
+                            <td>{{end_time}}</td>
+                            <td>
+                                <a class="event-see" data-id="{{id}}">
+                                    <i class="large material-icons see-event" style="font-size:36px">visibility</i>
+                                </a>
 
-                                    <a data-id="{{id}}">
-                                        <i class="large material-icons delete-event" style="font-size:36px">delete</i>
-                                    </a>
-                                    <a data-id="{{id}}">
-                                        <i class="large material-icons signup-event" style="font-size:36px">face</i>
-                                    </a>
-                                </td>
-                            </tr>
-                        {{/each}} 
-                    {{else}}
-                    {{!-- if not admin, no edit/delete buttons --}}
-                        {{#each events}}
-                            <tr>
-                                <td>{{event_name}}</td>
-                                <td>{{start_date}}</td>
-                                <td>{{end_date}}</td>
-                                <td>{{start_time}}</td>
-                                <td>{{end_time}}</td>
-                                <td>
-                                    <a class="signup-event" data-id="{{id}}">
-                                        <i class="large material-icons" style="font-size:36px;color:#268ac9">face</i>
-                                    </a>
-                                </td>
-                            </tr>
-                        {{/each}} 
-                    {{/if}}
+                                <a class="event-signup" data-id="{{id}}">
+                                    <i class="large material-icons signup-event" style="font-size:36px">face</i>
+                                </a>
+                            </td>
+                        </tr>
+                    {{/each}}        
                 </tbody>
             </table>
         </div>
@@ -67,3 +43,5 @@
 {{#if admin}} 
     {{> events.create }}
 {{/if}}
+
+<script src="assets/js/events.js"></script>
