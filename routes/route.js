@@ -47,14 +47,13 @@ router.get("/events/:id", jwtauth, (req, res) => {
                 id: req.params.id
             },
             include: [
-               { model: db.User, 
-                where: {active: true},
-                attributes: ['first_name', 'last_name', 'email', 'id']//don't include password
+               { model: db.User,
+                attributes: ['first_name', 'last_name', 'email', 'id', 'active']//don't include password
              }
             ]
         })
         .then(function (data) {
-            console.log("DATA\n" + JSON.stringify(data.Users));
+            console.log("DATA\n" + JSON.stringify(data,null,2));
 
             //cleaning up dates for proper formatting
             var startDate = JSON.stringify(data.start_date).split("T")[0].replace(/["']/g, "")
