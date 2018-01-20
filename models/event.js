@@ -52,6 +52,10 @@ module.exports = (sequelize, DataTypes) => {
           msg: "End Time is required."
         }
       }
+    },
+    'imgUrl': {
+      type: DataTypes.STRING,
+      defaultValue: '/assets/images/event.png'
     }
   }
   );

@@ -53,7 +53,7 @@ router.get("/events/:id", jwtauth, (req, res) => {
             },
             include: [
                { model: db.User,
-                attributes: ['first_name', 'last_name', 'email', 'id', 'active']//don't include password
+                attributes: ['first_name', 'last_name', 'email', 'id', 'imgUrl', 'active']//don't include password
              }
             ]
         })
