@@ -178,8 +178,8 @@ api.post("/api/staging", jwtauth, (req, res) => {
 
     console.log(req.userID);
     var data = {
-        EventId:req.body.EventId,
-        UserId:req.userID
+        EventId: req.body.EventId,
+        UserId: req.userID
     }
 
     db.Staging.create(data)
@@ -191,6 +191,25 @@ api.post("/api/staging", jwtauth, (req, res) => {
             console.log(err);
             res.json(err);
         })
+
+});
+
+api.delete("/api/staging", jwtauth, (req, res) => {
+
+    console.log("REQUEST BODY\N" + JSON.stringify(req.body));
+    // var data = {
+    //     EventId: req.body.EventId,
+    //     UserId: req.userID
+    // }
+
+    db.Staging.destroy({
+        where: {
+            event_id: req.body.eventId,
+            user_id: req.body.userId
+        }
+    }).then(function (data) {
+        res.json(data);
+    });
 
 });
 

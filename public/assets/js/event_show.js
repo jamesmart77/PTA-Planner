@@ -1,7 +1,8 @@
 var eventID;
 
 $(document).ready(() => {
-    $('.waves-effect').hide();//hiding 'New Event' button
+    $('.modal-trigger').hide(); //hiding 'New Event' button
+
     $('#newEvent').modal();
 
     var $startDatePicker = $('#start_date').pickadate({
@@ -125,35 +126,40 @@ $(document).ready(() => {
                 .done(function (event) {
                     //redirect to events pages
                     window.location = currentURL + "/events";
-                    console.log("EVENT INFO\n\n" + JSON.stringify(event));
                 });
         }
     });
 
-    //add userid-eventid data to staging table
-    //this occurs only if a user sign-up to a specific event
+    //DELETE USER FROM EVENT
+    $(".user-delete").on('click', function () {
 
+        var answer = confirm("Are you sure?");
 
-    $(".event-signup").on('click', function () {
-        console.log("signup clicked");
-        var eventid = $(this).data("id");
-        var user = {
-            "event_id": eventid,
-            "EventId": eventid,
-        };
+        //if yes
+        if (answer) {
 
-        $.ajax({
-                method: 'POST',
-                url: "/api/staging",
-                contentType: "application/json",
-                data: JSON.stringify(user)
-            })
-            .done(function (event) {
-                // window.location.reload();
-                Materialize.toast('Thanks for Volunteering!', 4000)
-                console.log("EVENT INFO\n\n" + JSON.stringify(event));
-            });
+            var eventPath = window.location.pathname.split("/");
+            
+            var eventID = eventPath[eventPath.length-1];
 
+            var event_user = {
+                eventId: eventID,
+                userId: $(this).data("userid")
+            }
+
+            // current base url address
+            // var currentURL = window.location.origin;
+
+            $.ajax({
+                    method: "DELETE",
+                    url: "/api/staging/",
+                    data: event_user
+                })
+                .done(function (event) {
+                    //refresh page
+                    window.location.reload();
+                });
+        }
     });
 
 
