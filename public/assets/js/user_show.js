@@ -32,7 +32,7 @@ $(document).ready(() => {
             })
             .done(function () {
                 //update elements without reloading page
-                $('#first_name').text(usert.first_name);
+                $('#first_name').text(user.first_name);
                 $('#last_name').text(user.last_name);
                 $('#email').text(user.email);
                 $('#password').text(user.password);
