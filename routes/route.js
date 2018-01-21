@@ -45,6 +45,7 @@ router.get("/events", jwtauth, (req, res) => {
             var results = {
                 events: data,
                 admin: req.admin,
+                userID: req.userID,
                 startDate: startDate,
                 endDate: endDate
 
@@ -125,7 +126,8 @@ router.get("/users", jwtauth, (req, res) => {
         .then(function (data) {
             var results = {
                 users: data,
-                admin: req.admin
+                admin: req.admin,
+                userID: req.userID
             }
             console.log(results.User);
             res.render('users', results);
@@ -166,7 +168,8 @@ console.log("hitting user route")
 
         var results = {
             user: data,
-            admin: req.admin
+            admin: req.admin,
+            userID: req.userID
             // startDate: startDate,
             // endDate: endDate,
             // users: data.Users

@@ -53,7 +53,8 @@ module.exports = function (req, res, next) {
                 req.userID = decoded.userID;
                 req.password = decoded.password;
                 req.email = decoded.email;
-
+                
+                console.log(req);
                 //successful authentication
                 console.log("Successful authenication");
                 next();

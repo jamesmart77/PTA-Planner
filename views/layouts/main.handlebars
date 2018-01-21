@@ -34,8 +34,9 @@
 <body>
 	<!-- Dropdown Structure -->
 	<ul id="dropdown1" class="dropdown-content">
+		{{#if (isLoggedIn admin)}}
 		<li>
-			<a href="#">Profile</a>
+			<a href="/users/{{userID}}">Profile</a>
 		</li>
 		<li>
 			<a href="/events">Events</a>
@@ -50,6 +51,11 @@
 		<li>
 			<a href="/logout">Log Out</a>
 		</li>
+		{{else}}
+		<li>
+			<a href="/login">Log In</a>
+		</li>
+		{{/if}}
 	</ul>
 	<nav>
 		<div class="nav-wrapper teal lighten-2" id="navigation-bar">
@@ -57,7 +63,7 @@
 			<ul class="right">
 				<!-- Dropdown Trigger -->
 				{{!-- custome handlebars helper to see if current user is logged in -- check server.js --}}
-				{{#if (isLoggedIn admin)}}
+				{{!-- {{#if (isLoggedIn admin)}} --}}
 					
 				<li>
 					<a class="dropdown-button" href="#!" data-activates="dropdown1">
@@ -65,7 +71,7 @@
 
 					</a>
 				</li>
-				{{/if}}
+				{{!-- {{/if}} --}}
 			</ul>
 		</div>
 	</nav>
