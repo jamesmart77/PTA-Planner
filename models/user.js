@@ -1,4 +1,6 @@
 'use strict';
+const bcrypt = require("bcrypt");
+
 module.exports = (sequelize, DataTypes) => {
   var User = sequelize.define('User', {
     'first_name': {
@@ -55,6 +57,16 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: '/assets/images/user.png'
     }
   });
+
+  User.beforeCreate((user, options) => {
+    return bcrypt.hash(user.password, 10)
+        .then(hash => {
+            user.password = hash;
+        })
+        .catch(err => { 
+            throw new Error(); 
+        });
+});
 
   User.associate = function(models) {
     User.belongsToMany(models.Event, {

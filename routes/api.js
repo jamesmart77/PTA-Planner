@@ -1,9 +1,11 @@
+const bcrypt = require('bcrypt');
 const express = require("express");
 const jwt = require("jsonwebtoken");
 require('dotenv').config();
 var secret = {};
 secret.tokenSecret = process.env.tokenSecret;
 var jwtauth = require('./jwtAuth.js');
+
 
 const api = express.Router();
 const db = require('../models/')
@@ -207,34 +209,45 @@ api.post("/api/login", (req, res) => {
     // }
     console.log("IN API LOGIN ROUTE");
 
+    
+        // Store hash in your password DB.
     db.User.findOne({
             where: {
                 email: req.body.email,
-                password: req.body.password,
+                // password: req.body.password,
                 active: true
             }
         })
         .then(function (data) {
             console.log(data);
 
-            const user = {
-                email: data.dataValues.email,
-                password: data.dataValues.password,
-                admin: data.dataValues.roleID === 2 ? true : false,
-                userID: data.dataValues.id
+            if(bcrypt.compareSync(req.body.password, data.dataValues.password)){
+                const user = {
+                    email: data.dataValues.email,
+                    password: data.dataValues.password,
+                    admin: data.dataValues.roleID === 2 ? true : false,
+                    userID: data.dataValues.id
+                }
+    
+                const token = jwt.sign(
+                    user, secret.tokenSecret);
+    
+                console.log("TOKEN: " + JSON.stringify(token));
+    
+                //store the JWT in the client's browser
+                res.cookie('jwttoken', token);
+    
+                res.json({
+                    token: token
+                });
+                
             }
-
-            const token = jwt.sign(
-                user, secret.tokenSecret);
-
-            console.log("TOKEN: " + JSON.stringify(token));
-
-            //store the JWT in the client's browser
-            res.cookie('jwttoken', token);
-
-            res.json({
-                token: token
-            });
+            else{
+                res.json({
+                    error: "password does not match"
+                });
+            }
+            
         })
         //catch block to ensure if invalid data input the app does not crash
         .catch(function (err) {
