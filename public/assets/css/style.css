@@ -21,7 +21,7 @@ h1 {
 
 #navigation-bar {
     height: 100px !important;
-
+    background-color: #011627 !important;
 }
 
 #signup-event {
@@ -112,3 +112,7 @@ background-color: red;
     transition-duration: .6s;
 }
 /* ============================================ */
+
+.link {
+     cursor: pointer; 
+}

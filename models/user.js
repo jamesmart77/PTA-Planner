@@ -49,7 +49,11 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    active: DataTypes.BOOLEAN
+    active: DataTypes.BOOLEAN,
+    'imgUrl': {
+      type: DataTypes.STRING,
+      defaultValue: '/assets/images/user.png'
+    }
   });
 
   User.associate = function(models) {
