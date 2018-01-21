@@ -126,12 +126,17 @@ api.post("/api/users", jwtauth, (req, res) => {
     var user = {};
     user.first_name = req.body.first_name;
     user.last_name = req.body.last_name;
-    //obtain this from jwtauth cookies in the req.email  
-    user.email = req.email;
-    //obtain this from jwtauth cookies in the req as  req.password
-    user.password = req.password;
+    
+    //if we need to obtain this from jwtauth cookies in the req.email 
+    // user.email = req.email;
+    //if we need to obtain this from jwtauth cookies in the req as req.password
+    // user.password = req.password;
+
+    user.email = req.body.email;
+    user.password = req.body.password;
     user.roleID = req.body.roleID;
     user.active = req.body.active;
+    
     // if (req.body.active === "active") {
     //     user.active = true;
     // } else {

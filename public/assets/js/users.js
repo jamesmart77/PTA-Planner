@@ -27,8 +27,8 @@ $(document).ready(function () {
         user.first_name = $('#first_name').val().trim();
         user.last_name = $('#last_name').val().trim();
         // user.email = $('#email').val().trim();
-        user.email = ""; //obtain this from jwtauth cookies on server side in api.js /api/users
-        user.password = ""; //obtain this from jwtauth cookies on server side in api.js /api/users
+        user.email = $('#email').val().trim();; //obtain this from jwtauth cookies on server side in api.js /api/users
+        user.password = $('#password').val().trim();; //obtain this from jwtauth cookies on server side in api.js /api/users
         var roleID = $('.select-dropdown').val().trim();
         if (roleID === "Admin") {
             user.roleID = 2;
