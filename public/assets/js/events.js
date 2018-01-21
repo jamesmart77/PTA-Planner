@@ -48,6 +48,7 @@ $(document).ready(() => {
         event.start_time = convertTime12to24($('#start_time').val());
         event.end_date = $('#end_date').val();
         event.end_time = convertTime12to24($('#end_time').val());
+        event.imgUrl = $('#img_url').val();
         //this will only set if it's a PUT event
         if (eventID) {
             event.id = eventID;

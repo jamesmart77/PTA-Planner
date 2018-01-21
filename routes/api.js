@@ -48,8 +48,10 @@ api.get("/api/events/:id", jwtauth, (req, res) => {
 // create an event
 api.post("/api/events", jwtauth, (req, res) => {
     //adding in sequelize code here LH
+    const newEvent = req.body;
+    newEvent.imgUrl = newEvent.imgUrl !== "" ? newEvent.imgUrl : '/assets/images/event.png';
     console.log("/api/events");
-    db.Event.create(req.body)
+    db.Event.create(newEvent)
         .then(function (event) {
             res.json(event);
         })
@@ -128,6 +130,7 @@ api.post("/api/users", jwtauth, (req, res) => {
     var user = {};
     user.first_name = req.body.first_name;
     user.last_name = req.body.last_name;
+    // user.imgUrl = req.body.img_url add this when the user create gets updated
     
     //if we need to obtain this from jwtauth cookies in the req.email 
     // user.email = req.email;
@@ -138,6 +141,7 @@ api.post("/api/users", jwtauth, (req, res) => {
     user.password = req.body.password;
     user.roleID = req.body.roleID;
     user.active = req.body.active;
+    
     
     // if (req.body.active === "active") {
     //     user.active = true;
