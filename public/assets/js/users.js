@@ -27,20 +27,26 @@ $(document).ready(function () {
         user.first_name = $('#first_name').val().trim();
         user.last_name = $('#last_name').val().trim();
         // user.email = $('#email').val().trim();
-        user.email = $('#email').val().trim();; //obtain this from jwtauth cookies on server side in api.js /api/users
+        user.email = $('#modal-email').val().trim();; //obtain this from jwtauth cookies on server side in api.js /api/users
         user.password = $('#password').val().trim();; //obtain this from jwtauth cookies on server side in api.js /api/users
-        var roleID = $('.select-dropdown').val().trim();
-        if (roleID === "Admin") {
-            user.roleID = 2;
+
+        var roleVal = $('#role-switch:checked').val();
+        var activeVal = $('#active-switch:checked').val();
+
+        //check role type
+        if (roleVal) {
+            //admin
+            user.roleID = 2
         } else {
-            user.roleID = 1;
+            //user
+            user.roleID = 1
         }
-        // user.roleID = 1;//1 to volunteer role 2 Admin Role
-        var active = $('#switch').val().trim();
-        if (active === "on") {
-            user.active = true;
+
+        //check status
+        if (activeVal) {
+            user.active = true
         } else {
-            user.active = false;
+            user.active = false
         }
 
         $.ajax({
@@ -64,3 +70,13 @@ $(document).ready(function () {
 
     });
 });
+
+//make password field visible or hidden
+function togglePassword() {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+}
