@@ -34,9 +34,9 @@ router.get("/events", jwtauth, (req, res) => {
             // to change date
             var startDate = [];
             var endDate = [];
-            console.log(data);
+            // console.log(data);
             data.forEach(function (event,index) {
-                console.log(index);
+                // console.log(index);
                 data[index]['formattedStartDate'] = convertDate(data[index]['start_date']);
                 data[index]['formattedEndDate'] = convertDate(data[index]['end_date']);
 
@@ -61,13 +61,13 @@ router.get("/events", jwtauth, (req, res) => {
     //to mm/dd/yyyy
     function convertDate(date) {
         var dateString = date.toString();
-        console.log(dateString);
+        // console.log(dateString);
         var dateArray = dateString.split(" ");
         const month = dateArray[1] === "Jan" ? "01" : dateArray[1] === "Feb" ? "02" : dateArray[1] === "Mar" ? "03" : dateArray[1] === "Apr" ? "04" : dateArray[1] === "May" ? "05" : dateArray[1] === "Jun" ? "06" : dateArray[1] === "Jul" ? "07" : dateArray[1] === "Aug" ? "08" : dateArray[1] === "Sep" ? "09" : dateArray[1] === "Oct" ? "10" : dateArray[1] === "Nov" ? "11" : "12";
         const day = dateArray[2];
         const year = dateArray[3];
         var newDateString = `${month}\/${day}\/${year}`;
-        console.log("new date is " + newDateString);
+        // console.log("new date is " + newDateString);
         return newDateString;
     }
 });
