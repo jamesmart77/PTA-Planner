@@ -31,16 +31,45 @@ router.get("/events", jwtauth, (req, res) => {
     //find all events and render object in handlebars
     db.Event.findAll()
         .then(function (data) {
+            // to change date
+            var startDate = [];
+            var endDate = [];
+            console.log(data);
+            data.forEach(function (event,index) {
+                console.log(index);
+                data[index]['formattedStartDate'] = convertDate(data[index]['start_date']);
+                data[index]['formattedEndDate'] = convertDate(data[index]['end_date']);
+
+            });
+
             var results = {
                 events: data,
-                admin: req.admin
+                admin: req.admin,
+                startDate: startDate,
+                endDate: endDate
+
             }
             res.render('events', results);
+
         })
         //catch block to ensure if invalid data input the app does not crash
         .catch(function (err) {
             res.json(err);
         })
+
+    //function to convert date from sequelize format 'Sun Jul 23 2017 20:00:00 GMT-0400 (EDT)'
+    //to mm/dd/yyyy
+    function convertDate(date) {
+        var dateString = date.toString();
+        console.log(dateString);
+        var dateArray = dateString.split(" ");
+        const month = dateArray[1] === "Jan" ? "01" : dateArray[1] === "Feb" ? "02" : dateArray[1] === "Mar" ? "03" : dateArray[1] === "Apr" ? "04" : dateArray[1] === "May" ? "05" : dateArray[1] === "Jun" ? "06" : dateArray[1] === "Jul" ? "07" : dateArray[1] === "Aug" ? "08" : dateArray[1] === "Sep" ? "09" : dateArray[1] === "Oct" ? "10" : dateArray[1] === "Nov" ? "11" : "12";
+        const day = dateArray[2];
+        const year = dateArray[3];
+        var newDateString = `${month}\/${day}\/${year}`;
+        console.log("new date is " + newDateString);
+        return newDateString;
+    }
 });
 
 // single event view
@@ -51,14 +80,16 @@ router.get("/events/:id", jwtauth, (req, res) => {
             where: {
                 id: req.params.id
             },
+
             include: [
                { model: db.User,
                 attributes: ['first_name', 'last_name', 'email', 'id', 'imgUrl', 'active']//don't include password
              }
             ]
+
         })
         .then(function (data) {
-            console.log("DATA\n" + JSON.stringify(data,null,2));
+            console.log("DATA\n" + JSON.stringify(data, null, 2));
 
             //cleaning up dates for proper formatting
             var startDate = JSON.stringify(data.start_date).split("T")[0].replace(/["']/g, "")
