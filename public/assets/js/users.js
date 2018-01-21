@@ -4,8 +4,6 @@ $(document).ready(function () {
     $('select').material_select();
     // Materialize.updateTextFields();
 
-
-
     $(".user-see").on('click', function () {
         var id = $(this).data("id");
         console.log("user see working")
@@ -17,8 +15,6 @@ $(document).ready(function () {
         //redirect to /events page
         window.location = currentURL + "/users/" + id;
     });
-
-
 
     //when create user button is clicked
     $("#create-user").on("click", function (user) {

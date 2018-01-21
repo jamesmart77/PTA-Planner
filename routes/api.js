@@ -151,14 +151,29 @@ api.post("/api/users", jwtauth, (req, res) => {
 });
 
 // edit a user
-api.put("/api/users/:id", jwtauth, (req, res) => {
+api.put("/api/users", jwtauth, (req, res) => {
     db.User.update(
-        req.params, {
+        req.body, {
             where: {
-                id: req.params.id
+                id: req.body.id
             }
         }).then(function (dbUser) {
         res.json(dbUser);
+    });
+});
+
+// udpate an event
+api.put("/api/events", jwtauth, (req, res) => {
+
+    // console.log("eventID: " + eventID);
+
+    db.Event.update(
+        req.body, {
+            where: {
+                id: req.body.id
+            }
+        }).then(function (dbEvent) {
+        res.json(dbEvent);
     });
 });
 
