@@ -4,6 +4,7 @@ $(document).ready(() => {
     console.log("in user show")
     $('.modal-trigger').hide(); //hiding 'New User' button
 
+    //modal1 is the create user modal
     $('#modal1').modal();
     $('select').material_select();
 
@@ -44,7 +45,7 @@ $(document).ready(() => {
     });
 
 
-    //EDIT EVENT
+    //EDIT USER
     $(".edit-user").on('click', function () {
         var id = $(this).data("id");
 
@@ -54,18 +55,6 @@ $(document).ready(() => {
             })
             .done(function (user) {
                 console.log("USER INFO\n\n" + JSON.stringify(user));
-
-                // var startPicker = $startDatePicker.pickadate('picker');
-                // var endPicker = $endDatePicker.pickadate('picker');
-
-                // // Using a string along with the parsing format (defaults to `format` option).
-                // startPicker.set('select', event.start_date.split("T")[0], {
-                //     format: 'yyyy-mm-dd'
-                // });
-
-                // endPicker.set('select', event.end_date.split("T")[0], {
-                //     format: 'yyyy-mm-dd'
-                // });
 
                 $('#first_name').val(user.first_name);
                 $('#last_name').val(user.last_name);
@@ -93,60 +82,7 @@ $(document).ready(() => {
             });
     });
 
-    // //DELETE EVENT
-    // $(".delete-event").on('click', function () {
-
-    //     var answer = confirm("Are you sure?");
-
-    //     //if yes
-    //     if (answer) {
-    //         var id = $(this).data("id");
-
-    //         // current base url address
-    //         var currentURL = window.location.origin;
-
-    //         $.ajax({
-    //                 method: "DELETE",
-    //                 url: "/api/events/" + id
-    //             })
-    //             .done(function (event) {
-    //                 //redirect to events pages
-    //                 window.location = currentURL + "/events";
-    //             });
-    //     }
-    // });
-
-    // //DELETE USER FROM EVENT
-    // $(".user-delete").on('click', function () {
-
-    //     var answer = confirm("Are you sure?");
-
-    //     //if yes
-    //     if (answer) {
-
-    //         var eventPath = window.location.pathname.split("/");
-            
-    //         var eventID = eventPath[eventPath.length-1];
-
-    //         var event_user = {
-    //             eventId: eventID,
-    //             userId: $(this).data("userid")
-    //         }
-
-    //         // current base url address
-    //         // var currentURL = window.location.origin;
-
-    //         $.ajax({
-    //                 method: "DELETE",
-    //                 url: "/api/staging/",
-    //                 data: event_user
-    //             })
-    //             .done(function (event) {
-    //                 //refresh page
-    //                 window.location.reload();
-    //             });
-    //     }
-    // });
+    
 
 
 });
