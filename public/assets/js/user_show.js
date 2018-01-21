@@ -71,7 +71,19 @@ $(document).ready(() => {
                 $('#last_name').val(user.last_name);
                 $('#email').val(user.email);
                 $('#password').val(user.password);
-                $('#roleID').val(user.roleID);
+                $('#role-id').val(user.roleID);
+
+                var roleID = user.roleID
+                console.log("here" + user.roleID)
+                
+                // if (roleID === "ADMIN") {
+                //     $('#role-id').val("Admin");
+                // }
+
+                // else {
+                //     $('#roleID').val("Volunteer");
+                // }
+                
                 $('#active').val(user.active);
 
                 //set global to allow for PUT save event
