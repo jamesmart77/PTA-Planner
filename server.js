@@ -9,7 +9,9 @@ const db = require('./models')
 
 const router = require('./routes/route');
 const api = require('./routes/api');
-var secret = require('./config/secrets.js');
+require('dotenv').config();
+var secret = {};
+secret.tokenSecret = process.env.tokenSecret;
 
 const app = express();
 
