@@ -117,6 +117,10 @@ router.get("/events/users", jwtauth, (req, res) => {
 
 // list all volunteers view
 router.get("/users", jwtauth, (req, res) => {
+    if(!req.admin){
+        res.redirect(`/users/${req.userID}`);
+    }  
+    else{
     db.User.findAll()
         .then(function (data) {
             var results = {
@@ -130,14 +134,19 @@ router.get("/users", jwtauth, (req, res) => {
         .catch(function (err) {
             res.json(err);
         })
+    }
 
 });
 
 // list one volunteer view
 router.get("/users/:id", jwtauth, (req, res) => {
 console.log("hitting user route")
-    //TODO -- does req.userID === req.params.id? If not, user cannot access page
+    //TODO -- does req.userID === req.params.id? If not, user cannot access page 
 
+    if(req.userID !== parseInt(req.params.id) && !req.admin){
+        res.redirect(`/users/${req.userID}`);
+    }  
+    else{
     db.User.findOne({
         where: {
             id: req.params.id
@@ -168,6 +177,7 @@ console.log("hitting user route")
     .catch(function (err) {
         res.json(err);
     })
+}
 });
 
 router.get("/logout", (req, res) => {
