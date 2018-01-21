@@ -1,6 +1,9 @@
 var jwt = require('jsonwebtoken');
 var expressJWT = require('express-jwt');
-var secret = require('../config/secrets.js');
+require('dotenv').config();
+var secret = {};
+secret.tokenSecret = process.env.tokenSecret;
+
 
 //middleware to validate token
 module.exports = function (req, res, next) {
