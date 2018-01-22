@@ -172,5 +172,13 @@ $(document).ready(() => {
 
     });
 
+    $(".back-event").on('click', function () {
+
+        // var id = $(this).data("userid");
+
+        // current base url address
+        window.location.href = "/events/";
+
+    });
 
 });

@@ -38,7 +38,7 @@ api.get("/api/events/:id", jwtauth, (req, res) => {
             }
         })
         .then(function (data) {
-            console.log(data);
+            // console.log(data);
             res.json(data);
         })
         //catch block to ensure if invalid data input the app does not crash
@@ -52,7 +52,7 @@ api.post("/api/events", jwtauth, (req, res) => {
     //adding in sequelize code here LH
     const newEvent = req.body;
     newEvent.imgUrl = newEvent.imgUrl !== "" ? newEvent.imgUrl : '/assets/images/event.png';
-    console.log("/api/events");
+    // console.log("/api/events");
     db.Event.create(newEvent)
         .then(function (event) {
             res.json(event);
@@ -91,11 +91,11 @@ api.delete("/api/events/:id", jwtauth, (req, res) => {
 
 // get all users
 api.get("/api/users", jwtauth, (req, res) => {
-    console.log("/api/users in api.js");
+    // console.log("/api/users in api.js");
     if (req.admin) {
     db.User.findAll()
         .then(function (data) {
-            console.log(data);
+            // console.log(data);
             res.json(data);
         })
         //catch block to ensure if invalid data input the app does not crash
@@ -117,7 +117,7 @@ api.get("/api/users/:id", jwtauth, (req, res) => {
             }
         })
         .then(function (data) {
-            console.log(data);
+            // console.log(data);
             res.json(data);
         })
         //catch block to ensure if invalid data input the app does not crash
@@ -154,11 +154,11 @@ api.post("/api/users", jwtauth, (req, res) => {
 
     db.User.create(user)
         .then(result => {
-            console.log(result);
+            // console.log(result);
             res.json(result);
         })
         .catch(function (err) {
-            console.log(err);
+            // console.log(err);
             res.json(err);
         })
 
@@ -203,6 +203,7 @@ api.post("/api/login", (req, res) => {
 
     console.log("IN API LOGIN ROUTE");
 
+
     
     // Store hash in your password DB.
     db.User.findOne({
@@ -212,7 +213,7 @@ api.post("/api/login", (req, res) => {
             }
         })
         .then(function (data) {
-            console.log(data);
+            // console.log(data);
 
             if(bcrypt.compareSync(req.body.password, data.dataValues.password)){
                 const user = {
@@ -225,7 +226,7 @@ api.post("/api/login", (req, res) => {
                 const token = jwt.sign(
                     user, secret.tokenSecret);
     
-                console.log("TOKEN: " + JSON.stringify(token));
+                // console.log("TOKEN: " + JSON.stringify(token));
     
                 //store the JWT in the client's browser
                 res.cookie('jwttoken', token);
@@ -244,8 +245,10 @@ api.post("/api/login", (req, res) => {
         })
         //catch block to ensure if invalid data input the app does not crash
         .catch(function (err) {
+
             console.log("ERROR");
             console.log(err);
+
             res.json(err);
         })
 });
@@ -254,7 +257,7 @@ api.post("/api/login", (req, res) => {
 //passing in JWT object to extract userID from cookie data in the form of req.userID 
 api.post("/api/staging", jwtauth, (req, res) => {
 
-    console.log(req.userID);
+    // console.log(req.userID);
     var data = {
         EventId: req.body.EventId,
         UserId: req.userID
@@ -262,11 +265,11 @@ api.post("/api/staging", jwtauth, (req, res) => {
 
     db.Staging.create(data)
         .then(result => {
-            console.log(result);
+            // console.log(result);
             res.json(result);
         })
         .catch(function (err) {
-            console.log(err);
+            // console.log(err);
             res.json(err);
         })
 
@@ -274,7 +277,7 @@ api.post("/api/staging", jwtauth, (req, res) => {
 
 api.delete("/api/staging", jwtauth, (req, res) => {
 
-    console.log("REQUEST BODY\N" + JSON.stringify(req.body));
+    // console.log("REQUEST BODY\N" + JSON.stringify(req.body));
     // var data = {
     //     EventId: req.body.EventId,
     //     UserId: req.userID

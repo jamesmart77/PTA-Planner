@@ -143,6 +143,16 @@ $(document).ready(() => {
 
     });
 
+    //View USER
+    $(".back-user").on('click', function () {
+
+        // var id = $(this).data("eventid");
+
+        // current base url address
+        window.location.href = "/users/";
+
+    });
+
 });
 
 function togglePassword() {
