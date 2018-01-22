@@ -98,11 +98,11 @@
                     {{#if active}}
                         <tr>
                             <td class="event-td">
-                                <img class="event-volunteer-img" src="{{imgUrl}}" height="200" alt="volunteer photo">
+                                <img class="event-volunteer-img" src="{{imgUrl}}" height="100" alt="volunteer photo">
                             </td>
                             <td class="event-td">{{first_name}}</td>
                             <td class="event-td">{{last_name}}</td>
-                            {{!-- {{#if admin}} --}}
+                            {{#if ../admin}}
                             <td>
                                 <a class="user-see" data-userID="{{id}}">
                                     <i class="large material-icons see-user" style="font-size:36px">visibility</i>
@@ -111,7 +111,7 @@
                                     <i class="large material-icons remove-user" style="font-size:36px">delete</i>
                                 </a>
                             </td>
-                            {{!-- {{/if}} --}}
+                            {{/if}}
                         </tr>
                     {{/if}} 
                 {{/each}}
