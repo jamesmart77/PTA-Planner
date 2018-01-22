@@ -14,8 +14,8 @@ module.exports = function (req, res, next) {
 
     for (var key in obj) {
         if (obj.hasOwnProperty(key)) {
-            console.log("Cookie Name: " + key);
-            console.log("Cookie Token: " + obj[key]);
+            // console.log("Cookie Name: " + key);
+            // console.log("Cookie Token: " + obj[key]);
 
             if (key === 'jwttoken') {
                 //capture JWT token for verification
@@ -23,14 +23,14 @@ module.exports = function (req, res, next) {
             }
         }
     }
-    console.log("HITTING IT")
+    // console.log("HITTING IT")
 
     if (!cookieToken) {
         console.log("NO COOKIE TOKEN FOUND")
         res.redirect('/login')
     } else {
         //authenticate token
-        console.log("secret: " + secret.tokenSecret)
+        // console.log("secret: " + secret.tokenSecret)
 
         jwt.verify(cookieToken, secret.tokenSecret, function (err, data) {
             if (err) {

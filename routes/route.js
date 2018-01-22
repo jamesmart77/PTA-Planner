@@ -89,7 +89,7 @@ router.get("/events/:id", jwtauth, (req, res) => {
 
         })
         .then(function (data) {
-            console.log("DATA\n" + JSON.stringify(data, null, 2));
+            // console.log("DATA\n" + JSON.stringify(data, null, 2));
 
             //cleaning up dates for proper formatting
             var startDate = JSON.stringify(data.start_date).split("T")[0].replace(/["']/g, "")
@@ -127,7 +127,7 @@ router.get("/users", jwtauth, (req, res) => {
                 users: data,
                 admin: req.admin
             }
-            console.log(results.User);
+            // console.log(results.User);
             res.render('users', results);
         })
         //catch block to ensure if invalid data input the app does not crash
@@ -140,7 +140,7 @@ router.get("/users", jwtauth, (req, res) => {
 
 // list one volunteer view
 router.get("/users/:id", jwtauth, (req, res) => {
-console.log("hitting user route")
+// console.log("hitting user route")
     //TODO -- does req.userID === req.params.id? If not, user cannot access page 
 
     if(req.userID !== parseInt(req.params.id) && !req.admin){
@@ -158,7 +158,7 @@ console.log("hitting user route")
         ]
     })
     .then(function (data) {
-        console.log("DATA\n" + JSON.stringify(data));
+        // console.log("DATA\n" + JSON.stringify(data));
 
         //cleaning up dates for proper formatting
         // var startDate = JSON.stringify(data.start_date).split("T")[0].replace(/["']/g, "")
@@ -183,7 +183,7 @@ console.log("hitting user route")
 router.get("/logout", (req, res) => {
     //clear token cookie to force login next time
     //Path for the cookie. Defaults to “/”.
-    console.log("hitting the logout");
+    // console.log("hitting the logout");
     res.clearCookie('jwttoken');
 
     res.redirect("/login");
