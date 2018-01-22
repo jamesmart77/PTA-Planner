@@ -26,15 +26,12 @@ Handlebars.registerHelper("isLoggedIn", function (admin) {
     } else {
         return false;
     }
-
 });
 
 app.engine('handlebars', exphbs({
     defaultLayout: 'main'
 }));
 app.set('view engine', 'handlebars');
-
-// Handlebars.registerPartial('events.create', '{{events.create}}')
 
 const PORT = process.env.PORT || 3000;
 

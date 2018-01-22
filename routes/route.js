@@ -45,6 +45,7 @@ router.get("/events", jwtauth, (req, res) => {
             var results = {
                 events: data,
                 admin: req.admin,
+                userID: req.userID,
                 startDate: startDate,
                 endDate: endDate
 
@@ -118,20 +119,22 @@ router.get("/events/users", jwtauth, (req, res) => {
 router.get("/users", jwtauth, (req, res) => {
     if (!req.admin) {
         res.redirect(`/users/${req.userID}`);
-    } else {
-        db.User.findAll()
-            .then(function (data) {
-                var results = {
-                    users: data,
-                    admin: req.admin
-                }
-                console.log(results.User);
-                res.render('users', results);
-            })
-            //catch block to ensure if invalid data input the app does not crash
-            .catch(function (err) {
-                res.json(err);
-            })
+    }  
+    else{
+    db.User.findAll()
+        .then(function (data) {
+            var results = {
+                users: data,
+                admin: req.admin,
+                userID: req.userID
+            }
+            console.log(results.User);
+            res.render('users', results);
+        })
+        //catch block to ensure if invalid data input the app does not crash
+        .catch(function (err) {
+            res.json(err);
+        })
     }
 
 });
@@ -171,6 +174,7 @@ router.get("/users/:id", jwtauth, (req, res) => {
 
                 var results = {
                     user: data,
+                    userID: req.userID,
                     admin: req.admin,
                     startDate: startDate,
                     endDate: endDate,
