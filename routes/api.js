@@ -199,22 +199,14 @@ api.delete("/api/users/:id", jwtauth, (req, res) => {
 //NO auth here because this route needs to query if user exists
 //and will then sign a token
 api.post("/api/login", (req, res) => {
-    //console.log(req.body.email);
 
-    //TODO -- VALIDATE EMAIL & PASSWORD AGAINST DB
-    //TODO -- IF VALID ADMIN, ASSIGN ADMIN: TRUE (KEY:VALUE PAIR) TO TOKEN
-    // const user = {
-    //     email: req.body.email,
-    //     password: req.body.password
-    // }
     console.log("IN API LOGIN ROUTE");
 
     
-        // Store hash in your password DB.
+    // Store hash in your password DB.
     db.User.findOne({
             where: {
                 email: req.body.email,
-                // password: req.body.password,
                 active: true
             }
         })
@@ -251,7 +243,8 @@ api.post("/api/login", (req, res) => {
         })
         //catch block to ensure if invalid data input the app does not crash
         .catch(function (err) {
-            console.log("ERROR: " + JSON.stringify(err));
+            console.log("ERROR");
+            console.log(err);
             res.json(err);
         })
 });

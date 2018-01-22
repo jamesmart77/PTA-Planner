@@ -121,6 +121,16 @@ $(document).ready(() => {
             });
     });
 
+    //View USER
+    $(".event-see").on('click', function () {
+
+        var id = $(this).data("eventid");
+
+        // current base url address
+        window.location.href = window.location.origin + "/events/" + id
+
+    });
+
 });
 
 function togglePassword() {
