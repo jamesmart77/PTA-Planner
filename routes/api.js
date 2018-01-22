@@ -143,6 +143,7 @@ api.post("/api/users", jwtauth, (req, res) => {
     user.password = req.body.password;
     user.roleID = req.body.roleID;
     user.active = req.body.active;
+    user.imgUrl = req.body.imgUrl;
     
     
     // if (req.body.active === "active") {

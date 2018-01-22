@@ -60,11 +60,6 @@
                         </a>
                         <ul>
                             <li>
-                                <a class="btn-floating red delete-user" data-id={{user.id}}>
-                                    <i class="material-icons">delete</i>
-                                </a>
-                            </li>
-                            <li>
                                 <a class="btn-floating blue edit-user" data-id={{user.id}}>
                                     <i class="material-icons">edit</i>
                                 </a>
@@ -114,6 +109,8 @@
 
 
 <!-- This is for the edit event modal -->
-{{#if admin}} {{> users.create }} {{/if}}
+{{#if admin}} 
+    {{> users.create }} 
+{{/if}}
 
 <script src="/assets/js/user_show.js"></script>

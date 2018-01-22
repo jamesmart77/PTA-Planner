@@ -157,3 +157,22 @@ background-color: red;
     left: 15px !important;
     top: 20% !important;
 }
+
+.img-row{
+    margin-top: 35px;
+}
+
+.facebook-btn{
+    text-align: center;
+    font-size: 27px !important;
+    font-weight: 500;
+    line-height: 45px;
+    background-color: #3b5998 !important;
+    top: 5px;
+    left: 4px;
+}
+
+.profile-img-input{
+    margin-left: 4rem;
+    width: calc(100% - 4rem);
+}
