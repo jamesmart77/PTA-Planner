@@ -2,7 +2,7 @@
     <div class="col s10 offset-s1">
         <div class="card">
             <div class="card-image">
-              <img src="{{event.imgUrl}}">
+                <img src="{{event.imgUrl}}">
             </div>
         </div>
         <div class="card grey lighten-4 card small">
@@ -94,10 +94,12 @@
                 </tr>
             </thead>
             <tbody>
-                {{#each users}}
+                {{#each users}} 
                     {{#if active}}
                         <tr>
-                            <td class="event-td"><img src="{{imgUrl}}" height="200" alt=""></td>
+                            <td class="event-td">
+                                <img class="event-volunteer-img" src="{{imgUrl}}" height="200" alt="volunteer photo">
+                            </td>
                             <td class="event-td">{{first_name}}</td>
                             <td class="event-td">{{last_name}}</td>
                             {{!-- {{#if admin}} --}}
@@ -111,7 +113,7 @@
                             </td>
                             {{!-- {{/if}} --}}
                         </tr>
-                    {{/if}}
+                    {{/if}} 
                 {{/each}}
             </tbody>
         </table>

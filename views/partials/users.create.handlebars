@@ -2,39 +2,70 @@
 <div id="modal1" class="modal modal-fixed-footer">
     <div class="modal-content">
         <h4>User Information</h4>
-        <div class="form-group">
-            <div class="input-field col s6">
-                <label for="first_name">First Name</label>
-                <input class="left-alert validate" id="first_name" name="first_name" type="text" class="form-control" placeholder="Enter Name">
-            </div>
-            <div class="input-field col s6">
-                <label for="last_name">Last Name</label>
-                <input class="left-alert validate" id="last_name" name="last_name" type="text" class="form-control" placeholder="Enter Name">
-            </div>
-            <!--Should this come from JWTAUTH -->
-            <label class="left-alert" for="email">Email</label>
-            <input class="left-alert" id="email" name="email" type="text" class="form-control" placeholder="Enter Email">
-            <label class="left-alert" for="password">Email</label>
-            <input class="left-alert" id="password" name="password" type="text" class="form-control" placeholder="Enter Password">
-            <div class="input-field col s12">
-                <select>
-                    <option value="" disabled selected>Choose Role</option>
-                    <option value="1">Volunteer</option>
-                    <option value="2">Admin</option>
-                </select>
-                <label>Role ID</label>
-            </div>
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <label for="first_name">First Name</label>
+                        <input class="left-alert validate" id="first_name" name="first_name" type="text" placeholder="First Name" data-error="wrong"
+                            data-success="right">
+                    </div>
 
-            <div class="switch">
-                <label>
-                    Inactive
-                    <input id="switch" type="checkbox">
-                    <span class="lever"></span>
-                    Active
-                </label>
-            </div>
+                    <div class="input-field col s6">
+                        <label for="last_name">Last Name</label>
+                        <input class="left-alert validate" id="last_name" name="last_name" type="text" placeholder="Last Name" data-error="wrong"
+                            data-success="right">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s6">
+                        <label for="email">Email</label>
+                        <input class="left-alert validate" id="modal-email" name="email" type="email" placeholder="Email" data-error="wrong" data-success="right">
+                    </div>
+
+                    <div class="input-field col s6">
+                        <label for="password">Password</label>
+                        <i class="material-icons prefix right password-icon link" onclick="togglePassword()">visibility</i>
+                        <input class="left-alert validate" id="password" name="password" type="password" placeholder="Password" data-error="wrong"
+                            data-success="right">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="switch col s6">
+                        <label>
+                            User
+                            <input id="role-switch" type="checkbox">
+                            <span class="lever"></span>
+                            Admin
+                        </label>
+                    </div>
+
+                    <div class="switch col s6">
+                        <label>
+                            Disabled
+                            <input id="active-switch" type="checkbox">
+                            <span class="lever"></span>
+                            Active
+                        </label>
+                    </div>
+
+                    <br>
+
+                    <div class="row img-row">
+                        <div class="input-field col s12">
+                            <label for="profile-img">Profile Photo</label>
+                            {{!-- <i class="fa fa-facebook prefix right password-icon link" onclick="facebookAuth()"></i> --}}
+                            <a class="waves-effect waves-light btn-floating prefix facebook-btn" onclick="facebookAuth()">f</a>
+                            <input class="left-alert validate profile-img-input" id="profile-img" name="profile-img" type="text" placeholder="Image URL" data-error="wrong" data-success="right">
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
+
 
     <div class="modal-footer" id="create-user">
         <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Submit</a>

@@ -1,3 +1,14 @@
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyBdvzDGVlb8w6es6yBOacj8n7TTkvVmoCA",
+    authDomain: "group-project-1-8353f.firebaseapp.com",
+    databaseURL: "https://group-project-1-8353f.firebaseio.com",
+    projectId: "group-project-1-8353f",
+    storageBucket: "group-project-1-8353f.appspot.com",
+    messagingSenderId: "653234238699"
+};
+firebase.initializeApp(config);
+
 var userID;
 
 $(document).ready(() => {
@@ -13,17 +24,35 @@ $(document).ready(() => {
         const user = {};
         user.first_name = $('#first_name').val().trim();
         user.last_name = $('#last_name').val();
-        user.email = $('#email').val();
+        user.email = $('#modal-email').val();
         user.password = $('#password').val();
-        user.roleID = $('#roleID').val();
-        user.active = $('#active').val();
+        user.imgUrl = $('#profile-img').val();
+
+        var roleVal = $('#role-switch:checked').val();
+        var activeVal = $('#active-switch:checked').val();
+
+        //check role type
+        if (roleVal) {
+            //admin
+            user.roleID = 2
+        } else {
+            //user
+            user.roleID = 1
+        }
+
+        //check status
+        if (activeVal) {
+            user.active = true
+        } else {
+            user.active = false
+        }
+
         //this will only set if it's a PUT event
         if (userID) {
             user.id = userID;
         }
 
-        console.log(user);
-
+        console.log("NEW INFO\n" + user);
 
         $.ajax({
                 method: "PUT", //POST or PUT
@@ -32,12 +61,25 @@ $(document).ready(() => {
             })
             .done(function () {
                 //update elements without reloading page
-                $('#first_name').text(user.first_name);
-                $('#last_name').text(user.last_name);
+                $('#first-name').text(user.first_name);
+                $('#last-name').text(user.last_name);
                 $('#email').text(user.email);
-                $('#password').text(user.password);
-                $('#roleID').text(user.roleID);
-                $('#active').text(user.active);
+
+                //check role type
+                if (roleVal) {
+                    //admin
+                    $('#role-id').text("Admin");
+                } else {
+                    //user
+                    $('#role-id').text("User");
+                }
+
+                //check status
+                if (activeVal) {
+                    $('#active-status').text("Active");
+                } else {
+                    $('#active-status').text("Disabled");
+                }
 
                 Materialize.toast('User Saved!', 4000)
 
@@ -58,31 +100,100 @@ $(document).ready(() => {
 
                 $('#first_name').val(user.first_name);
                 $('#last_name').val(user.last_name);
-                $('#email').val(user.email);
+                $('#modal-email').val(user.email);
                 $('#password').val(user.password);
-                $('#role-id').val(user.roleID);
+                $('#profile-img').val(user.imgUrl);
 
                 var roleID = user.roleID
                 console.log("here" + user.roleID)
-                
-                // if (roleID === "ADMIN") {
-                //     $('#role-id').val("Admin");
-                // }
 
-                // else {
-                //     $('#roleID').val("Volunteer");
-                // }
-                
-                $('#active').val(user.active);
+                //switch on/off based on role type
+                if (user.roleID === 1) {
+                    //user
+                    document.getElementById("role-switch").checked = false;
+                } else {
+                    //admin
+                    document.getElementById("role-switch").checked = true;
+                }
+
+                //switch on/off based on active status
+                if (user.active) {
+                    //active
+                    document.getElementById("active-switch").checked = true;
+                } else {
+                    //disabled
+                    document.getElementById("active-switch").checked = false;
+                }
 
                 //set global to allow for PUT save event
                 userID = user.id;
 
                 $('#modal1').modal('open');
+
             });
     });
 
-    
+    //View USER
+    $(".event-see").on('click', function () {
 
+        var id = $(this).data("eventid");
+
+        // current base url address
+        window.location.href = window.location.origin + "/events/" + id
+
+    });
 
 });
+
+function togglePassword() {
+    var x = document.getElementById("password");
+    if (x.type === "password") {
+        x.type = "text";
+    } else {
+        x.type = "password";
+    }
+}
+
+function facebookAuth() {
+    var provider = new firebase.auth.FacebookAuthProvider();
+
+    console.log("facebook auth begun...")
+    firebase.auth().signInWithPopup(provider).then(function (result) {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+
+        // console.log("USER: " + JSON.stringify(user));
+
+        var name = user.displayName;
+        var photoURL = user.photoURL;
+
+        // sessionStorage.setItem("userName", name)
+        // sessionStorage.setItem("photoURL", photoURL)
+
+        $("#profile-img").val(photoURL);
+        console.log("userName: " + name);
+        console.log("photoURL: " + photoURL);
+
+        // redirect to survey page
+        // toSurvey();
+    }).catch(function (error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+
+        console.log("ERROR\n")
+        console.log("Error Message\n" + errorMessage + "\n\n")
+        console.log("Error Code\n" + errorCode + "\n\n")
+        console.log("Error Email\n" + email + "\n\n")
+        console.log("Error Credential\n" + credential + "\n\n")
+
+        // $("#login-error").show();
+        // ...
+    });
+}
