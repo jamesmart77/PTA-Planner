@@ -8,14 +8,14 @@ var proxyquire = require('proxyquire');
 // const db = require('../models/');
 
 
-describe('Should create a user', function () {
+describe('TEST *** POST /api/user', function () {
     beforeEach(function () {
 
     });
 
-    it('should prove user exists name Adam if successful', function (finish) {
+    it('TEST*** assert user.first_name Adam if successful', function (finish) {
         // mock up req and res
-        console.log("creating a user Tom");
+        // console.log("creating a user Tom");
         var req = {
             body: {
 
@@ -32,7 +32,10 @@ describe('Should create a user', function () {
             url: '/api/users',
             headers: [],
             pause: function () {},
-            resume: function () {}
+            resume: function () {},
+            cookies: {
+                "jwttoken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInBhc3N3b3JkIjoiYWRtaW4iLCJhZG1pbiI6dHJ1ZSwidXNlcklEIjoxLCJpYXQiOjE1MTYyOTEyOTJ9.9sRZe9bsnK6Msx3QEI5-J6hG3ICfoKIM6b9E_ZYdT7o"
+            }
         };
         //define sequelize db object format(db.User.create)
         var db = {
@@ -61,7 +64,7 @@ describe('Should create a user', function () {
             status: function (status) {},
             setHeader: function () {}
         };
-        console.log("testing POST to api/users");
+        // console.log("testing POST to api/users");
         //call the express route function
         route(req, res);
     });
