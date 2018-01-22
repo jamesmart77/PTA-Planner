@@ -1,3 +1,14 @@
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyBdvzDGVlb8w6es6yBOacj8n7TTkvVmoCA",
+    authDomain: "group-project-1-8353f.firebaseapp.com",
+    databaseURL: "https://group-project-1-8353f.firebaseio.com",
+    projectId: "group-project-1-8353f",
+    storageBucket: "group-project-1-8353f.appspot.com",
+    messagingSenderId: "653234238699"
+};
+firebase.initializeApp(config);
+
 var userID;
 
 $(document).ready(() => {
@@ -15,6 +26,7 @@ $(document).ready(() => {
         user.last_name = $('#last_name').val();
         user.email = $('#modal-email').val();
         user.password = $('#password').val();
+        user.imgUrl = $('#profile-img').val();
 
         var roleVal = $('#role-switch:checked').val();
         var activeVal = $('#active-switch:checked').val();
@@ -84,13 +96,13 @@ $(document).ready(() => {
                 url: "/api/users/" + id
             })
             .done(function (user) {
-                // console.log("USER INFO\n\n" + JSON.stringify(user));
+                console.log("USER INFO\n\n" + JSON.stringify(user));
 
                 $('#first_name').val(user.first_name);
                 $('#last_name').val(user.last_name);
                 $('#modal-email').val(user.email);
                 $('#password').val(user.password);
-                // $('.role-id').val(user.roleID);
+                $('#profile-img').val(user.imgUrl);
 
                 var roleID = user.roleID
                 console.log("here" + user.roleID)
@@ -121,6 +133,16 @@ $(document).ready(() => {
             });
     });
 
+    //View USER
+    $(".event-see").on('click', function () {
+
+        var id = $(this).data("eventid");
+
+        // current base url address
+        window.location.href = window.location.origin + "/events/" + id
+
+    });
+
 });
 
 function togglePassword() {
@@ -130,4 +152,48 @@ function togglePassword() {
     } else {
         x.type = "password";
     }
+}
+
+function facebookAuth() {
+    var provider = new firebase.auth.FacebookAuthProvider();
+
+    console.log("facebook auth begun...")
+    firebase.auth().signInWithPopup(provider).then(function (result) {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+
+        // console.log("USER: " + JSON.stringify(user));
+
+        var name = user.displayName;
+        var photoURL = user.photoURL;
+
+        // sessionStorage.setItem("userName", name)
+        // sessionStorage.setItem("photoURL", photoURL)
+
+        $("#profile-img").val(photoURL);
+        console.log("userName: " + name);
+        console.log("photoURL: " + photoURL);
+
+        // redirect to survey page
+        // toSurvey();
+    }).catch(function (error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+
+        console.log("ERROR\n")
+        console.log("Error Message\n" + errorMessage + "\n\n")
+        console.log("Error Code\n" + errorCode + "\n\n")
+        console.log("Error Email\n" + email + "\n\n")
+        console.log("Error Credential\n" + credential + "\n\n")
+
+        // $("#login-error").show();
+        // ...
+    });
 }

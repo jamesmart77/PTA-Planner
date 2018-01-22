@@ -50,6 +50,17 @@
                             Active
                         </label>
                     </div>
+
+                    <br>
+
+                    <div class="row img-row">
+                        <div class="input-field col s12">
+                            <label for="profile-img">Profile Photo</label>
+                            {{!-- <i class="fa fa-facebook prefix right password-icon link" onclick="facebookAuth()"></i> --}}
+                            <a class="waves-effect waves-light btn-floating prefix facebook-btn" onclick="facebookAuth()">f</a>
+                            <input class="left-alert validate profile-img-input" id="profile-img" name="profile-img" type="text" placeholder="Image URL" data-error="wrong" data-success="right">
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>
