@@ -24,7 +24,9 @@
 	<!-- Compiled and minified CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> {{!-- Font --}}
+	<link href="https://fonts.googleapis.com/css?family=Arima+Madurai:700" rel="stylesheet">
+
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="/assets/css/style.css"> {{!--
@@ -33,21 +35,22 @@
 </head>
 
 <body>
+
 	<!-- Dropdown Structure -->
 	<ul id="dropdown1" class="dropdown-content">
 		<li>
-			<a href="#">Profile</a>
+			<a href="/users/{{userID}}">Profile</a>
 		</li>
 		<li>
 			<a href="/events">Events</a>
 		</li>
 
 		{{#if admin}}
-			<li>
-				<a href="/users">All Users</a>
-			</li>
+		<li>
+			<a href="/users">All Users</a>
+		</li>
 		{{/if}}
-		
+
 		<li>
 			<a href="/logout">Log Out</a>
 		</li>
@@ -57,9 +60,8 @@
 			<a href="/" class="brand-logo left"></a>
 			<ul class="right">
 				<!-- Dropdown Trigger -->
-				{{!-- custome handlebars helper to see if current user is logged in -- check server.js --}}
-				{{#if (isLoggedIn admin)}}
-					
+				{{!-- custome handlebars helper to see if current user is logged in -- check server.js --}} {{#if (isLoggedIn admin)}}
+
 				<li>
 					<a class="dropdown-button" href="#!" data-activates="dropdown1">
 						<i class="material-icons right" id="nav-icon">account_circle</i>
@@ -68,11 +70,17 @@
 				</li>
 				{{/if}}
 			</ul>
+			<nav class="dot">
+				<div class="nav-wrapper">
+					<div class="col s12">
+						<a href="javascript:history.back()" class="breadcrumb">Back</a>
+					</div>
+				</div>
+			</nav>
 		</div>
 	</nav>
 	<br>
-	<br> 
-	{{{ body }}}
+	<br> {{{ body }}}
 
 
 
