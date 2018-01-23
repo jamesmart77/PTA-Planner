@@ -1,15 +1,15 @@
-/* .body-content {
-    /* background-image: url('../images/hands-background.jpeg'); */
+.body-content {
+    /* background-image: url('../images/hands-background.jpeg');
     background-image: url('../images/hands-background.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: bottom center;
-} */
+    background-position: bottom center; */
+}
 
 .brand-logo {
     font-size: 3em !important;
-    height: 100px !important;
+    height: 65px !important;
     width: 300px !important;
     margin: 0px 15px;
     font-family: 'Shadows Into Light', cursive;
@@ -18,9 +18,10 @@
 
 .site-title {
     vertical-align: middle !important;
-    height: 100px;
-    line-height: 100px;
+    height: 65px;
+    line-height: 65px;
     margin: 0px;
+    background-color: #011627;
 }
 
 .login-body {
@@ -34,7 +35,7 @@
 
 h1 {
     text-align: center !important;
-    margin-top: 20px !important;
+
 }
 
 h2 {
@@ -42,22 +43,68 @@ h2 {
     text-align: center !important;
 }
 
+h3 {
+    font-family: 'Shadows Into Light', cursive;
+    margin-top: 0px;
+}
+
 h4 {
     text-align: center !important;
 }
 
+
+
+.see-event {
+    margin-right: 10px;
+    color: #33658A !important;
+}
+
+.see-event:hover {
+    margin-right: 10px;
+    color: #62B6CB !important;
+}
+
+.signup-event {
+    margin-right: 10px;
+    color: #33658A !important;
+}
+
+.signup-event:hover {
+    margin-right: 10px;
+    color: #62B6CB !important;
+}
+
+/* #add-event-btn {
+    margin-right: 10px;
+    color: #33658A !important;
+}
+
+#add-event-btnt:hover {
+    margin-right: 10px;
+    color: #62B6CB !important;
+} */
+
 #nav-icon {
     padding-right: 10px !important;
     font-size: 40px !important;
-    line-height: 100px !important;
+    line-height: 65px !important;
 }
 
 #login-box {
     border: 1px solid gray;
 }
 
+.card {
+    margin-top: 30px;
+}
+
+#event-card {
+    background-color: white !important;
+    
+}
+
 #navigation-bar {
-    height: 100px !important;
+    height: 65px !important;
     background-color: #011627 !important;
 }
 
@@ -70,6 +117,8 @@ h4 {
 #breadcrumb {
     margin: 0px 15px;
 }
+
+
 
 /* label underline focus color */
 
@@ -87,7 +136,7 @@ h4 {
 /* event page edit, delete, signup buttons */
 
 .see-event:hover {
-    color: coral;
+    color: #4db6ac;
 }
 
 .see-event {
@@ -147,13 +196,25 @@ h4 {
 .event-th {
     font-size: 22px !important;
     text-align: center !important;
-    color: white;
+    /* background-color: #33658A; */
+
 }
 
 .event-td {
     font-size: 21px !important;
     text-align: center !important;
+ 
 }
+
+
+
+/* #users-table {
+    width: auto;
+}
+
+#events-table {
+    width: auto;
+} */
 
 
 /* removing the white space around photo */
@@ -167,7 +228,7 @@ h4 {
 }
 
 .see-user:hover {
-    color: coral;
+    color: #4db6ac;
 }
 
 .remove-user:hover {
