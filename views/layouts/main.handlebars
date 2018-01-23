@@ -10,23 +10,16 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 	<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
-	<!-- Latest compiled and minified CSS -->
-	{{!--
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	 crossorigin="anonymous"> --}}
-
-	<!-- Optional theme -->
-	{{!--
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-	 crossorigin="anonymous"> --}} {{!--
-	<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"> --}}
 
 	<!-- Compiled and minified CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> {{!-- Font --}}
-	<link href="https://fonts.googleapis.com/css?family=Arima+Madurai:700" rel="stylesheet">
-
+	<link href="https://fonts.googleapis.com/css?family=Arima+Madurai:700" rel="stylesheet"> {{!-- Raleway Font --}}
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+	
+	{{!-- Shadows Font --}}
+	<link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="/assets/css/style.css"> {{!--
@@ -37,50 +30,53 @@
 <body>
 
 	<!-- Dropdown Structure -->
-	<ul id="dropdown1" class="dropdown-content">
-		<li>
-			<a href="/users/{{userID}}">Profile</a>
-		</li>
-		<li>
-			<a href="/events">Events</a>
-		</li>
+	<div class="navigation">
+		<ul id="dropdown1" class="dropdown-content">
+			<li>
+				<a href="/users/{{userID}}">Profile</a>
+			</li>
+			<li>
+				<a href="/events">Events</a>
+			</li>
 
-		{{#if admin}}
-		<li>
-			<a href="/users">All Users</a>
-		</li>
-		{{/if}}
+			{{#if admin}}
+			<li>
+				<a href="/users">All Users</a>
+			</li>
+			{{/if}}
 
-		<li>
-			<a href="/logout">Log Out</a>
-		</li>
-	</ul>
+			<li>
+				<a href="/logout">Log Out</a>
+			</li>
+		</ul>
+	</div>
 	<nav>
 		<div class="nav-wrapper teal lighten-2" id="navigation-bar">
-			<a href="/" class="brand-logo left"></a>
+			<a href="/" class="brand-logo center"><p class="site-title">Event Monster</p></a>
 			<ul class="right">
 				<!-- Dropdown Trigger -->
-				{{!-- custome handlebars helper to see if current user is logged in -- check server.js --}} {{#if (isLoggedIn admin)}}
+				{{!-- custom handlebars helper to see if current user is logged in -- check server.js --}} {{#if (isLoggedIn admin)}}
 
 				<li>
 					<a class="dropdown-button" href="#!" data-activates="dropdown1">
 						<i class="material-icons right" id="nav-icon">account_circle</i>
-
 					</a>
 				</li>
 				{{/if}}
 			</ul>
-			<nav class="dot">
-				<div class="nav-wrapper">
-					<div class="col s12">
-						<a href="javascript:history.back()" class="breadcrumb">Back</a>
-					</div>
-				</div>
-			</nav>
 		</div>
 	</nav>
-	<br>
-	<br> {{{ body }}}
+	{{!--
+	<nav class="dot" id="breadcrumb-bar">
+		<div class="nav-wrapper">
+			<div class="col s12">
+				<a href="javascript:history.back()" class="breadcrumb">Back</a>
+			</div>
+		</div>
+	</nav> --}}
+	<div class="body-content">
+		{{{ body }}}
+	</div>
 
 
 
