@@ -47,6 +47,11 @@ h4 {
     text-align: center !important;
 }
 
+.card-title.detail-title.center-align {
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 36px;
+}
+
 .volunteer-header {
     text-align: center
 }
@@ -63,7 +68,7 @@ h4 {
 
 .see-event {
     margin-right: 10px;
-    color: #cb1d51 !important;
+    color: #6ab3bc !important;
 }
 
 .see-event:hover {
@@ -73,7 +78,7 @@ h4 {
 
 .signup-event {
     margin-right: 10px;
-    color: #cb1d51 !important;
+    color: #6ab3bc !important;
 }
 
 .signup-event:hover {
@@ -164,6 +169,13 @@ h4 {
 
 /* event page edit, delete, signup buttons */
 
+.material-icons.signup {
+    background-color: #6ab3bc !important;
+    color:white!important; 
+
+}
+
+
 
 /* ============================================ */
 
@@ -189,8 +201,10 @@ h4 {
     font-size: 22px !important;
 }
 
-.event-field {
-    font-size: 21px !important;
+.event-field{
+    font-size: 16px !important;
+    font-family: 'Pontano Sans', sans-serif;
+    
 }
 
 .fixed-action-btn {
@@ -280,18 +294,20 @@ h4 {
 .user-field-label{
     font-size: 18px !important;
     font-family: 'Pontano Sans', sans-serif;
-    font-weight: bolder !important;
+    font-weight: 700;
 }
 .user-field{
     font-size: 16px !important;
     font-family: 'Pontano Sans', sans-serif;
+    
 }
 
 
 .user-profile-img{
     border-radius: 130px !important;
-    left: 15px !important;
-    top: 20% !important;
+    left: 30px !important;
+    top: 5% !important;
+    margin-right: 30px;
 
 }
 
