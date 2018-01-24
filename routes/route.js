@@ -125,7 +125,8 @@ router.get("/users", jwtauth, (req, res) => {
             var results = {
                 users: data,
                 admin: req.admin,
-                userID: req.userID
+                userID: req.userID,
+                create: true
             }
             // console.log(results.User);
             res.render('users', results);
@@ -196,7 +197,8 @@ router.get("/users/:id", jwtauth, (req, res) => {
                     admin: req.admin,
                     roleType: roleType,
                     status: status,
-                    events: data.Events
+                    events: data.Events,
+                    edit: true
                 }
                 res.render('user', results);
             })

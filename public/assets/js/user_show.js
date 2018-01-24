@@ -17,7 +17,7 @@ const pwDiv = document.getElementById('passwordStuff');
 
 $(document).ready(() => {
 
-    pwDiv.style.display = display = 'none';
+    pwDiv.style.display = 'none';
     
     console.log("in user show")
     $('.modal-trigger').hide(); //hiding 'New User' button

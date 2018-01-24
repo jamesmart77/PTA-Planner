@@ -50,32 +50,45 @@
                     <div class="row img-row">
                         <div class="input-field col s12">
                             <label for="profile-img">Profile Photo</label>
-                            {{!-- <i class="fa fa-facebook prefix right password-icon link" onclick="facebookAuth()"></i> --}}
+                            {{!--
+                            <i class="fa fa-facebook prefix right password-icon link" onclick="facebookAuth()"></i> --}}
                             <a class="waves-effect waves-light btn-floating prefix facebook-btn" onclick="facebookAuth()">f</a>
-                            <input class="left-alert validate profile-img-input" id="profile-img" name="profile-img" type="text" placeholder="Image URL" data-error="wrong" data-success="right">
+                            <input class="left-alert validate profile-img-input" id="profile-img" name="profile-img" type="text" placeholder="Image URL"
+                                data-error="wrong" data-success="right">
                         </div>
                     </div>
-                <div class="row">
-                    <input type="checkbox" id="updatePassword" />
-                    <label for="updatePassword">Update Password</label>
-                </div>
-                <div id="passwordStuff" class="row">
+                    {{#if create}}
+                    <div id="passwordCreate">
                     <div class="input-field col s4">
-                        <label for="password">Current Password</label>
-                        <input class="left-alert validate" id="oldPassword" name="oldPassword" type="text" placeholder="Password" data-error="wrong"
-                            data-success="right">
+                                <label for="password">Password</label>
+                                <input class="left-alert validate" id="password" name="password" type="text" placeholder="Password" data-error="wrong" data-success="right">
+                            </div>
                     </div>
-                    <div class="input-field col s4">
-                        <label for="password">New Password</label>
-                        <input class="left-alert validate" id="password" name="password" type="text" placeholder="Password" data-error="wrong"
-                            data-success="right">
-                    </div>
-                    <div class="input-field col s4">
-                        <label for="password">Confirm New Password</label>
-                        <input class="left-alert validate" id="confirmPassword" name="confirmPassword" type="text" placeholder="Password" data-error="wrong"
-                            data-success="right">
-                    </div>
-                </div>
+                    {{/if}}
+                    {{#if edit}}
+                    <div id="passwordEdit">
+                        <div class="row">
+                            <input type="checkbox" id="updatePassword" />
+                            <label for="updatePassword">Update Password</label>
+                        </div>
+                        <div id="passwordStuff" class="row">
+                            <div class="input-field col s4">
+                                <label for="password">Current Password</label>
+                                <input class="left-alert validate" id="oldPassword" name="oldPassword" type="text" placeholder="Password" data-error="wrong"
+                                    data-success="right">
+                            </div>
+                            <div class="input-field col s4">
+                                <label for="password">New Password</label>
+                                <input class="left-alert validate" id="password" name="password" type="text" placeholder="Password" data-error="wrong" data-success="right">
+                            </div>
+                            <div class="input-field col s4">
+                                <label for="password">Confirm New Password</label>
+                                <input class="left-alert validate" id="confirmPassword" name="confirmPassword" type="text" placeholder="Password" data-error="wrong"
+                                    data-success="right">
+                            </div>
+                        </div>
+                    </div><!-- end passwordEdit -->
+                    {{/if}}
 
                 </div>
             </form>
