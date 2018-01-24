@@ -97,6 +97,7 @@ router.get("/events/:id", jwtauth, (req, res) => {
             var results = {
                 event: data,
                 admin: req.admin,
+                userID: req.userID,
                 startDate: startDate,
                 endDate: endDate,
                 users: data.Users
