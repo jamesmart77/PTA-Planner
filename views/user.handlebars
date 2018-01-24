@@ -55,23 +55,9 @@
                     </a> --}}
 
                     <div class="fixed-action-btn">
-                        <a class="btn-floating btn-large orange">
-                            <i class="link large material-icons">list</i>
+                        <a class="link btn-floating btn-large edit-user" data-id={{user.id}}>
+                            <i class="link large material-icons">edit</i>
                         </a>
-                        <ul>
-                            <li>
-                                <a class="link btn-floating blue edit-user" data-id={{user.id}}>
-                                    <i class="material-icons">edit</i>
-
-                                </a>
-                            </li>
-                            <li>
-                                <a class="btn-floating blue back-user" data-id={{user.id}}>
-                                    <i class="material-icons">arrow_back</i>
-
-                                </a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -118,8 +104,6 @@
 
 
 <!-- This is for the edit event modal -->
-{{#if admin}} 
-    {{> users.create }} 
-{{/if}}
+{{#if admin}} {{> users.create }} {{/if}}
 
 <script src="/assets/js/user_show.js"></script>
