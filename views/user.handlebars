@@ -11,21 +11,21 @@
                     <div class="col s6">
                         <div class="row field-row">
                             <div class="user-field-label">
-                                <strong>First Name</strong>
+                                First Name
                             </div>
                             <br>
                             <div class="user-field" id="first-name"> {{user.first_name}}</div>
                         </div>
                         <div class="row field-row">
                             <div class="user-field-label">
-                                <strong>Last Name</strong>
+                                Last Name
                             </div>
                             <br>
                             <div class="user-field" id="last-name"> {{user.last_name}}</div>
                         </div>
                         <div class="row field-row">
                             <div class="user-field-label">
-                                <strong>Email Address</strong>
+                                Email Address
                             </div>
                             <br>
                             <div class="user-field" id="email"> {{user.email}}</div>
@@ -35,17 +35,17 @@
                     <div class="col s6">
                         <div class="row field-row">
                             <div class="user-field-label">
-                                <strong>Role</strong>
+                                Role
                             </div>
                             <br>
-                            <div class="user-field" id="role-id"> {{roleType}}</div>
+                            <div class="user-field" id="role-id"> {{user.roleID}}</div>
                         </div>
                         <div class="row field-row">
                             <div class="user-field-label">
-                                <strong>Profile Status</strong>
+                                Profile Status
                             </div>
                             <br>
-                            <div class="user-field" id="active-status"> {{status}}</div>
+                            <div class="user-field" id="active-status"> {{user.active}}</div>
                         </div>
                     </div>
 
@@ -77,14 +77,13 @@
             </div>
         </div>
     </div>
-    
-
-    
 </div>
+<br>
 
 <div class="row">
     <div class="col s10 offset-s1 volunteer-table">
         <h3 class="volunteer-header">SignUp History</h3>
+        <br>
         <table class="table highlight responsive-table" id="events-table">
             <thead>
                 <tr>
