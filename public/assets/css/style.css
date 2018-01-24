@@ -25,12 +25,7 @@
 }
 
 .login-body {
-    padding-top: 150px !important;
-}
-
-#login-submit-btn {
-    color: white;
-    background-color: #6ab3bc;
+    padding-top: 5% !important;
 }
 
 h1 {
@@ -52,37 +47,71 @@ h4 {
     text-align: center !important;
 }
 
+.volunteer-header {
+    text-align: center
+}
 
+#login-submit-btn {
+    color: white;
+    background-color: #cb1d51;
+}
+
+#login-submit-btn:hover {
+    color: white;
+    background-color: #ca3a65;
+}
 
 .see-event {
     margin-right: 10px;
-    color: #33658A !important;
+    color: #cb1d51 !important;
 }
 
 .see-event:hover {
     margin-right: 10px;
-    color: #62B6CB !important;
+    color: #cb1d51 !important;
 }
 
 .signup-event {
     margin-right: 10px;
-    color: #33658A !important;
+    color: #cb1d51 !important;
 }
 
 .signup-event:hover {
-    margin-right: 10px;
-    color: #62B6CB !important;
+    color: #ca3a65 !important;
 }
 
-/* #add-event-btn {
-    margin-right: 10px;
-    color: #33658A !important;
+.material-icons.add-event-btn {
+    background-color: #cb1d51 !important;
 }
 
-#add-event-btnt:hover {
-    margin-right: 10px;
-    color: #62B6CB !important;
-} */
+.material-icons.add-event-btn:hover {
+    background-color: #ca3a65 !important;
+}
+
+.material-icons.add-user-btn {
+    background-color: #cb1d51 !important;
+}
+
+.material-icons.add-user-btn:hover {
+    background-color: #ca3a65 !important;
+}
+
+.material-icons.list-btn {
+    background-color: #cb1d51 !important;
+}
+
+.material-icons.list-btn:hover {
+    background-color: #ca3a65 !important;
+}
+
+.material-icons.back-arrow {
+    background-color: #6ab3bc !important;
+}
+
+.material-icons.edit-button {
+    background-color: #6ab3bc !important;
+}
+
 
 #nav-icon {
     padding-right: 10px !important;
@@ -135,22 +164,6 @@ h4 {
 
 /* event page edit, delete, signup buttons */
 
-.see-event:hover {
-    color: #4db6ac;
-}
-
-.see-event {
-    color: #268ac9
-}
-
-.signup-event:hover {
-    color: #4db6ac;
-}
-
-.signup-event {
-    color: green
-}
-
 
 /* ============================================ */
 
@@ -194,14 +207,16 @@ h4 {
 }
 
 .event-th {
-    font-size: 22px !important;
+    font-size: 18px !important;
     text-align: center !important;
+    font-family: 'Pontano Sans', sans-serif;
     /* background-color: #33658A; */
 }
 
 .event-td {
-    font-size: 21px !important;
+    font-size: 16px !important;
     text-align: center !important;
+    font-family: 'Pontano Sans', sans-serif;
  
 }
 
@@ -226,9 +241,6 @@ h4 {
     color: #268ac9
 }
 
-.see-user:hover {
-    color: #4db6ac;
-}
 
 .remove-user:hover {
     color: darkred;
@@ -266,10 +278,13 @@ h4 {
 }
 
 .user-field-label{
-    font-size: 22px !important;
+    font-size: 18px !important;
+    font-family: 'Pontano Sans', sans-serif;
+    font-weight: bolder !important;
 }
 .user-field{
-    font-size: 21px !important;
+    font-size: 16px !important;
+    font-family: 'Pontano Sans', sans-serif;
 }
 
 

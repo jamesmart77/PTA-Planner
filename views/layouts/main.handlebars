@@ -16,10 +16,9 @@
 
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> {{!-- Font --}}
 	<link href="https://fonts.googleapis.com/css?family=Arima+Madurai:700" rel="stylesheet"> {{!-- Raleway Font --}}
-	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
-	
-	{{!-- Shadows Font --}}
-	<link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> {{!-- Shadows Font --}}
+	<link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet"> {{!-- Pontano Sans Font --}}
+	<link href="https://fonts.googleapis.com/css?family=Pontano+Sans" rel="stylesheet">
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="/assets/css/style.css"> {{!--
@@ -51,7 +50,9 @@
 	</div>
 	<nav>
 		<div class="nav-wrapper teal lighten-2" id="navigation-bar">
-			<a href="/" class="brand-logo center"><p class="site-title">Event Monster</p></a>
+			<a href="/" class="brand-logo center">
+				<p class="site-title">Event Monster</p>
+			</a>
 			<ul class="right">
 				<!-- Dropdown Trigger -->
 				{{!-- custom handlebars helper to see if current user is logged in -- check server.js --}} {{#if (isLoggedIn admin)}}
@@ -72,9 +73,7 @@
 				<a href="javascript:history.back()" class="breadcrumb">Back</a>
 			</div>
 		</div>
-	</nav> --}}
-
-		{{{ body }}}
+	</nav> --}} {{{ body }}}
 
 
 
