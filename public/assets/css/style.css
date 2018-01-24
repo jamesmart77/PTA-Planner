@@ -265,16 +265,6 @@ h4 {
     color: #268ac9;
 }
 
-nav {
-    background-color: black;
-    float: left;
-    
-}
-
-.breadcrumb {
-    font-size: 15px;
-}
-
 .user-field-label{
     font-size: 22px !important;
 }
@@ -282,11 +272,12 @@ nav {
     font-size: 21px !important;
 }
 
+
 .user-profile-img{
-    position: relative !important;
-    top: 10px !important;
-    left: 11px !important;
-    border-radius: 50px !important;
+    border-radius: 130px !important;
+    left: 15px !important;
+    top: 20% !important;
+
 }
 
 .img-row{
@@ -306,4 +297,17 @@ nav {
 .profile-img-input{
     margin-left: 4rem;
     width: calc(100% - 4rem);
+}
+
+/* login page */
+.login-img-row{
+    margin-bottom: 0 !important;
+}
+.hands-img{
+    bottom: 0;
+    display: block;
+    margin: auto;
+    z-index: -1;
+    opacity: .75;
+
 }

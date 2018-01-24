@@ -175,14 +175,28 @@ router.get("/users/:id", jwtauth, (req, res) => {
 
                 });
 
-                console.log("DATA\n" + JSON.stringify(data,null,2));
+                //clean up role type and status for readability
+                var roleType
+                var status
 
+                if (req.admin){
+                    roleType = "Admin"
+                } else {
+                    roleType = "User"
+                }
+
+                if (data.active){
+                    status = "Active"
+                } else {
+                    status = "Disabled"
+                }
+                
                 var results = {
                     user: data,
                     userID: req.userID,
                     admin: req.admin,
-                    startDate: startDate,
-                    endDate: endDate,
+                    roleType: roleType,
+                    status: status,
                     events: data.Events
                 }
                 res.render('user', results);
