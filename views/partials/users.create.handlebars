@@ -19,17 +19,11 @@
                 </div>
 
                 <div class="row">
-                    <div class="input-field col s6">
+                    <div class="input-field col s12">
                         <label for="email">Email</label>
                         <input class="left-alert validate" id="modal-email" name="email" type="email" placeholder="Email" data-error="wrong" data-success="right">
                     </div>
 
-                    <div class="input-field col s6">
-                        <label for="password">Password</label>
-                        <i class="material-icons prefix right password-icon link" onclick="togglePassword()">visibility</i>
-                        <input class="left-alert validate" id="password" name="password" type="password" placeholder="Password" data-error="wrong"
-                            data-success="right">
-                    </div>
                 </div>
 
                 <div class="row">
@@ -61,6 +55,28 @@
                             <input class="left-alert validate profile-img-input" id="profile-img" name="profile-img" type="text" placeholder="Image URL" data-error="wrong" data-success="right">
                         </div>
                     </div>
+                <div class="row">
+                    <input type="checkbox" id="updatePassword" />
+                    <label for="updatePassword">Update Password</label>
+                </div>
+                <div id="passwordStuff" class="row">
+                    <div class="input-field col s4">
+                        <label for="password">Current Password</label>
+                        <input class="left-alert validate" id="oldPassword" name="oldPassword" type="text" placeholder="Password" data-error="wrong"
+                            data-success="right">
+                    </div>
+                    <div class="input-field col s4">
+                        <label for="password">New Password</label>
+                        <input class="left-alert validate" id="password" name="password" type="text" placeholder="Password" data-error="wrong"
+                            data-success="right">
+                    </div>
+                    <div class="input-field col s4">
+                        <label for="password">Confirm New Password</label>
+                        <input class="left-alert validate" id="confirmPassword" name="confirmPassword" type="text" placeholder="Password" data-error="wrong"
+                            data-success="right">
+                    </div>
+                </div>
+
                 </div>
             </form>
         </div>
