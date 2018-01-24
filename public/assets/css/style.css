@@ -47,6 +47,11 @@ h4 {
     text-align: center !important;
 }
 
+.card-title.detail-title.center-align {
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 36px;
+}
+
 .volunteer-header {
     text-align: center
 }
@@ -63,7 +68,7 @@ h4 {
 
 .see-event {
     margin-right: 10px;
-    color: #cb1d51 !important;
+    color: #6ab3bc !important;
 }
 
 .see-event:hover {
@@ -73,7 +78,7 @@ h4 {
 
 .signup-event {
     margin-right: 10px;
-    color: #cb1d51 !important;
+    color: #6ab3bc !important;
 }
 
 .signup-event:hover {
@@ -280,11 +285,12 @@ h4 {
 .user-field-label{
     font-size: 18px !important;
     font-family: 'Pontano Sans', sans-serif;
-    font-weight: bolder !important;
+    font-weight: 700;
 }
 .user-field{
     font-size: 16px !important;
     font-family: 'Pontano Sans', sans-serif;
+    
 }
 
 
