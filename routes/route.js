@@ -11,8 +11,7 @@ var jwtauth = require('./jwtAuth.js');
 
 // homepage
 router.get("/", jwtauth, (req, res) => {
-    res.render('index', {});
-    // res.render(path.join(__dirname, "users.handlebars"));
+    res.redirect('/events');
 });
 
 // login view
