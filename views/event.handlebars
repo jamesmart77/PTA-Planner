@@ -7,7 +7,9 @@
         </div>
         <div id="event-card" class="card grey lighten-4 card small">
             <div class="card-content grey-text text-darken-4">
-                <span class="card-title event-detail-title center"><h3>{{event.event_name}}</h3></span>
+                <span class="card-title event-detail-title center">
+                    <h3>{{event.event_name}}</h3>
+                </span>
                 <div class="divider"></div>
                 <div class="col s3">
                     <div class="row field-row">
@@ -70,8 +72,9 @@
 
                         </li>
                         <li>
-                            <a class="btn-floating blue back-event" data-id={{user.id}}>
-                                <i class="material-icons">arrow_back</i>
+                            <a class="btn-floating yellow event-signup" data-id="{{id}}">
+                                <i class="link large material-icons signup-event" style="font-size:36px">group_add</i>
+                            </a>
 
                             </a>
                         </li>
@@ -88,41 +91,39 @@
     <div id="event-volunteers-header" class="col s10 offset-s1 volunteer-table">
         <h3 class="volunteer-header center grey lighten-3" style="padding: 20px; margin-bottom:0px">Volunteers</h3>
         <div class="z-depth-2">
-        <table class="table highlight responsive-table grey lighten-2" id="events-table">
-            <thead class="black">
-                <tr>
-                    <th class="event-th" scope="col">Photo</th>
-                    <th class="event-th" scope="col">First Name</th>
-                    <th class="event-th" scope="col">Last Name</th>
-                    {{#if admin}}
-                    <th class="event-th" scope="col">Controls</th>
-                    {{/if}}
-                </tr>
-            </thead>
-            <tbody>
-                {{#each users}} 
-                    {{#if active}}
-                        <tr>
-                            <td class="event-td">
-                                <img class="event-volunteer-img" src="{{imgUrl}}" height="100" alt="volunteer photo">
-                            </td>
-                            <td class="event-td">{{first_name}}</td>
-                            <td class="event-td">{{last_name}}</td>
-                            {{#if ../admin}}
-                            <td class="center">
-                                <a class="user-see" data-userID="{{id}}">
-                                    <i class="link large material-icons see-user" style="font-size:36px">info_outline</i>
-                                </a>
-                                <a class="user-delete" data-userID="{{id}}">
-                                    <i class="link large material-icons remove-user" style="font-size:36px">delete</i>
-                                </a>
-                            </td>
-                            {{/if}}
-                        </tr>
-                    {{/if}} 
-                {{/each}}
-            </tbody>
-        </table>
+            <table class="table highlight responsive-table grey lighten-2" id="events-table">
+                <thead class="black">
+                    <tr>
+                        <th class="event-th" scope="col">Photo</th>
+                        <th class="event-th" scope="col">First Name</th>
+                        <th class="event-th" scope="col">Last Name</th>
+                        {{#if admin}}
+                        <th class="event-th" scope="col">Controls</th>
+                        {{/if}}
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each users}} {{#if active}}
+                    <tr>
+                        <td class="event-td">
+                            <img class="event-volunteer-img" src="{{imgUrl}}" height="100" alt="volunteer photo">
+                        </td>
+                        <td class="event-td">{{first_name}}</td>
+                        <td class="event-td">{{last_name}}</td>
+                        {{#if ../admin}}
+                        <td class="center">
+                            <a class="user-see" data-userID="{{id}}">
+                                <i class="link large material-icons see-user" style="font-size:36px">info_outline</i>
+                            </a>
+                            <a class="user-delete" data-userID="{{id}}">
+                                <i class="link large material-icons remove-user" style="font-size:36px">delete</i>
+                            </a>
+                        </td>
+                        {{/if}}
+                    </tr>
+                    {{/if}} {{/each}}
+                </tbody>
+            </table>
         </div>
     </div>
 
@@ -132,4 +133,4 @@
 <!-- This is for the edit event modal -->
 {{#if admin}} {{> events.create }} {{/if}}
 
-<script src="/assets/js/event_show.js"></script>    
+<script src="/assets/js/event_show.js"></script>
