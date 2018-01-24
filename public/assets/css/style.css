@@ -169,9 +169,12 @@ h4 {
 
 /* event page edit, delete, signup buttons */
 
-.material-icons.signup-event {
+.material-icons.signup {
     background-color: #6ab3bc !important;
+    color:white!important; 
+
 }
+
 
 
 /* ============================================ */
