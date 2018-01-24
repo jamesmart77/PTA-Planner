@@ -38,14 +38,14 @@
                                 Role
                             </div>
                             <br>
-                            <div class="user-field" id="role-id"> {{user.roleID}}</div>
+                            <div class="user-field" id="role-id"> {{roleType}}</div>
                         </div>
                         <div class="row field-row">
                             <div class="user-field-label">
                                 Profile Status
                             </div>
                             <br>
-                            <div class="user-field" id="active-status"> {{user.active}}</div>
+                            <div class="user-field" id="active-status"> {{status}}</div>
                         </div>
                     </div>
 
@@ -56,7 +56,7 @@
 
                     <div class="fixed-action-btn">
                         <a class="link btn-floating btn-large edit-user" data-id={{user.id}}>
-                            <i class="link large material-icons">edit</i>
+                            <i class="link large material-icons edit-button">edit</i>
                         </a>
                     </div>
                 </div>
