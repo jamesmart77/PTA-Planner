@@ -1,3 +1,6 @@
+
+
+
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyBdvzDGVlb8w6es6yBOacj8n7TTkvVmoCA",
@@ -10,8 +13,12 @@ var config = {
 firebase.initializeApp(config);
 
 var userID;
+const pwDiv = document.getElementById('passwordStuff');
 
 $(document).ready(() => {
+
+    pwDiv.style.display = 'none';
+    
     console.log("in user show")
     $('.modal-trigger').hide(); //hiding 'New User' button
 
@@ -52,7 +59,18 @@ $(document).ready(() => {
             user.id = userID;
         }
 
-        console.log("NEW INFO\n" + user);
+        if($("#updatePassword").is(":checked")){
+            if($('#password').val()===$('#confirmPassword').val()){
+                user.oldPassword = $('#oldPassword').val();
+                user.password = $('#password').val();
+            }
+            else {
+                alert("Your passwords don't match, that could be a huge problem");
+            }
+        }
+
+        console.log("NEW INFO\n");
+        console.log(user);
 
         $.ajax({
                 method: "PUT", //POST or PUT
@@ -101,7 +119,6 @@ $(document).ready(() => {
                 $('#first_name').val(user.first_name);
                 $('#last_name').val(user.last_name);
                 $('#modal-email').val(user.email);
-                $('#password').val(user.password);
                 $('#profile-img').val(user.imgUrl);
 
                 var roleID = user.roleID
@@ -151,6 +168,15 @@ $(document).ready(() => {
         // current base url address
         window.location.href = "/users/";
 
+    });
+
+
+    $('#updatePassword').on('click', function(){
+        var display = $("#updatePassword").is(":checked");
+        pwDiv.style.display = display ? 'block' : 'none';
+
+            
+        
     });
 
 });
@@ -207,3 +233,4 @@ function facebookAuth() {
         // ...
     });
 }
+

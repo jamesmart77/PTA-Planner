@@ -166,15 +166,53 @@ api.post("/api/users", jwtauth, (req, res) => {
 
 // edit a user
 api.put("/api/users", jwtauth, (req, res) => {
-    db.User.update(
-        req.body, {
+
+    if(req.body.password){
+        db.User.findOne({
             where: {
                 id: req.body.id
             }
-        }).then(function (dbUser) {
-        res.json(dbUser);
-    });
-});
+        })
+        .then(function (dbUser) {
+            // console.log(data);
+
+            // if true hash new password
+            if(bcrypt.compareSync(req.body.oldPassword, dbUser.dataValues.password)){
+                delete req.body.oldPassword;
+
+                bcrypt.hash(req.body.password, 10, function(err, hash) {
+                    // Store hash in your password DB.
+                    req.body.password = hash;
+                    db.User.update(
+                        req.body, {
+                            where: {
+                                id: req.body.id
+                            }
+                        }).then(function (dbUser) {
+                        res.json(dbUser);
+                    }); // end udpate
+
+                  }); // end hash
+
+            } // end if
+
+        }); // end of promise
+ 
+    }
+    else {
+        db.User.update(
+            req.body, {
+                where: {
+                    id: req.body.id
+                }
+            }).then(function (dbUser) {
+            res.json(dbUser);
+        }); // end update
+    } // end if/else
+  
+
+
+}); // emd route
 
 // udpate an event
 api.put("/api/events", jwtauth, (req, res) => {
