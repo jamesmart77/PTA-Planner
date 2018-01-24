@@ -111,10 +111,10 @@
                             {{#if ../admin}}
                             <td class="center">
                                 <a class="user-see" data-userID="{{id}}">
-                                    <i class="large material-icons see-user" style="font-size:36px">info_outline</i>
+                                    <i class="link large material-icons see-user" style="font-size:36px">info_outline</i>
                                 </a>
                                 <a class="user-delete" data-userID="{{id}}">
-                                    <i class="large material-icons remove-user" style="font-size:36px">delete</i>
+                                    <i class="link large material-icons remove-user" style="font-size:36px">delete</i>
                                 </a>
                             </td>
                             {{/if}}
@@ -132,4 +132,4 @@
 <!-- This is for the edit event modal -->
 {{#if admin}} {{> events.create }} {{/if}}
 
-<script src="/assets/js/event_show.js"></script>
+<script src="/assets/js/event_show.js"></script>    

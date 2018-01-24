@@ -1,10 +1,10 @@
 .body-content {
-    /* background-image: url('../images/hands-background.jpeg');
+    background-image: url('../images/hands-background.jpeg');
     background-image: url('../images/hands-background.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: bottom center; */
+    background-position: bottom center;
 }
 
 .brand-logo {
@@ -21,7 +21,7 @@
     height: 65px;
     line-height: 65px;
     margin: 0px;
-    background-color: #011627;
+    background-color: #6ab3bc;
 }
 
 .login-body {
@@ -30,7 +30,7 @@
 
 #login-submit-btn {
     color: white;
-    background-color: #011627;
+    background-color: #6ab3bc;
 }
 
 h1 {
@@ -105,7 +105,7 @@ h4 {
 
 #navigation-bar {
     height: 65px !important;
-    background-color: #011627 !important;
+    background-color: #6ab3bc !important;
 }
 
 #breadcrumb-bar {
@@ -197,7 +197,6 @@ h4 {
     font-size: 22px !important;
     text-align: center !important;
     /* background-color: #33658A; */
-
 }
 
 .event-td {
@@ -273,10 +272,12 @@ h4 {
     font-size: 21px !important;
 }
 
+
 .user-profile-img{
     border-radius: 130px !important;
     left: 15px !important;
     top: 20% !important;
+
 }
 
 .img-row{
@@ -308,4 +309,5 @@ h4 {
     margin: auto;
     z-index: -1;
     opacity: .75;
+
 }
