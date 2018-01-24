@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: { args: false, msg: 'Event Name is required.' },
       validate: {
         notEmpty: {
-          msg: "Event Name have a name"
+          msg: "Event Name can not be empty"
         }
       }
     },
@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: { args: false, msg: 'Start Date is required.' },
       validate: {
         notEmpty: {
-          msg: "Start Date have a name"
+          msg: "Start Date can not be empty"
         }
       }
     },

@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
   var User = sequelize.define('User', {
     'first_name': {
       type: DataTypes.STRING,
-      allowNull: { args: false, msg: 'Event Name is required.' },
+      allowNull: { args: false, msg: 'First Name is required.' },
       validate: {
         notEmpty: {
           msg: "First Name can not be empty"
