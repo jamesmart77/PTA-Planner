@@ -16,6 +16,10 @@
     font-weight: 1px;
 }
 
+.logout{
+    color: #C9282D !important;
+}
+
 .site-title {
     vertical-align: middle !important;
     height: 65px;
