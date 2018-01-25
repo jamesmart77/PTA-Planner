@@ -180,7 +180,7 @@ router.get("/users/:id", jwtauth, (req, res) => {
                 var roleType
                 var status
 
-                if (req.admin){
+                if (data.roleID === 2){
                     roleType = "Admin"
                 } else {
                     roleType = "User"
