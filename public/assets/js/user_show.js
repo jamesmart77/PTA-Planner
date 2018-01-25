@@ -13,9 +13,9 @@ var config = {
 firebase.initializeApp(config);
 
 var userID;
-const pwDiv = document.getElementById('passwordStuff');
 
 $(document).ready(() => {
+    const pwDiv = document.getElementById('passwordStuff');
 
     pwDiv.style.display = 'none';
     
