@@ -8,7 +8,17 @@ var route = require('../routes/api.js');
 
 describe('TEST POST /api/staging to add a user to event', function () {
     beforeEach(function () {
-        
+        var db = {
+            Staging: {
+                create: function (staging) { //checking that db.User.create(req.body) in api.js is being called
+                    return new Promise(function (resolve, reject) { //boilerplate javascrupt for returning a promise which the db.Staging.create api gives back
+                        assert.equal(staging.EventId, 1);  //assert.equal checks what is returned and if the EventId === 1  the test will pass
+                        resolve(staging); // if successful: when using return new Promise you have to resolve the promise in order to return the user   
+                    });
+                    //console.log(user);
+                }
+            }
+        };
     });
 
     it('should add user to event', function (finish) {
@@ -34,17 +44,7 @@ describe('TEST POST /api/staging to add a user to event', function () {
         
 
         //define sequelize db object format(db.Staging.create)
-        var db = {
-            Staging: {
-                create: function (staging) { //checking that db.User.create(req.body) in api.js is being called
-                    return new Promise(function (resolve, reject) { //boilerplate javascrupt for returning a promise which the db.Staging.create api gives back
-                        assert.equal(staging.EventId, 1);  //assert.equal checks what is returned and if the EventId === 1  the test will pass
-                        resolve(staging); // if successful: when using return new Promise you have to resolve the promise in order to return the user   
-                    });
-                    //console.log(user);
-                }
-            }
-        };
+        
 
         var route = proxyquire('../routes/api.js', {
             '../models/': db
