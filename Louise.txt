@@ -1,0 +1,42 @@
+Hi I am Louise, I focused on Unit Testing for this project.
+
+Mocha: is a TDD javascript framework for Node.js which allows Asynchronous testing.
+It works with Chai or Assert as an assertion library. 
+I used Assert instead of Chai's Expect but it works the same.
+
+Demo code: npm test / run npm mocha
+
+Mocha unit test scripts are sections of code that test small pieces of functionality 
+belonging to a larger program. I tested our route api.js file.
+I was able to assert that the request was actually returning the JSON file we were expective, 
+given a defined input.
+
+I implementated a few standard Express Routes for Our API to handle basic CRUD functions,
+e.g. /users find all users in the sequelize DB
+
+Once I had this set up I tested it with Postman, which sent the GET HTTP requst to the URL localhost:3000/users
+This showed the app was working but it did not check if the content was valid. This is where unit tests come in.
+
+I was able to use this user object to populate a local DB user object in the test script.
+
+Then with node's Proxyquire, I could replace any references within the config files (routes or modals) 
+with a local mockup data object.
+In addition I also had to mock up the req and res that the API expected.
+
+This is the main benefit of a Unit test: to isolate only the API code
+rather than the associated DB and CLI functions that work along with the API call.
+
+This just touches the surface, it is possible to combine various test frameworks with various assertion libraries.
+It is possible to run mocha from debugger, mobile, browser and test your app on all of those devices.
+
+I also installed Cucumber which executes features written in Gherkin in a .features file, 
+It is Acceptance test, and is for BDD.
+
+Run ./node_modules/.bin/cucumber.js to show result of test for comparrison to mocha
+
+
+
+
+
+
+
