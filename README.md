@@ -24,9 +24,8 @@ You can check which version of node you are using by running
   
 # Routes
 /events  
-/volunteers  
-/admin/login  
-/volunteer/login  
+/users  
+/login  
 
 # Tables in sql database
 ## You don't need to run the sequal commands, I just kept them there in case we needed to change our models
@@ -57,6 +56,13 @@ First you need to update your local .env file to have your db username & db pass
 `sequelize db:create` - this will create your local/dev db from the command line  
 `sequelize db:migrate` = this will create your db tables from the models  
 
+#.ENV to launch app in vscode create a .ENV file
+DB_HOST=localhost
+DB_USER=root
+DB_PASS=
+DB_PORT=3306
+tokenSecret=EventMonsterMadness4Life!
+
 # To Launch Unit Testing
 1. pull latest repo from master in github
 2. `npm install` will install mocha and proxyrequire from package.json
@@ -68,5 +74,5 @@ e.g. test/api.js ---> tests the routes in file routes/api.js
 test/events.js ---> tests the 'creation of an event' in the DB table events - more acceptance test than unit test
 test/sample-test.js ---> A sample test file with boilerplate code  
 All files in test directory are run each time `npm test` is run from command line, as per standard practice.
-All lines are explained as Unit Testing s complicated enough but testing express is another layer of complicated!
+
 
