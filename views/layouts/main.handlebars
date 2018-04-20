@@ -1,14 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-		{{!-- <link rel="stylesheet" href="/assets/css/style.css" type="text/css" /> --}}
-		<script src="https://code.jquery.com/jquery.js"></script>
-		<script src="/assets/js/login.js"></script>
-		{{!-- <script src="/assets/js/ajaxSetup.js"></script> --}}
-		<title>Event Monster</title>
-	</head>
-	<body>
-		{{{ body }}}
-	</body>
+	<meta charset="UTF-8"> {{!--
+	<link rel="stylesheet" href="/assets/css/style.css" type="text/css" /> --}}
+	{{!-- <script src="https://code.jquery.com/jquery.js"></script> --}}
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	{{!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> --}}
+
+	<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> {{!-- Font --}}
+	<link href="https://fonts.googleapis.com/css?family=Arima+Madurai:700" rel="stylesheet"> {{!-- Raleway Font --}}
+	<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> {{!-- Shadows Font --}}
+	<link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet"> {{!-- Pontano Sans Font --}}
+	<link href="https://fonts.googleapis.com/css?family=Pontano+Sans" rel="stylesheet">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="/assets/css/style.css"> {{!--
+	<script src="/assets/js/ajaxSetup.js"></script> --}}
+	<title>Event Monster</title>
+	<link rel="shortcut icon" href="/assets/images/favicon.ico" />
+</head>
+
+<body>
+	<!-- Dropdown Structure -->
+	<div class="navigation">
+		<ul id="dropdown1" class="dropdown-content">
+			<li>
+				<a href="/users/{{userID}}">Profile</a>
+			</li>
+			<li>
+				<a href="/events">Events</a>
+			</li>
+
+			{{#if admin}}
+			<li>
+				<a href="/users">All Users</a>
+			</li>
+			{{/if}}
+
+			<li>
+				<a class="logout" href="/logout">Log Out</a>
+			</li>
+		</ul>
+	</div>
+	<nav>
+		<div class="nav-wrapper teal lighten-2" id="navigation-bar">
+			<a href="/" class="brand-logo center">
+				<p class="site-title">Event Monster</p>
+			</a>
+			<ul class="right">
+				<!-- Dropdown Trigger -->
+				{{!-- custom handlebars helper to see if current user is logged in -- check server.js --}} {{#if (isLoggedIn admin)}}
+
+				<li>
+					<a class="dropdown-button" href="#!" data-activates="dropdown1">
+						<i class="material-icons right" id="nav-icon">account_circle</i>
+					</a>
+				</li>
+				{{/if}}
+			</ul>
+		</div>
+	</nav>
+	{{!--
+	<nav class="dot" id="breadcrumb-bar">
+		<div class="nav-wrapper">
+			<div class="col s12">
+				<a href="javascript:history.back()" class="breadcrumb">Back</a>
+			</div>
+		</div>
+	</nav> --}} {{{ body }}}
+
+
+
+
+	<!-- js scripts are blocking and most should go here for performance -->
+	<!-- Include Required Prerequisites -->
+	{{!--
+	<script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script> --}}
+	<script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script> {{!--
+	<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" /> --}}
+
+	<!-- Compiled and minified JavaScript for Materialize-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+</body>
+
 </html>

@@ -1,0 +1,109 @@
+<div class="row">
+    <div class="col s10 offset-s1">
+        <div class="card grey lighten-4 card horizontal">
+            <div class="card-image">
+                <img class="user-profile-img" src="{{user.imgUrl}}">
+            </div>
+            <div class="card-stacked">
+                <div class="card-content grey-text text-darken-4">
+                    <span class="card-title detail-title center-align">User Information</span>
+                    <div class="divider"></div>
+                    <div class="col s6">
+                        <div class="row field-row">
+                            <div class="user-field-label">
+                                First Name
+                            </div>
+                            <br>
+                            <div class="user-field" id="first-name"> {{user.first_name}}</div>
+                        </div>
+                        <div class="row field-row">
+                            <div class="user-field-label">
+                                Last Name
+                            </div>
+                            <br>
+                            <div class="user-field" id="last-name"> {{user.last_name}}</div>
+                        </div>
+                        <div class="row field-row">
+                            <div class="user-field-label">
+                                Email Address
+                            </div>
+                            <br>
+                            <div class="user-field" id="email"> {{user.email}}</div>
+                        </div>
+                    </div>
+                    {{#if admin}}
+                    <div class="col s6">
+                        <div class="row field-row">
+                            <div class="user-field-label">
+                                Role
+                            </div>
+                            <br>
+                            <div class="user-field" id="role-id"> {{roleType}}</div>
+                        </div>
+                        <div class="row field-row">
+                            <div class="user-field-label">
+                                Profile Status
+                            </div>
+                            <br>
+                            <div class="user-field" id="active-status"> {{status}}</div>
+                        </div>
+                    </div>
+
+                    {{/if}} {{!--
+                    <a class="btn-floating halfway-fab waves-effect waves-light teal edit-event" data-id={{event.id}}>
+                        <i class="material-icons">edit</i>
+                    </a> --}}
+
+                    <div class="fixed-action-btn">
+                        <a class="link btn-floating btn-large edit-user" data-id={{user.id}}>
+                            <i class="link large material-icons edit-button">edit</i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+
+<div class="row">
+    <div class="col s10 offset-s1 volunteer-table">
+        <h3 class="volunteer-header">SignUp History</h3>
+        <br>
+        <table class="table highlight responsive-table" id="events-table">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th class="event-th" scope="col">Event Name</th>
+                    <th class="event-th" scope="col">Start Date</th>
+                    <th class="event-th" scope="col">End Date</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each events}}
+                <tr>
+                    <td class="event-td">
+                        <img class="volunteer-event-img" src="{{imgUrl}}" height="100" alt="volunteer photo">
+                    </td>
+                    <td class="event-td">{{event_name}}</td>
+                    <td class="event-td">{{formattedStartDate}}</td>
+                    <td class="event-td">{{formattedEndDate}}</td>
+                    <td>
+                        <a class="event-see" data-eventID="{{id}}">
+                            <i class="link large material-icons see-event" style="font-size:36px">info_outline</i>
+                        </a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+<!-- This is for the edit event modal -->
+{{> users.create }}
+
+<script src="/assets/js/user_show.js"></script>
