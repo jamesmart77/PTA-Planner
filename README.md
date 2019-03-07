@@ -8,6 +8,7 @@ App deployed on Heroku:
 https://eventmonster.herokuapp.com/
 
 
+
 # Starting/Stopping the app
 In the package.json file, you'll see a scripts section. You can run of any them by doing  
 `npm run [scriptName]`  
