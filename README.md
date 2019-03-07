@@ -1,5 +1,12 @@
+
 # Event Monster
+A Jandlebars JS Jquery Node Express mySQL event management system
+
 Using the Sign-Up Genius api, the PTA Planner helps volunteers get involved in an easy and coordinate in an easy way! With separate volunteer and administrator views, updating content and distributing is incredibly easy. 
+
+App deployed on Heroku:
+https://eventmonster.herokuapp.com/
+
 
 # Starting/Stopping the app
 In the package.json file, you'll see a scripts section. You can run of any them by doing  
