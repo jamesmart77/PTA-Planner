@@ -1,5 +1,13 @@
+
 # Event Monster
+A Jandlebars JS Jquery Node Express mySQL event management system
+
 Using the Sign-Up Genius api, the PTA Planner helps volunteers get involved in an easy and coordinate in an easy way! With separate volunteer and administrator views, updating content and distributing is incredibly easy. 
+
+App deployed on Heroku:
+https://eventmonster.herokuapp.com/
+
+
 
 # Starting/Stopping the app
 In the package.json file, you'll see a scripts section. You can run of any them by doing  
@@ -66,6 +74,13 @@ This was all randomly generated, so logically there could be some issues, like s
 or end dates that are before start dates for events. If that becomes important as we are working on the project then  
 update the sampe data JSON files and message me and I'll update the seeders files.  
 
+#.ENV to launch app in vscode create a .ENV file
+DB_HOST=localhost
+DB_USER=root
+DB_PASS=
+DB_PORT=3306
+tokenSecret=EventMonsterMadness4Life!
+
 # To Launch Unit Testing
 1. pull latest repo from master in github
 2. `npm install` will install mocha and proxyrequire from package.json
@@ -77,5 +92,5 @@ e.g. test/api.js ---> tests the routes in file routes/api.js
 test/events.js ---> tests the 'creation of an event' in the DB table events - more acceptance test than unit test
 test/sample-test.js ---> A sample test file with boilerplate code  
 All files in test directory are run each time `npm test` is run from command line, as per standard practice.
-All lines are explained as Unit Testing s complicated enough but testing express is another layer of complicated!
+
 
